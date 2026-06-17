@@ -1,7 +1,9 @@
-"""摘要生成模块：输出两份摘要文件。
+"""摘要生成模块：输出两份摘要文件（支持分页与排序）。
 
 1. readable_timeline.md - 人类可读时间线（含异常标注）
 2. detailed_stats.json  - 结构化详细统计（便于二次消费）
+
+分页参数控制各表格行数上限，排序参数控制列表排序方式。
 """
 
 from __future__ import annotations
@@ -12,7 +14,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
 from .storage import Storage
-from .analyzer import analyze
+from .analyzer import analyze, SPIKE_WINDOWS
 
 
 def _fmt_ts(ts: float) -> str:
@@ -44,61 +46,81 @@ def _bar(value: int, max_value: int, width: int = 30) -> str:
     return "█" * filled + "░" * (width - filled)
 
 
-def _build_timeline_events(analysis: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """将时间窗、异常、批量操作合并为带标注的时间线事件。"""
-    events: List[Dict[str, Any]] = []
-    for b in analysis["stats"]["by_time_window"]:
-        events.append({
-            "ts": b["t_min"],
-            "kind": "window",
-            "data": b,
-        })
-    for s in analysis["anomalies"]["spikes"]:
-        events.append({
-            "ts": s.get("start_ts") or 0,
-            "kind": "spike",
-            "data": s,
-        })
-    for bk in analysis["anomalies"]["bulk_actions"]:
-        events.append({
-            "ts": bk.get("start_ts") or 0,
-            "kind": "bulk",
-            "data": bk,
-        })
-    events.sort(key=lambda e: e["ts"])
-    return events
+_SORT_KEY_MAP = {
+    "count": lambda x: x.get("cnt", x.get("count", 0)),
+    "subject": lambda x: x.get("subject", ""),
+    "action": lambda x: x.get("action", ""),
+    "failures": lambda x: x.get("fail_cnt", x.get("failures", 0)),
+    "fail_ratio": lambda x: x.get("fail_ratio", 0),
+    "z_score": lambda x: x.get("z_score", 0),
+    "share": lambda x: x.get("share", 0),
+    "name": lambda x: x.get("subject", x.get("action", "")),
+}
 
 
-def _write_detailed_stats(path: str, analysis: Dict[str, Any]) -> None:
-    """写 JSON 详细统计报告。"""
-    # 保留所有原始数据结构，原样输出
+def _sort_list(items: List[Dict[str, Any]], sort_by: str, sort_order: str) -> List[Dict[str, Any]]:
+    key_fn = _SORT_KEY_MAP.get(sort_by, _SORT_KEY_MAP["count"])
+    reverse = sort_order == "desc"
+    try:
+        return sorted(items, key=key_fn, reverse=reverse)
+    except (TypeError, KeyError):
+        return items
+
+
+def _paginate(items: List[Any], page: int, page_size: int) -> List[Any]:
+    if page_size <= 0:
+        return items
+    start = (page - 1) * page_size
+    end = start + page_size
+    return items[start:end]
+
+
+def _write_detailed_stats(path: str, analysis: Dict[str, Any],
+                          page_size: int = 0, page: int = 1,
+                          sort_by: str = "count", sort_order: str = "desc") -> None:
     payload: Dict[str, Any] = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "version": "1.0",
+        "version": "2.0",
+        "pagination": {
+            "page": page,
+            "page_size": page_size if page_size > 0 else "unlimited",
+        },
+        "sort": {
+            "by": sort_by,
+            "order": sort_order,
+        },
         "meta": analysis["meta"],
         "overview": analysis["overview"],
         "by_status": analysis["stats"]["by_status"],
-        "by_subject": analysis["stats"]["by_subject"],
-        "by_action": analysis["stats"]["by_action"],
-        "by_subject_action": analysis["stats"]["by_subject_action"][:200],
-        "time_series": analysis["stats"]["by_time_window"],
-        "anomalies": analysis["anomalies"],
     }
-    # 把大整数时间戳也带回来（meta 里的 start_ts/end_ts 已存在）
+
+    sorted_subjects = _sort_list(analysis["stats"]["by_subject"], sort_by, sort_order)
+    sorted_actions = _sort_list(analysis["stats"]["by_action"], sort_by, sort_order)
+    sorted_matrix = _sort_list(analysis["stats"]["by_subject_action"], sort_by, sort_order)
+
+    payload["by_subject"] = _paginate(sorted_subjects, page, page_size)
+    payload["by_action"] = _paginate(sorted_actions, page, page_size)
+    payload["by_subject_action"] = _paginate(sorted_matrix, page, page_size) if page_size > 0 else sorted_matrix[:200]
+    payload["time_series"] = analysis["stats"]["by_time_window"]
+    payload["anomalies"] = analysis["anomalies"]
+
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=2)
 
 
-def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> None:
-    """写 Markdown 可读时间线报告。"""
+def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage,
+                    page_size: int = 0, page: int = 1,
+                    sort_by: str = "count", sort_order: str = "desc") -> None:
     lines: List[str] = []
     meta = analysis["meta"]
     ov = analysis["overview"]
 
-    # ---- 标题 & 概览 ----
     lines.append("# 审计日志摘要报告")
     lines.append("")
     lines.append(f"> 生成时间：{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    if page_size > 0:
+        lines.append(f"> 分页：第 {page} 页，每页 {page_size} 条")
+    lines.append(f"> 排序：按 {sort_by} {sort_order}")
     lines.append("")
     lines.append("## 一、概览")
     lines.append("")
@@ -110,7 +132,6 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> No
     lines.append(f"- 时间窗口数：{ov['windows_covered']} 个")
     lines.append("")
 
-    # ---- 状态分布 ----
     statuses = analysis["stats"]["by_status"]
     if statuses:
         lines.append("## 二、状态分布")
@@ -123,26 +144,27 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> No
             lines.append(f"| {s['status'] or '(空)'} | {s['cnt']:,} | {ratio}% | `{_bar(s['cnt'], max_s)}` |")
         lines.append("")
 
-    # ---- Top 主体 ----
-    subjects = analysis["stats"]["by_subject"][:20]
+    sorted_subjects = _sort_list(analysis["stats"]["by_subject"], sort_by, sort_order)
+    subjects = _paginate(sorted_subjects, page, page_size) if page_size > 0 else sorted_subjects[:20]
     if subjects:
-        lines.append("## 三、活跃主体 Top 20")
+        lines.append(f"## 三、活跃主体{' (第' + str(page) + '页)' if page_size > 0 else ' Top 20'}")
         lines.append("")
         lines.append("| 排名 | 主体 | 总操作 | 失败 | 动作种类 | 首次活动 | 末次活动 |")
         lines.append("|------|------|--------|------|----------|----------|----------|")
+        base = (page - 1) * page_size if page_size > 0 else 0
         for i, s in enumerate(subjects, 1):
             lines.append(
-                f"| {i} | `{s['subject']}` | {s['cnt']:,} | {s['fail_cnt']} | {s['action_types']} | "
+                f"| {base + i} | `{s['subject']}` | {s['cnt']:,} | {s['fail_cnt']} | {s['action_types']} | "
                 f"{_fmt_ts(s['t_min'])} | {_fmt_ts(s['t_max'])} |"
             )
         lines.append("")
 
-    # ---- 动作类型分布 ----
-    actions = analysis["stats"]["by_action"]
+    sorted_actions = _sort_list(analysis["stats"]["by_action"], sort_by, sort_order)
+    actions = _paginate(sorted_actions, page, page_size) if page_size > 0 else sorted_actions
     if actions:
         lines.append("## 四、动作类型分布")
         lines.append("")
-        max_a = max(a["cnt"] for a in actions)
+        max_a = max(a["cnt"] for a in actions) if actions else 1
         lines.append("| 动作 | 数量 | 占比 | 独立主体 | 失败数 | 可视化 |")
         lines.append("|------|------|------|----------|--------|--------|")
         for a in actions:
@@ -153,29 +175,29 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> No
             )
         lines.append("")
 
-    # ---- 异常检测汇总 ----
     anom = analysis["anomalies"]
     lines.append("## 五、异常检测")
     lines.append("")
     total_anom = sum(len(v) for v in anom.values())
-    lines.append(f"- 🚨 **异常高峰期**：{len(anom['spikes'])} 处")
+    spike_tiers_used = set(s.get("tier_label", "") for s in anom["spikes"]) if anom["spikes"] else set()
+    lines.append(f"- 🚨 **异常高峰期**：{len(anom['spikes'])} 处（窗口档位：{', '.join(sorted(spike_tiers_used)) or 'N/A'}）")
     lines.append(f"- 🔍 **不常见操作**：{len(anom['rare_actions'])} 种")
-    lines.append(f"- 📦 **批量动作**：{len(anom['bulk_actions'])} 起")
+    lines.append(f"- 📦 **批量动作**：{len(anom['bulk_actions'])} 起（动态阈值）")
     lines.append(f"- ⚠️  **高失败主体**：{len(anom['high_failure_subjects'])} 个")
     lines.append(f"- 合计 **{total_anom}** 条异常线索")
     lines.append("")
 
-    # --- 异常详情 ---
     if anom["spikes"]:
-        lines.append("### 5.1 异常高峰期（Z-Score 突增）")
+        lines.append("### 5.1 异常高峰期（多档窗口 Z-Score 突增）")
         lines.append("")
-        lines.append("| 起始 | 结束 | 条数 | 基线 | Z-Score | 倍数 | 涉及主体 | 动作数 | 失败 |")
-        lines.append("|------|------|------|------|---------|------|----------|--------|------|")
+        lines.append("| 起始 | 结束 | 条数 | 基线 | Z-Score | 倍数 | 窗口档 | 涉及主体 | 动作数 | 失败 |")
+        lines.append("|------|------|------|------|---------|------|--------|----------|--------|------|")
         for s in anom["spikes"]:
             mult = f"{s['multiplier']}x" if s["multiplier"] else "N/A"
+            tier = s.get("tier_label", "")
             lines.append(
                 f"| {s['start']} | {s['end']} | {s['count']:,} | {s['baseline']} | "
-                f"{s['z_score']} | {mult} | {s['subjects_involved']} | {s['action_types']} | {s['failures']} |"
+                f"{s['z_score']} | {mult} | {tier} | {s['subjects_involved']} | {s['action_types']} | {s['failures']} |"
             )
         lines.append("")
 
@@ -192,52 +214,58 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> No
         lines.append("")
 
     if anom["bulk_actions"]:
-        lines.append("### 5.3 批量操作（短时高频重复）")
+        lines.append("### 5.3 批量操作（动态阈值，按主体类别）")
         lines.append("")
-        lines.append("| 主体 | 动作 | 次数 | 起始 | 结束 | 实际跨度 | 速率/秒 | 占比% |")
-        lines.append("|------|------|------|------|------|----------|---------|-------|")
+        lines.append("| 主体 | 类别 | 动作 | 次数 | 阈值 | 起始 | 结束 | 实际跨度 | 速率/秒 | 占比% |")
+        lines.append("|------|------|------|------|------|------|------|----------|---------|-------|")
         for b in anom["bulk_actions"]:
             rate = b["avg_per_second"] if b["avg_per_second"] is not None else "N/A"
+            cat = b.get("subject_category", "")
+            dyn_min = b.get("dynamic_min_count", "")
             lines.append(
-                f"| `{b['subject']}` | `{b['action']}` | {b['count']:,} | {b['start']} | {b['end']} | "
-                f"{_fmt_span(b['actual_span_seconds'])} | {rate} | {b['share']}% |"
+                f"| `{b['subject']}` | {cat} | `{b['action']}` | {b['count']:,} | ≥{dyn_min} | "
+                f"{b['start']} | {b['end']} | {_fmt_span(b['actual_span_seconds'])} | {rate} | {b['share']}% |"
             )
         lines.append("")
 
     if anom["high_failure_subjects"]:
         lines.append("### 5.4 高失败率主体")
         lines.append("")
-        lines.append("| 主体 | 总操作 | 失败 | 失败率% | 首次 | 末次 |")
-        lines.append("|------|--------|------|---------|------|------|")
+        lines.append("| 主体 | 类别 | 总操作 | 失败 | 失败率% | 首次 | 末次 |")
+        lines.append("|------|------|--------|------|---------|------|------|")
         for h in anom["high_failure_subjects"]:
+            cat = h.get("subject_category", "")
             lines.append(
-                f"| `{h['subject']}` | {h['total']:,} | {h['failures']} | {h['fail_ratio']}% | "
+                f"| `{h['subject']}` | {cat} | {h['total']:,} | {h['failures']} | {h['fail_ratio']}% | "
                 f"{h['first_seen']} | {h['last_seen']} |"
             )
         lines.append("")
 
-    # ---- 时间线视图 ----
     lines.append("## 六、时间线（按聚合窗口）")
     lines.append("")
     ts_windows = analysis["stats"]["by_time_window"]
     if ts_windows:
         max_cnt = max(w["cnt"] for w in ts_windows)
         spike_starts = {s["start"] for s in anom["spikes"]}
+        displayed_windows = _paginate(ts_windows, page, page_size) if page_size > 0 else ts_windows
         lines.append("| 时间窗起始 | 条数 | 主体 | 动作 | 失败 | 可视化 | 标注 |")
         lines.append("|------------|------|------|------|------|--------|------|")
-        for w in ts_windows:
+        for w in displayed_windows:
             start = _fmt_ts(w["t_min"])
             mark = "🚨 峰值" if start in spike_starts else ""
             lines.append(
                 f"| {start} | {w['cnt']:,} | {w['subject_cnt']} | {w['action_cnt']} | "
                 f"{w['fail_cnt']} | `{_bar(w['cnt'], max_cnt, 40)}` | {mark} |"
             )
+        if page_size > 0 and len(ts_windows) > page_size:
+            total_pages = (len(ts_windows) + page_size - 1) // page_size
+            lines.append(f"> 显示第 {page}/{total_pages} 页，共 {len(ts_windows)} 个窗口")
         lines.append("")
 
-    # ---- 主体-动作矩阵 Top ----
-    matrix = analysis["stats"]["by_subject_action"][:30]
+    sorted_matrix = _sort_list(analysis["stats"]["by_subject_action"], sort_by, sort_order)
+    matrix = _paginate(sorted_matrix, page, page_size) if page_size > 0 else sorted_matrix[:30]
     if matrix:
-        lines.append("## 七、主体 × 动作（Top 30 组合）")
+        lines.append(f"## 七、主体 × 动作{' (第' + str(page) + '页)' if page_size > 0 else '（Top 30 组合）'}")
         lines.append("")
         lines.append("| 主体 | 动作 | 次数 | 起始 | 结束 |")
         lines.append("|------|------|------|------|------|")
@@ -248,11 +276,10 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage) -> No
             )
         lines.append("")
 
-    # ---- 附录：原始样本 ----
     lines.append("## 八、附录：日志样本（随机 10 条）")
     lines.append("")
     samples = storage.query(
-        "SELECT ts, subject, action, resource, status, source_file FROM logs ORDER BY RANDOM() LIMIT 10"
+        "SELECT ts, subject, action, resource, status, source_file FROM logs_all ORDER BY RANDOM() LIMIT 10"
     )
     if samples:
         lines.append("| 时间 | 主体 | 动作 | 资源 | 状态 | 来源 |")
@@ -275,12 +302,18 @@ def write_summaries(
     timeline_name: str = "timeline.md",
     stats_name: str = "stats.json",
     window_seconds: Optional[int] = None,
+    spike_tiers: Optional[List[int]] = None,
+    dynamic_bulk: bool = True,
+    page_size: int = 0,
+    page: int = 1,
+    sort_by: str = "count",
+    sort_order: str = "desc",
 ) -> Tuple[str, str, Dict[str, Any]]:
     """生成两份摘要文件，返回 (timeline_path, stats_path, analysis_dict)。"""
     os.makedirs(output_dir, exist_ok=True)
-    analysis = analyze(storage, window_seconds)
+    analysis = analyze(storage, window_seconds, spike_tiers, dynamic_bulk)
     timeline_path = os.path.join(output_dir, timeline_name)
     stats_path = os.path.join(output_dir, stats_name)
-    _write_timeline(timeline_path, analysis, storage)
-    _write_detailed_stats(stats_path, analysis)
+    _write_timeline(timeline_path, analysis, storage, page_size, page, sort_by, sort_order)
+    _write_detailed_stats(stats_path, analysis, page_size, page, sort_by, sort_order)
     return timeline_path, stats_path, analysis

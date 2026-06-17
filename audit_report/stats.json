@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-06-17T04:13:40.237207+00:00",
-  "version": "1.0",
+  "generated_at": "2026-06-17T04:38:29.772703+00:00",
+  "version": "2.0",
+  "pagination": {
+    "page": 1,
+    "page_size": 50
+  },
+  "sort": {
+    "by": "count",
+    "order": "desc"
+  },
   "meta": {
     "start_ts": 1781568000.0,
     "end_ts": 1781654374.0,
@@ -11,7 +19,7 @@
   },
   "overview": {
     "total_logs": 8502,
-    "unique_subjects": 45,
+    "unique_subjects": 44,
     "unique_actions": 24,
     "windows_covered": 288
   },
@@ -167,6 +175,14 @@
       "fail_cnt": 1
     },
     {
+      "subject": "root",
+      "cnt": 222,
+      "t_min": 1781568573.0,
+      "t_max": 1781652763.0,
+      "action_types": 5,
+      "fail_cnt": 101
+    },
+    {
       "subject": "10.0.3.41",
       "cnt": 221,
       "t_min": 1781568031.0,
@@ -213,22 +229,6 @@
       "t_max": 1781652823.0,
       "action_types": 6,
       "fail_cnt": 2
-    },
-    {
-      "subject": "root ;",
-      "cnt": 121,
-      "t_min": 1781568573.0,
-      "t_max": 1781652763.0,
-      "action_types": 4,
-      "fail_cnt": 0
-    },
-    {
-      "subject": "root",
-      "cnt": 101,
-      "t_min": 1781576253.0,
-      "t_max": 1781648287.0,
-      "action_types": 1,
-      "fail_cnt": 101
     },
     {
       "subject": "user",
@@ -513,7 +513,7 @@
       "fail_cnt": 0
     },
     {
-      "action": "systemctl_restart_nginx",
+      "action": "systemctl",
       "cnt": 34,
       "subject_cnt": 1,
       "t_min": 1781568573.0,
@@ -521,7 +521,7 @@
       "fail_cnt": 0
     },
     {
-      "action": "apt-get_update",
+      "action": "apt-get",
       "cnt": 31,
       "subject_cnt": 1,
       "t_min": 1781569032.0,
@@ -529,7 +529,7 @@
       "fail_cnt": 0
     },
     {
-      "action": "cat_/etc/shadow",
+      "action": "cat",
       "cnt": 21,
       "subject_cnt": 1,
       "t_min": 1781576954.0,
@@ -935,867 +935,6 @@
       "cnt": 43,
       "t_min": 1781568672.0,
       "t_max": 1781650565.0
-    },
-    {
-      "subject": "10.0.2.37",
-      "action": "write",
-      "cnt": 43,
-      "t_min": 1781568663.0,
-      "t_max": 1781654311.0
-    },
-    {
-      "subject": "10.0.5.24",
-      "action": "write",
-      "cnt": 42,
-      "t_min": 1781568352.0,
-      "t_max": 1781652228.0
-    },
-    {
-      "subject": "10.0.2.37",
-      "action": "create",
-      "cnt": 41,
-      "t_min": 1781568716.0,
-      "t_max": 1781653738.0
-    },
-    {
-      "subject": "10.0.5.109",
-      "action": "write",
-      "cnt": 41,
-      "t_min": 1781568435.0,
-      "t_max": 1781652869.0
-    },
-    {
-      "subject": "10.0.5.24",
-      "action": "create",
-      "cnt": 41,
-      "t_min": 1781569480.0,
-      "t_max": 1781650905.0
-    },
-    {
-      "subject": "10.0.3.64",
-      "action": "create",
-      "cnt": 40,
-      "t_min": 1781568917.0,
-      "t_max": 1781652209.0
-    },
-    {
-      "subject": "10.0.2.116",
-      "action": "write",
-      "cnt": 36,
-      "t_min": 1781569010.0,
-      "t_max": 1781651973.0
-    },
-    {
-      "subject": "10.0.2.131",
-      "action": "write",
-      "cnt": 36,
-      "t_min": 1781568900.0,
-      "t_max": 1781648513.0
-    },
-    {
-      "subject": "10.0.5.110",
-      "action": "write",
-      "cnt": 36,
-      "t_min": 1781570908.0,
-      "t_max": 1781649985.0
-    },
-    {
-      "subject": "10.0.2.180",
-      "action": "write",
-      "cnt": 35,
-      "t_min": 1781572627.0,
-      "t_max": 1781651448.0
-    },
-    {
-      "subject": "grace",
-      "action": "login",
-      "cnt": 35,
-      "t_min": 1781568113.0,
-      "t_max": 1781654287.0
-    },
-    {
-      "subject": "root ;",
-      "action": "useradd",
-      "cnt": 35,
-      "t_min": 1781573432.0,
-      "t_max": 1781650000.0
-    },
-    {
-      "subject": "10.0.2.247",
-      "action": "write",
-      "cnt": 34,
-      "t_min": 1781569004.0,
-      "t_max": 1781652632.0
-    },
-    {
-      "subject": "10.0.5.8",
-      "action": "create",
-      "cnt": 34,
-      "t_min": 1781569478.0,
-      "t_max": 1781652161.0
-    },
-    {
-      "subject": "root ;",
-      "action": "systemctl_restart_nginx",
-      "cnt": 34,
-      "t_min": 1781568573.0,
-      "t_max": 1781652763.0
-    },
-    {
-      "subject": "bob",
-      "action": "login",
-      "cnt": 33,
-      "t_min": 1781568000.0,
-      "t_max": 1781653813.0
-    },
-    {
-      "subject": "10.0.1.175",
-      "action": "write",
-      "cnt": 32,
-      "t_min": 1781569309.0,
-      "t_max": 1781653272.0
-    },
-    {
-      "subject": "10.0.1.57",
-      "action": "create",
-      "cnt": 32,
-      "t_min": 1781571426.0,
-      "t_max": 1781649528.0
-    },
-    {
-      "subject": "10.0.1.9",
-      "action": "write",
-      "cnt": 32,
-      "t_min": 1781572678.0,
-      "t_max": 1781652151.0
-    },
-    {
-      "subject": "10.0.5.73",
-      "action": "write",
-      "cnt": 31,
-      "t_min": 1781570969.0,
-      "t_max": 1781651600.0
-    },
-    {
-      "subject": "root ;",
-      "action": "apt-get_update",
-      "cnt": 31,
-      "t_min": 1781569032.0,
-      "t_max": 1781651596.0
-    },
-    {
-      "subject": "10.0.1.57",
-      "action": "write",
-      "cnt": 30,
-      "t_min": 1781569284.0,
-      "t_max": 1781649494.0
-    },
-    {
-      "subject": "10.0.3.64",
-      "action": "write",
-      "cnt": 30,
-      "t_min": 1781568552.0,
-      "t_max": 1781649966.0
-    },
-    {
-      "subject": "10.0.4.89",
-      "action": "write",
-      "cnt": 30,
-      "t_min": 1781568134.0,
-      "t_max": 1781652435.0
-    },
-    {
-      "subject": "unknown",
-      "action": "delete",
-      "cnt": 30,
-      "t_min": 1781577318.0,
-      "t_max": 1781654013.0
-    },
-    {
-      "subject": "unknown",
-      "action": "other",
-      "cnt": 30,
-      "t_min": 1781570470.0,
-      "t_max": 1781653245.0
-    },
-    {
-      "subject": "10.0.5.52",
-      "action": "write",
-      "cnt": 28,
-      "t_min": 1781569343.0,
-      "t_max": 1781648913.0
-    },
-    {
-      "subject": "ivy",
-      "action": "login",
-      "cnt": 28,
-      "t_min": 1781570796.0,
-      "t_max": 1781652761.0
-    },
-    {
-      "subject": "10.0.1.8",
-      "action": "write",
-      "cnt": 27,
-      "t_min": 1781571291.0,
-      "t_max": 1781651233.0
-    },
-    {
-      "subject": "10.0.5.8",
-      "action": "write",
-      "cnt": 27,
-      "t_min": 1781568841.0,
-      "t_max": 1781648710.0
-    },
-    {
-      "subject": "frank",
-      "action": "login",
-      "cnt": 27,
-      "t_min": 1781568422.0,
-      "t_max": 1781646693.0
-    },
-    {
-      "subject": "10.0.1.196",
-      "action": "write",
-      "cnt": 26,
-      "t_min": 1781569265.0,
-      "t_max": 1781652333.0
-    },
-    {
-      "subject": "eve",
-      "action": "login",
-      "cnt": 26,
-      "t_min": 1781571949.0,
-      "t_max": 1781651641.0
-    },
-    {
-      "subject": "10.0.3.28",
-      "action": "write",
-      "cnt": 25,
-      "t_min": 1781569546.0,
-      "t_max": 1781650984.0
-    },
-    {
-      "subject": "10.0.3.41",
-      "action": "write",
-      "cnt": 25,
-      "t_min": 1781568031.0,
-      "t_max": 1781649909.0
-    },
-    {
-      "subject": "henry",
-      "action": "login",
-      "cnt": 25,
-      "t_min": 1781570129.0,
-      "t_max": 1781640738.0
-    },
-    {
-      "subject": "jack",
-      "action": "login",
-      "cnt": 25,
-      "t_min": 1781572009.0,
-      "t_max": 1781650864.0
-    },
-    {
-      "subject": "alice",
-      "action": "login",
-      "cnt": 22,
-      "t_min": 1781575862.0,
-      "t_max": 1781650703.0
-    },
-    {
-      "subject": "charlie",
-      "action": "login",
-      "cnt": 21,
-      "t_min": 1781568965.0,
-      "t_max": 1781653469.0
-    },
-    {
-      "subject": "root ;",
-      "action": "cat_/etc/shadow",
-      "cnt": 21,
-      "t_min": 1781576954.0,
-      "t_max": 1781650777.0
-    },
-    {
-      "subject": "david",
-      "action": "login",
-      "cnt": 19,
-      "t_min": 1781572657.0,
-      "t_max": 1781653322.0
-    },
-    {
-      "subject": "frank",
-      "action": "sudo",
-      "cnt": 19,
-      "t_min": 1781579222.0,
-      "t_max": 1781652763.0
-    },
-    {
-      "subject": "unknown",
-      "action": "password_change",
-      "cnt": 19,
-      "t_min": 1781578088.0,
-      "t_max": 1781647998.0
-    },
-    {
-      "subject": "charlie",
-      "action": "sudo",
-      "cnt": 17,
-      "t_min": 1781579720.0,
-      "t_max": 1781636953.0
-    },
-    {
-      "subject": "david",
-      "action": "sudo",
-      "cnt": 16,
-      "t_min": 1781569032.0,
-      "t_max": 1781649394.0
-    },
-    {
-      "subject": "10.0.2.116",
-      "action": "delete",
-      "cnt": 15,
-      "t_min": 1781568931.0,
-      "t_max": 1781650468.0
-    },
-    {
-      "subject": "10.0.3.64",
-      "action": "delete",
-      "cnt": 15,
-      "t_min": 1781570691.0,
-      "t_max": 1781622543.0
-    },
-    {
-      "subject": "alice",
-      "action": "sudo",
-      "cnt": 15,
-      "t_min": 1781572962.0,
-      "t_max": 1781642372.0
-    },
-    {
-      "subject": "henry",
-      "action": "sudo",
-      "cnt": 15,
-      "t_min": 1781580733.0,
-      "t_max": 1781648595.0
-    },
-    {
-      "subject": "unknown",
-      "action": "api_call",
-      "cnt": 15,
-      "t_min": 1781574873.0,
-      "t_max": 1781653465.0
-    },
-    {
-      "subject": "10.0.1.175",
-      "action": "delete",
-      "cnt": 14,
-      "t_min": 1781572865.0,
-      "t_max": 1781646659.0
-    },
-    {
-      "subject": "10.0.1.57",
-      "action": "delete",
-      "cnt": 14,
-      "t_min": 1781583528.0,
-      "t_max": 1781652723.0
-    },
-    {
-      "subject": "10.0.5.110",
-      "action": "delete",
-      "cnt": 14,
-      "t_min": 1781568935.0,
-      "t_max": 1781645849.0
-    },
-    {
-      "subject": "10.0.5.24",
-      "action": "delete",
-      "cnt": 14,
-      "t_min": 1781570954.0,
-      "t_max": 1781644083.0
-    },
-    {
-      "subject": "bob",
-      "action": "sudo",
-      "cnt": 14,
-      "t_min": 1781574116.0,
-      "t_max": 1781642304.0
-    },
-    {
-      "subject": "10.0.4.89",
-      "action": "delete",
-      "cnt": 13,
-      "t_min": 1781573148.0,
-      "t_max": 1781653842.0
-    },
-    {
-      "subject": "grace",
-      "action": "sudo",
-      "cnt": 13,
-      "t_min": 1781568573.0,
-      "t_max": 1781642179.0
-    },
-    {
-      "subject": "10.0.1.196",
-      "action": "delete",
-      "cnt": 12,
-      "t_min": 1781581349.0,
-      "t_max": 1781647475.0
-    },
-    {
-      "subject": "10.0.1.8",
-      "action": "delete",
-      "cnt": 12,
-      "t_min": 1781569930.0,
-      "t_max": 1781653342.0
-    },
-    {
-      "subject": "10.0.1.9",
-      "action": "delete",
-      "cnt": 12,
-      "t_min": 1781585130.0,
-      "t_max": 1781652953.0
-    },
-    {
-      "subject": "10.0.3.28",
-      "action": "delete",
-      "cnt": 12,
-      "t_min": 1781578416.0,
-      "t_max": 1781647495.0
-    },
-    {
-      "subject": "10.0.5.8",
-      "action": "delete",
-      "cnt": 12,
-      "t_min": 1781575718.0,
-      "t_max": 1781652851.0
-    },
-    {
-      "subject": "eve",
-      "action": "sudo",
-      "cnt": 12,
-      "t_min": 1781569577.0,
-      "t_max": 1781650000.0
-    },
-    {
-      "subject": "10.0.2.131",
-      "action": "delete",
-      "cnt": 11,
-      "t_min": 1781575259.0,
-      "t_max": 1781645879.0
-    },
-    {
-      "subject": "10.0.2.37",
-      "action": "delete",
-      "cnt": 10,
-      "t_min": 1781586341.0,
-      "t_max": 1781641775.0
-    },
-    {
-      "subject": "10.0.5.52",
-      "action": "delete",
-      "cnt": 10,
-      "t_min": 1781590969.0,
-      "t_max": 1781651411.0
-    },
-    {
-      "subject": "10.0.2.247",
-      "action": "delete",
-      "cnt": 9,
-      "t_min": 1781575487.0,
-      "t_max": 1781651736.0
-    },
-    {
-      "subject": "10.0.3.41",
-      "action": "delete",
-      "cnt": 9,
-      "t_min": 1781570464.0,
-      "t_max": 1781650283.0
-    },
-    {
-      "subject": "10.0.5.73",
-      "action": "delete",
-      "cnt": 9,
-      "t_min": 1781588543.0,
-      "t_max": 1781651799.0
-    },
-    {
-      "subject": "10.0.5.109",
-      "action": "delete",
-      "cnt": 7,
-      "t_min": 1781568924.0,
-      "t_max": 1781646717.0
-    },
-    {
-      "subject": "10.0.1.8",
-      "action": "password_change",
-      "cnt": 6,
-      "t_min": 1781575789.0,
-      "t_max": 1781653696.0
-    },
-    {
-      "subject": "10.0.2.180",
-      "action": "delete",
-      "cnt": 6,
-      "t_min": 1781579540.0,
-      "t_max": 1781639203.0
-    },
-    {
-      "subject": "185.220.101.6",
-      "action": "other",
-      "cnt": 6,
-      "t_min": 1781568543.0,
-      "t_max": 1781647360.0
-    },
-    {
-      "subject": "10.0.2.131",
-      "action": "password_change",
-      "cnt": 5,
-      "t_min": 1781585838.0,
-      "t_max": 1781626986.0
-    },
-    {
-      "subject": "10.0.2.37",
-      "action": "password_change",
-      "cnt": 5,
-      "t_min": 1781577163.0,
-      "t_max": 1781624263.0
-    },
-    {
-      "subject": "10.0.5.24",
-      "action": "password_change",
-      "cnt": 5,
-      "t_min": 1781582632.0,
-      "t_max": 1781650531.0
-    },
-    {
-      "subject": "10.0.2.116",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781583526.0,
-      "t_max": 1781625963.0
-    },
-    {
-      "subject": "10.0.3.64",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781574218.0,
-      "t_max": 1781648883.0
-    },
-    {
-      "subject": "10.0.4.89",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781597069.0,
-      "t_max": 1781622169.0
-    },
-    {
-      "subject": "10.0.5.73",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781576787.0,
-      "t_max": 1781653516.0
-    },
-    {
-      "subject": "10.0.5.8",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781603360.0,
-      "t_max": 1781614683.0
-    },
-    {
-      "subject": "185.220.101.2",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781589242.0,
-      "t_max": 1781644573.0
-    },
-    {
-      "subject": "185.220.101.4",
-      "action": "password_change",
-      "cnt": 4,
-      "t_min": 1781574082.0,
-      "t_max": 1781646120.0
-    },
-    {
-      "subject": "unknown",
-      "action": "permission_grant_global",
-      "cnt": 4,
-      "t_min": 1781599414.0,
-      "t_max": 1781636885.0
-    },
-    {
-      "subject": "10.0.2.180",
-      "action": "password_change",
-      "cnt": 3,
-      "t_min": 1781586715.0,
-      "t_max": 1781640250.0
-    },
-    {
-      "subject": "10.0.2.247",
-      "action": "password_change",
-      "cnt": 3,
-      "t_min": 1781587434.0,
-      "t_max": 1781627413.0
-    },
-    {
-      "subject": "10.0.5.109",
-      "action": "password_change",
-      "cnt": 3,
-      "t_min": 1781573057.0,
-      "t_max": 1781589850.0
-    },
-    {
-      "subject": "185.220.101.6",
-      "action": "password_change",
-      "cnt": 3,
-      "t_min": 1781570986.0,
-      "t_max": 1781631424.0
-    },
-    {
-      "subject": "185.220.101.7",
-      "action": "password_change",
-      "cnt": 3,
-      "t_min": 1781569494.0,
-      "t_max": 1781633887.0
-    },
-    {
-      "subject": "unknown",
-      "action": "rollback",
-      "cnt": 3,
-      "t_min": 1781602931.0,
-      "t_max": 1781641138.0
-    },
-    {
-      "subject": "10.0.1.196",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781608875.0,
-      "t_max": 1781634177.0
-    },
-    {
-      "subject": "10.0.1.57",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781593557.0,
-      "t_max": 1781606593.0
-    },
-    {
-      "subject": "10.0.1.57",
-      "action": "password_change",
-      "cnt": 2,
-      "t_min": 1781595704.0,
-      "t_max": 1781641611.0
-    },
-    {
-      "subject": "10.0.1.8",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781579122.0,
-      "t_max": 1781638474.0
-    },
-    {
-      "subject": "10.0.1.9",
-      "action": "password_change",
-      "cnt": 2,
-      "t_min": 1781577741.0,
-      "t_max": 1781638754.0
-    },
-    {
-      "subject": "10.0.2.180",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781568980.0,
-      "t_max": 1781570882.0
-    },
-    {
-      "subject": "10.0.2.37",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781602087.0,
-      "t_max": 1781650746.0
-    },
-    {
-      "subject": "10.0.3.41",
-      "action": "password_change",
-      "cnt": 2,
-      "t_min": 1781587791.0,
-      "t_max": 1781651552.0
-    },
-    {
-      "subject": "10.0.4.89",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781615434.0,
-      "t_max": 1781633736.0
-    },
-    {
-      "subject": "10.0.5.109",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781573361.0,
-      "t_max": 1781617050.0
-    },
-    {
-      "subject": "10.0.5.110",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781583573.0,
-      "t_max": 1781648539.0
-    },
-    {
-      "subject": "10.0.5.110",
-      "action": "password_change",
-      "cnt": 2,
-      "t_min": 1781607294.0,
-      "t_max": 1781637830.0
-    },
-    {
-      "subject": "10.0.5.52",
-      "action": "api_call",
-      "cnt": 2,
-      "t_min": 1781635331.0,
-      "t_max": 1781639612.0
-    },
-    {
-      "subject": "185.220.101.2",
-      "action": "other",
-      "cnt": 2,
-      "t_min": 1781637634.0,
-      "t_max": 1781649492.0
-    },
-    {
-      "subject": "185.220.101.3",
-      "action": "other",
-      "cnt": 2,
-      "t_min": 1781594462.0,
-      "t_max": 1781649892.0
-    },
-    {
-      "subject": "185.220.101.3",
-      "action": "password_change",
-      "cnt": 2,
-      "t_min": 1781610758.0,
-      "t_max": 1781621245.0
-    },
-    {
-      "subject": "185.220.101.5",
-      "action": "other",
-      "cnt": 2,
-      "t_min": 1781575897.0,
-      "t_max": 1781609013.0
-    },
-    {
-      "subject": "unknown",
-      "action": "db_restore",
-      "cnt": 2,
-      "t_min": 1781629438.0,
-      "t_max": 1781643168.0
-    },
-    {
-      "subject": "unknown",
-      "action": "key_rotate",
-      "cnt": 2,
-      "t_min": 1781602601.0,
-      "t_max": 1781604896.0
-    },
-    {
-      "subject": "10.0.1.175",
-      "action": "password_change",
-      "cnt": 1,
-      "t_min": 1781573924.0,
-      "t_max": 1781573924.0
-    },
-    {
-      "subject": "10.0.1.196",
-      "action": "password_change",
-      "cnt": 1,
-      "t_min": 1781635860.0,
-      "t_max": 1781635860.0
-    },
-    {
-      "subject": "10.0.2.247",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781638988.0,
-      "t_max": 1781638988.0
-    },
-    {
-      "subject": "10.0.3.28",
-      "action": "password_change",
-      "cnt": 1,
-      "t_min": 1781601873.0,
-      "t_max": 1781601873.0
-    },
-    {
-      "subject": "10.0.3.41",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781572137.0,
-      "t_max": 1781572137.0
-    },
-    {
-      "subject": "185.220.101.1",
-      "action": "other",
-      "cnt": 1,
-      "t_min": 1781618567.0,
-      "t_max": 1781618567.0
-    },
-    {
-      "subject": "185.220.101.1",
-      "action": "password_change",
-      "cnt": 1,
-      "t_min": 1781601217.0,
-      "t_max": 1781601217.0
-    },
-    {
-      "subject": "185.220.101.3",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781576414.0,
-      "t_max": 1781576414.0
-    },
-    {
-      "subject": "185.220.101.4",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781645318.0,
-      "t_max": 1781645318.0
-    },
-    {
-      "subject": "185.220.101.5",
-      "action": "password_change",
-      "cnt": 1,
-      "t_min": 1781598541.0,
-      "t_max": 1781598541.0
-    },
-    {
-      "subject": "185.220.101.6",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781598948.0,
-      "t_max": 1781598948.0
-    },
-    {
-      "subject": "185.220.101.7",
-      "action": "api_call",
-      "cnt": 1,
-      "t_min": 1781628209.0,
-      "t_max": 1781628209.0
-    },
-    {
-      "subject": "unknown",
-      "action": "cert_revoke",
-      "cnt": 1,
-      "t_min": 1781640412.0,
-      "t_max": 1781640412.0
-    },
-    {
-      "subject": "unknown",
-      "action": "emergency_shutdown",
-      "cnt": 1,
-      "t_min": 1781623780.0,
-      "t_max": 1781623780.0
     }
   ],
   "time_series": [
@@ -2047,7 +1186,7 @@
       "cnt": 25,
       "t_min": 1781576100.0,
       "t_max": 1781576389.0,
-      "subject_cnt": 16,
+      "subject_cnt": 15,
       "action_cnt": 7,
       "fail_cnt": 3
     },
@@ -2146,7 +1285,7 @@
       "cnt": 24,
       "t_min": 1781579412.0,
       "t_max": 1781579699.0,
-      "subject_cnt": 15,
+      "subject_cnt": 14,
       "action_cnt": 8,
       "fail_cnt": 2
     },
@@ -2614,7 +1753,7 @@
       "cnt": 25,
       "t_min": 1781595000.0,
       "t_max": 1781595297.0,
-      "subject_cnt": 17,
+      "subject_cnt": 16,
       "action_cnt": 10,
       "fail_cnt": 3
     },
@@ -2668,7 +1807,7 @@
       "cnt": 308,
       "t_min": 1781596800.0,
       "t_max": 1781597099.0,
-      "subject_cnt": 24,
+      "subject_cnt": 23,
       "action_cnt": 10,
       "fail_cnt": 283
     },
@@ -2731,7 +1870,7 @@
       "cnt": 25,
       "t_min": 1781598948.0,
       "t_max": 1781599198.0,
-      "subject_cnt": 20,
+      "subject_cnt": 19,
       "action_cnt": 9,
       "fail_cnt": 2
     },
@@ -3406,7 +2545,7 @@
       "cnt": 26,
       "t_min": 1781621413.0,
       "t_max": 1781621684.0,
-      "subject_cnt": 16,
+      "subject_cnt": 15,
       "action_cnt": 7,
       "fail_cnt": 2
     },
@@ -3685,7 +2824,7 @@
       "cnt": 30,
       "t_min": 1781630715.0,
       "t_max": 1781630995.0,
-      "subject_cnt": 19,
+      "subject_cnt": 18,
       "action_cnt": 9,
       "fail_cnt": 1
     },
@@ -4207,7 +3346,7 @@
       "cnt": 24,
       "t_min": 1781648114.0,
       "t_max": 1781648385.0,
-      "subject_cnt": 18,
+      "subject_cnt": 17,
       "action_cnt": 8,
       "fail_cnt": 1
     },
@@ -4395,70 +3534,169 @@
   "anomalies": {
     "spikes": [
       {
-        "start": "2026-06-16 14:00:00 UTC",
-        "end": "2026-06-16 14:04:56 UTC",
-        "count": 678,
-        "baseline": 29.52,
-        "z_score": 14.05,
-        "subjects_involved": 15,
-        "action_types": 12,
+        "start": "2026-06-16 14:15:00 UTC",
+        "end": "2026-06-16 14:19:59 UTC",
+        "start_ts": 1781619300.0,
+        "end_ts": 1781619599.0,
+        "count": 171,
+        "baseline": 31.33,
+        "z_score": 4.65,
+        "subjects_involved": 14,
+        "action_types": 7,
         "failures": 0,
-        "multiplier": 22.97
-      },
-      {
-        "start": "2026-06-16 08:00:00 UTC",
-        "end": "2026-06-16 08:04:59 UTC",
-        "count": 308,
-        "baseline": 29.52,
-        "z_score": 6.03,
-        "subjects_involved": 24,
-        "action_types": 10,
-        "failures": 283,
-        "multiplier": 10.43
+        "multiplier": 5.46,
+        "tier_seconds": 300,
+        "tier_label": "5min"
       },
       {
         "start": "2026-06-16 14:20:00 UTC",
         "end": "2026-06-16 14:24:59 UTC",
+        "start_ts": 1781619600.0,
+        "end_ts": 1781619899.0,
         "count": 176,
-        "baseline": 29.52,
-        "z_score": 3.17,
+        "baseline": 29.04,
+        "z_score": 4.64,
         "subjects_involved": 17,
         "action_types": 8,
         "failures": 1,
-        "multiplier": 5.96
+        "multiplier": 6.06,
+        "tier_seconds": 300,
+        "tier_label": "5min"
       },
       {
         "start": "2026-06-16 14:10:01 UTC",
         "end": "2026-06-16 14:14:58 UTC",
+        "start_ts": 1781619001.0,
+        "end_ts": 1781619298.0,
         "count": 171,
-        "baseline": 29.52,
-        "z_score": 3.06,
+        "baseline": 29.33,
+        "z_score": 4.54,
         "subjects_involved": 14,
         "action_types": 7,
         "failures": 1,
-        "multiplier": 5.79
+        "multiplier": 5.83,
+        "tier_seconds": 300,
+        "tier_label": "5min"
       },
       {
-        "start": "2026-06-16 14:15:00 UTC",
-        "end": "2026-06-16 14:19:59 UTC",
-        "count": 171,
-        "baseline": 29.52,
-        "z_score": 3.06,
-        "subjects_involved": 14,
-        "action_types": 7,
+        "start": "2026-06-16 14:00:00 UTC",
+        "end": "2026-06-16 14:59:49 UTC",
+        "start_ts": 1781618400.0,
+        "end_ts": 1781621989.0,
+        "count": 1776,
+        "baseline": 354.25,
+        "z_score": 4.54,
+        "subjects_involved": 34,
+        "action_types": 18,
+        "failures": 10,
+        "multiplier": 5.01,
+        "tier_seconds": 3600,
+        "tier_label": "1h"
+      },
+      {
+        "start": "2026-06-16 14:40:06 UTC",
+        "end": "2026-06-16 14:44:58 UTC",
+        "start_ts": 1781620806.0,
+        "end_ts": 1781621098.0,
+        "count": 80,
+        "baseline": 25.04,
+        "z_score": 4.39,
+        "subjects_involved": 19,
+        "action_types": 8,
+        "failures": 1,
+        "multiplier": 3.19,
+        "tier_seconds": 300,
+        "tier_label": "5min"
+      },
+      {
+        "start": "2026-06-16 14:35:07 UTC",
+        "end": "2026-06-16 14:39:58 UTC",
+        "start_ts": 1781620507.0,
+        "end_ts": 1781620798.0,
+        "count": 76,
+        "baseline": 26.17,
+        "z_score": 4.32,
+        "subjects_involved": 16,
+        "action_types": 6,
         "failures": 0,
-        "multiplier": 5.79
+        "multiplier": 2.9,
+        "tier_seconds": 300,
+        "tier_label": "5min"
+      },
+      {
+        "start": "2026-06-16 14:00:00 UTC",
+        "end": "2026-06-16 14:04:56 UTC",
+        "start_ts": 1781618400.0,
+        "end_ts": 1781618696.0,
+        "count": 678,
+        "baseline": 62.12,
+        "z_score": 4.29,
+        "subjects_involved": 15,
+        "action_types": 12,
+        "failures": 0,
+        "multiplier": 10.91,
+        "tier_seconds": 300,
+        "tier_label": "5min"
+      },
+      {
+        "start": "2026-06-16 14:25:00 UTC",
+        "end": "2026-06-16 14:29:58 UTC",
+        "start_ts": 1781619900.0,
+        "end_ts": 1781620198.0,
+        "count": 79,
+        "baseline": 25.17,
+        "z_score": 4.26,
+        "subjects_involved": 16,
+        "action_types": 10,
+        "failures": 1,
+        "multiplier": 3.14,
+        "tier_seconds": 300,
+        "tier_label": "5min"
+      },
+      {
+        "start": "2026-06-16 14:30:04 UTC",
+        "end": "2026-06-16 14:34:48 UTC",
+        "start_ts": 1781620204.0,
+        "end_ts": 1781620488.0,
+        "count": 65,
+        "baseline": 23.88,
+        "z_score": 4.2,
+        "subjects_involved": 12,
+        "action_types": 9,
+        "failures": 1,
+        "multiplier": 2.72,
+        "tier_seconds": 300,
+        "tier_label": "5min"
       },
       {
         "start": "2026-06-16 14:05:02 UTC",
         "end": "2026-06-16 14:09:59 UTC",
+        "start_ts": 1781618702.0,
+        "end_ts": 1781618999.0,
         "count": 170,
-        "baseline": 29.52,
-        "z_score": 3.04,
+        "baseline": 32.96,
+        "z_score": 4.1,
         "subjects_involved": 17,
         "action_types": 7,
         "failures": 1,
-        "multiplier": 5.76
+        "multiplier": 5.16,
+        "tier_seconds": 300,
+        "tier_label": "5min"
+      },
+      {
+        "start": "2026-06-16 14:45:04 UTC",
+        "end": "2026-06-16 14:49:56 UTC",
+        "start_ts": 1781621104.0,
+        "end_ts": 1781621396.0,
+        "count": 56,
+        "baseline": 23.0,
+        "z_score": 4.05,
+        "subjects_involved": 16,
+        "action_types": 6,
+        "failures": 1,
+        "multiplier": 2.43,
+        "tier_seconds": 300,
+        "tier_label": "5min"
       }
     ],
     "rare_actions": [
@@ -4508,81 +3746,113 @@
         "actual_span_seconds": 302.0,
         "start": "2026-06-16 14:00:00 UTC",
         "end": "2026-06-16 14:05:02 UTC",
+        "start_ts": 1781618400.0,
+        "end_ts": 1781618702.0,
         "avg_per_second": 2.649,
-        "share": 9.41
+        "share": 9.41,
+        "subject_category": "ip",
+        "dynamic_min_count": 31
       },
       {
         "subject": "user",
         "action": "login",
-        "count": 79,
-        "window_seconds": 300,
-        "actual_span_seconds": 308.0,
+        "count": 88,
+        "window_seconds": 600,
+        "actual_span_seconds": 616.0,
         "start": "2026-06-16 08:00:00 UTC",
-        "end": "2026-06-16 08:05:08 UTC",
-        "avg_per_second": 0.256,
-        "share": 0.929
+        "end": "2026-06-16 08:10:16 UTC",
+        "start_ts": 1781596800.0,
+        "end_ts": 1781597416.0,
+        "avg_per_second": 0.143,
+        "share": 1.035,
+        "subject_category": "human",
+        "dynamic_min_count": 5
       },
       {
         "subject": "root",
         "action": "login",
-        "count": 77,
-        "window_seconds": 300,
-        "actual_span_seconds": 316.0,
+        "count": 87,
+        "window_seconds": 600,
+        "actual_span_seconds": 618.0,
         "start": "2026-06-16 08:00:00 UTC",
-        "end": "2026-06-16 08:05:16 UTC",
-        "avg_per_second": 0.244,
-        "share": 0.906
-      },
-      {
-        "subject": "administrator",
-        "action": "login",
-        "count": 73,
-        "window_seconds": 300,
-        "actual_span_seconds": 303.0,
-        "start": "2026-06-16 08:00:00 UTC",
-        "end": "2026-06-16 08:05:03 UTC",
-        "avg_per_second": 0.241,
-        "share": 0.859
+        "end": "2026-06-16 08:10:18 UTC",
+        "start_ts": 1781596800.0,
+        "end_ts": 1781597418.0,
+        "avg_per_second": 0.141,
+        "share": 1.023,
+        "subject_category": "human",
+        "dynamic_min_count": 5
       },
       {
         "subject": "test",
         "action": "login",
-        "count": 70,
-        "window_seconds": 300,
-        "actual_span_seconds": 324.0,
+        "count": 77,
+        "window_seconds": 600,
+        "actual_span_seconds": 652.0,
         "start": "2026-06-16 08:00:00 UTC",
-        "end": "2026-06-16 08:05:24 UTC",
-        "avg_per_second": 0.216,
-        "share": 0.823
+        "end": "2026-06-16 08:10:52 UTC",
+        "start_ts": 1781596800.0,
+        "end_ts": 1781597452.0,
+        "avg_per_second": 0.118,
+        "share": 0.906,
+        "subject_category": "human",
+        "dynamic_min_count": 5
+      },
+      {
+        "subject": "administrator",
+        "action": "login",
+        "count": 76,
+        "window_seconds": 600,
+        "actual_span_seconds": 604.0,
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:10:04 UTC",
+        "start_ts": 1781596800.0,
+        "end_ts": 1781597404.0,
+        "avg_per_second": 0.126,
+        "share": 0.894,
+        "subject_category": "human",
+        "dynamic_min_count": 5
       },
       {
         "subject": "admin",
         "action": "login",
-        "count": 50,
-        "window_seconds": 300,
-        "actual_span_seconds": 278.0,
+        "count": 68,
+        "window_seconds": 600,
+        "actual_span_seconds": 598.0,
         "start": "2026-06-16 07:55:22 UTC",
-        "end": "2026-06-16 08:00:00 UTC",
-        "avg_per_second": 0.18,
-        "share": 0.588
+        "end": "2026-06-16 08:05:20 UTC",
+        "start_ts": 1781596522.0,
+        "end_ts": 1781597120.0,
+        "avg_per_second": 0.114,
+        "share": 0.8,
+        "subject_category": "human",
+        "dynamic_min_count": 5
+      },
+      {
+        "subject": "root",
+        "action": "cat",
+        "count": 3,
+        "window_seconds": 600,
+        "actual_span_seconds": 332.0,
+        "start": "2026-06-16 19:03:41 UTC",
+        "end": "2026-06-16 19:09:13 UTC",
+        "start_ts": 1781636621.0,
+        "end_ts": 1781636953.0,
+        "avg_per_second": 0.009,
+        "share": 0.035,
+        "subject_category": "human",
+        "dynamic_min_count": 3
       }
     ],
     "high_failure_subjects": [
-      {
-        "subject": "root",
-        "total": 101,
-        "failures": 101,
-        "fail_ratio": 100.0,
-        "first_seen": "2026-06-16 02:17:33 UTC",
-        "last_seen": "2026-06-16 22:18:07 UTC"
-      },
       {
         "subject": "user",
         "total": 88,
         "failures": 88,
         "fail_ratio": 100.0,
         "first_seen": "2026-06-16 08:00:00 UTC",
-        "last_seen": "2026-06-16 08:13:08 UTC"
+        "last_seen": "2026-06-16 08:13:08 UTC",
+        "subject_category": "human"
       },
       {
         "subject": "test",
@@ -4590,7 +3860,8 @@
         "failures": 77,
         "fail_ratio": 100.0,
         "first_seen": "2026-06-16 08:00:00 UTC",
-        "last_seen": "2026-06-16 08:13:12 UTC"
+        "last_seen": "2026-06-16 08:13:12 UTC",
+        "subject_category": "human"
       },
       {
         "subject": "administrator",
@@ -4598,7 +3869,8 @@
         "failures": 76,
         "fail_ratio": 100.0,
         "first_seen": "2026-06-16 08:00:00 UTC",
-        "last_seen": "2026-06-16 08:13:14 UTC"
+        "last_seen": "2026-06-16 08:13:14 UTC",
+        "subject_category": "human"
       },
       {
         "subject": "admin",
@@ -4606,7 +3878,17 @@
         "failures": 119,
         "fail_ratio": 58.05,
         "first_seen": "2026-06-16 00:33:19 UTC",
-        "last_seen": "2026-06-16 23:59:34 UTC"
+        "last_seen": "2026-06-16 23:59:34 UTC",
+        "subject_category": "human"
+      },
+      {
+        "subject": "root",
+        "total": 222,
+        "failures": 101,
+        "fail_ratio": 45.5,
+        "first_seen": "2026-06-16 00:09:33 UTC",
+        "last_seen": "2026-06-16 23:32:43 UTC",
+        "subject_category": "human"
       }
     ]
   }

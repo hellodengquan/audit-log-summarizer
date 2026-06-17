@@ -255,6 +255,11 @@ def _normalize_record(raw: Dict[str, Any], source_file: str, raw_text: str, hint
 # 各格式解析器
 # ---------------------------------------------------------------------------
 
+_KV_RE = re.compile(r'(\w+)=("(?:[^"\\]|\\.)*"|[^\s"\']+)')
+_PB_FIELD_RE = re.compile(r'^(\w+)\s*:\s*(.+?)\s*$')
+_PB_MSG_OPEN_RE = re.compile(r'^(\w+)\s*\{')
+
+
 def _detect_format(path: str, first_line: str) -> str:
     ext = os.path.splitext(path)[1].lower()
     if ext in (".jsonl", ".ndjson"):
@@ -263,11 +268,22 @@ def _detect_format(path: str, first_line: str) -> str:
         return "json_array" if first_line.lstrip().startswith("[") else "jsonl"
     if ext == ".csv":
         return "csv"
+    if ext in (".kv", ".logfmt"):
+        return "kv"
+    if ext in (".pbtxt", ".textproto", ".pb.text"):
+        return "protobuf"
     stripped = first_line.strip()
     if stripped.startswith("{"):
         return "jsonl"
     if stripped.startswith("["):
         return "json_array"
+    kv_matches = _KV_RE.findall(stripped)
+    if len(kv_matches) >= 3:
+        non_ts = [k for k, _ in kv_matches if k.lower() not in ("ts", "timestamp", "time")]
+        if non_ts:
+            return "kv"
+    if _PB_FIELD_RE.match(stripped) or _PB_MSG_OPEN_RE.match(stripped):
+        return "protobuf"
     if "," in stripped and re.match(r"^[A-Za-z0-9_\s\"'\-.,:]+$", stripped[:200]):
         return "csv"
     return "text"
@@ -374,6 +390,73 @@ def _infer_status_from_text(text: str) -> str:
     return ""
 
 
+def _parse_kv(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:
+    """解析 key=value 格式（logfmt / Bro/Zeek 等）。"""
+    for line in lines:
+        pairs = _KV_RE.findall(line)
+        if len(pairs) < 2:
+            rec = _parse_text_line(line, source, hint_year)
+            if rec:
+                yield rec
+            continue
+        d: Dict[str, Any] = {}
+        for k, v in pairs:
+            if v.startswith('"') and v.endswith('"') and len(v) >= 2:
+                v = v[1:-1].replace('\\"', '"').replace("\\\\", "\\")
+            d[k] = v
+        rec = _normalize_record(d, source, line, hint_year)
+        if rec:
+            yield rec
+
+
+def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:
+    """解析 protobuf text-format 日志。
+
+    两种常见形态：
+    A) 单行平铺：  field1: val1  field2: val2  field3 { sub: val }
+    B) 多行消息：  message_type { field1: val ... }
+    策略：按空行/消息边界切分，每个消息块提取 field: value 对，再归一化。
+    """
+    msg_blocks: List[str] = []
+    cur_block: List[str] = []
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            if cur_block:
+                msg_blocks.append("\n".join(cur_block))
+                cur_block = []
+            continue
+        cur_block.append(stripped)
+    if cur_block:
+        msg_blocks.append("\n".join(cur_block))
+
+    for block in msg_blocks:
+        d: Dict[str, Any] = {}
+        for m in _PB_FIELD_RE.finditer(block):
+            key = m.group(1)
+            val = m.group(2).strip().strip('"')
+            if key in d:
+                existing = d[key]
+                if isinstance(existing, list):
+                    existing.append(val)
+                else:
+                    d[key] = [existing, val]
+            else:
+                d[key] = val
+        for m in _PB_MSG_OPEN_RE.finditer(block):
+            msg_type = m.group(1)
+            if "message_type" not in d:
+                d["message_type"] = msg_type
+        if not d:
+            rec = _parse_text_line(block.split("\n")[0], source, hint_year)
+            if rec:
+                yield rec
+            continue
+        rec = _normalize_record(d, source, block[:2000], hint_year)
+        if rec:
+            yield rec
+
+
 def _parse_text(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:
     for line in lines:
         rec = _parse_text_line(line, source, hint_year)
@@ -385,5 +468,7 @@ _PARSERS = {
     "jsonl": _parse_jsonl,
     "json_array": _parse_json_array,
     "csv": _parse_csv,
+    "kv": _parse_kv,
+    "protobuf": _parse_protobuf,
     "text": _parse_text,
 }
