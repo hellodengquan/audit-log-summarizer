@@ -1,6 +1,6 @@
 # 审计日志摘要报告
 
-> 生成时间：2026-06-17 04:38:29 UTC
+> 生成时间：2026-06-17 05:02:01 UTC
 > 分页：第 1 页，每页 50 条
 > 排序：按 count desc
 
@@ -269,13 +269,13 @@
 
 | 时间 | 主体 | 动作 | 资源 | 状态 | 来源 |
 |------|------|------|------|------|------|
-| 2026-06-16 13:21:17 UTC | `10.0.3.28` | `create` | /dashboard |  | access.log |
-| 2026-06-16 14:20:15 UTC | `45.33.32.156` | `read` | /api/v1/products?page=1215&size=50 |  | access.log |
-| 2026-06-16 14:23:59 UTC | `45.33.32.156` | `read` | /api/v1/products?page=1439&size=50 |  | access.log |
-| 2026-06-16 14:00:00 UTC | `45.33.32.156` | `read` | /api/v1/products?page=0&size=50 |  | access.log |
-| 2026-06-16 03:01:28 UTC | `10.0.5.110` | `read` | /api/v1/reports |  | access.log |
-| 2026-06-16 00:04:05 UTC | `10.0.5.109` | `read` | /api/v1/reports |  | access.log |
-| 2026-06-16 07:17:54 UTC | `10.0.5.109` | `read` | /api/v1/products |  | access.log |
-| 2026-06-16 23:56:26 UTC | `10.0.1.9` | `read` | /health |  | access.log |
-| 2026-06-16 14:15:17 UTC | `45.33.32.156` | `read` | /api/v1/products?page=917&size=50 |  | access.log |
-| 2026-06-16 22:54:28 UTC | `10.0.2.116` | `delete` | /api/v1/login |  | access.log |
+| 2026-06-16 12:49:03 UTC | `10.0.3.41` | `read` | /dashboard |  | access.log |
+| 2026-06-16 15:00:36 UTC | `10.0.5.24` | `read` | /api/v1/reports |  | access.log |
+| 2026-06-16 07:55:22 UTC | `admin` | `login` |  | success | login_logs.jsonl |
+| 2026-06-16 14:04:50 UTC | `10.0.5.24` | `create` | /api/v1/orders |  | access.log |
+| 2026-06-16 14:00:00 UTC | `45.33.32.156` | `read` | /api/v1/products?page=693&size=50 |  | access.log |
+| 2026-06-16 08:00:00 UTC | `test` | `login` |  | failure | login_logs.jsonl |
+| 2026-06-16 17:09:10 UTC | `10.0.3.41` | `read` | /settings |  | access.log |
+| 2026-06-16 06:06:58 UTC | `10.0.1.8` | `read` | /api/v1/logout |  | access.log |
+| 2026-06-16 03:10:57 UTC | `10.0.4.89` | `write` | /settings |  | access.log |
+| 2026-06-16 18:05:27 UTC | `unknown` | `deploy` | prod-cache-01 | success | ops_logs.csv |

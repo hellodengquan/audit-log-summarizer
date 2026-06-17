@@ -261,6 +261,16 @@ _PB_MSG_OPEN_RE = re.compile(r'^(\w+)\s*\{')
 
 
 def _detect_format(path: str, first_line: str) -> str:
+    from .config import get_config
+    cfg = get_config()
+
+    overrides = cfg.format_overrides
+    if overrides:
+        ext = os.path.splitext(path)[1].lower()
+        for pattern, fmt in overrides.items():
+            if ext == pattern or ext == pattern.lower():
+                return fmt
+
     ext = os.path.splitext(path)[1].lower()
     if ext in (".jsonl", ".ndjson"):
         return "jsonl"
@@ -416,7 +426,15 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
     A) 单行平铺：  field1: val1  field2: val2  field3 { sub: val }
     B) 多行消息：  message_type { field1: val ... }
     策略：按空行/消息边界切分，每个消息块提取 field: value 对，再归一化。
+    如果 audit.yaml 中配置了 protobuf_schema_path，则加载 schema 做字段名映射。
     """
+    from .config import get_config
+    cfg = get_config()
+    schema_path = cfg.protobuf_schema_path
+    field_mappings: Dict[str, str] = {}
+    if schema_path and os.path.exists(schema_path):
+        field_mappings = _load_pb_schema(schema_path)
+
     msg_blocks: List[str] = []
     cur_block: List[str] = []
     for line in lines:
@@ -435,6 +453,8 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
         for m in _PB_FIELD_RE.finditer(block):
             key = m.group(1)
             val = m.group(2).strip().strip('"')
+            if field_mappings and key in field_mappings:
+                key = field_mappings[key]
             if key in d:
                 existing = d[key]
                 if isinstance(existing, list):
@@ -455,6 +475,33 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
         rec = _normalize_record(d, source, block[:2000], hint_year)
         if rec:
             yield rec
+
+
+def _load_pb_schema(path: str) -> Dict[str, str]:
+    """加载 protobuf schema 描述文件，返回 {proto_field: canonical_name} 映射。
+
+    支持简单的 proto 描述格式，每行一个映射：
+      proto_field_name -> canonical_name
+    或纯 proto 文件（自动提取字段名 -> 小写下划线名）。
+    """
+    mappings: Dict[str, str] = {}
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as fh:
+            for line in fh:
+                stripped = line.strip()
+                if not stripped or stripped.startswith("#") or stripped.startswith("//"):
+                    continue
+                arrow_match = re.match(r'(\w+)\s*->\s*(\w+)', stripped)
+                if arrow_match:
+                    mappings[arrow_match.group(1)] = arrow_match.group(2)
+                    continue
+                proto_field = re.match(r'^\s*(\w+)\s+\w+\s*=\s*\d+', stripped)
+                if proto_field:
+                    field_name = proto_field.group(1)
+                    mappings[field_name] = re.sub(r'([A-Z])', r'_\1', field_name).lower().lstrip('_')
+    except OSError:
+        pass
+    return mappings
 
 
 def _parse_text(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:

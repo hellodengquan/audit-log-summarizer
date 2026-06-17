@@ -1,0 +1,92 @@
+# 审计日志摘要工具配置
+# 修改后无需改代码，重新运行即可生效
+# 运行时可通过 /admin/reload 热加载
+
+parser:
+  # protobuf text-format 解析时使用的 schema 描述文件路径
+  # 支持绝对路径或相对于本配置文件的相对路径
+  # 留空则仅做通用 field:value 提取，不依赖 schema
+  protobuf_schema_path: ""
+
+  # 额外的文件扩展名到格式的映射（覆盖自动检测）
+  # 示例: .audit: jsonl, .trace: kv
+  format_overrides: {}
+
+analyzer:
+  # 异常高峰检测窗口档位：标签 -> 秒数
+  spike_tiers:
+    5min: 300
+    1h: 3600
+    24h: 86400
+
+  # Z-Score 阈值，高于此值视为异常高峰
+  spike_z_threshold: 2.5
+
+  # 批量动作动态阈值开关
+  dynamic_bulk: true
+
+  # 主体分类规则（也写入 DB，此处为初始化种子）
+  # DB 中有记录时以 DB 为准，否则从此种子初始化
+  subject_categories:
+    human:
+      prefixes:
+        - user
+        - admin
+        - operator
+        - ops_
+        - root
+        - test
+      bulk_threshold:
+        max_window_seconds: 600
+        min_count_base: 3
+        min_count_ratio: 0.01
+        rate_factor: 0.5
+
+    service:
+      prefixes:
+        - svc_
+        - service
+        - cron
+        - daemon
+        - system
+        - agent_
+        - bot_
+      bulk_threshold:
+        max_window_seconds: 300
+        min_count_base: 15
+        min_count_ratio: 0.03
+        rate_factor: 2.0
+
+    ip:
+      prefixes: []
+      bulk_threshold:
+        max_window_seconds: 300
+        min_count_base: 8
+        min_count_ratio: 0.02
+        rate_factor: 1.0
+
+output:
+  # 默认分页大小，0 表示不分页
+  # CLI --page-size 可覆盖此值
+  default_page_size: 0
+
+  # 默认排序字段与方向
+  default_sort_by: count
+  default_sort_order: desc
+
+storage:
+  # 数据保留天数，null 表示永不过期
+  ttl_days: null
+
+  # 按月分表前缀
+  table_prefix: logs_
+
+  # 统一视图名称
+  unified_view_name: audit_unified_view
+
+admin:
+  # /admin/reload 热加载服务端口，0 表示不启动
+  reload_port: 0
+
+  # 绑定地址
+  reload_host: "127.0.0.1"

@@ -4,26 +4,27 @@
 1. 按主体、动作、时间窗多维聚合
 2. 识别异常高峰期（多档窗口 + 按业务流量周期匹配基线）
 3. 识别不常见操作（频次极低但有意义）
-4. 识别批量动作（按主体类别动态计算阈值）
+4. 识别批量动作（按主体类别动态计算阈值，类别从 DB 表加载）
 5. 识别高失败率主体
+6. /admin/reload 运行时热加载配置
 """
 
 from __future__ import annotations
 
+import json
 import math
-from collections import defaultdict, Counter
+import threading
+from collections import defaultdict
 from datetime import datetime, timezone
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from typing import Any, Dict, List, Optional, Tuple
 
 from .storage import Storage
+from .config import get_config, AuditConfig
 
-
-# ---------------------------------------------------------------------------
-# 辅助函数
-# ---------------------------------------------------------------------------
 
 def _fmt_ts(ts: float) -> str:
-    return datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    return datetime.fromtimestamp(ts, timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
 def _mean(values: List[float]) -> float:
@@ -35,16 +36,6 @@ def _stdev(values: List[float], mean_v: float) -> float:
         return 0.0
     var = sum((v - mean_v) ** 2 for v in values) / (len(values) - 1)
     return math.sqrt(var)
-
-
-def _median(values: List[float]) -> float:
-    if not values:
-        return 0.0
-    s = sorted(values)
-    n = len(s)
-    if n % 2 == 1:
-        return s[n // 2]
-    return (s[n // 2 - 1] + s[n // 2]) / 2.0
 
 
 SPIKE_WINDOWS = {
@@ -70,26 +61,6 @@ def _pick_window(total_seconds: float) -> int:
     return 86400
 
 
-_SUBJECT_CATEGORIES = {
-    "human": {"prefixes": ("user", "admin", "operator", "ops_", "alice", "bob", "charlie", "david", "eve", "frank", "grace", "henry", "ivy", "jack", "kate", "leo", "root", "test")},
-    "service": {"prefixes": ("svc_", "service", "cron", "daemon", "system", "agent_", "bot_")},
-    "ip": {"prefixes": ()},
-}
-
-
-def _classify_subject(subject: str) -> str:
-    low = subject.lower()
-    for cat, cfg in _SUBJECT_CATEGORIES.items():
-        if cat == "ip":
-            continue
-        for p in cfg["prefixes"]:
-            if low.startswith(p) or low == p:
-                return cat
-    if _is_ip_like(subject):
-        return "ip"
-    return "human"
-
-
 def _is_ip_like(s: str) -> bool:
     parts = s.split(".")
     if len(parts) == 4:
@@ -100,11 +71,47 @@ def _is_ip_like(s: str) -> bool:
     return False
 
 
-_SUBJECT_CATEGORY_DEFAULTS = {
-    "human": {"max_window_seconds": 600, "min_count": 5, "rate_factor": 0.5},
-    "service": {"max_window_seconds": 300, "min_count": 20, "rate_factor": 2.0},
-    "ip": {"max_window_seconds": 300, "min_count": 10, "rate_factor": 1.0},
-}
+def _load_categories_from_storage(storage: Storage) -> Tuple[
+    Dict[str, Dict[str, Any]],
+    Dict[str, Dict[str, Any]],
+]:
+    """从 _subject_categories 表加载分类规则和阈值参数。
+
+    返回:
+        categories: {category: {prefixes: [...]}}
+        thresholds: {category: {max_window_seconds, min_count_base, min_count_ratio, rate_factor}}
+    """
+    cats_db = storage.get_subject_categories(use_cache=False)
+    categories: Dict[str, Dict[str, Any]] = {}
+    thresholds: Dict[str, Dict[str, Any]] = {}
+    for cat_name, cat_data in cats_db.items():
+        categories[cat_name] = {"prefixes": cat_data.get("prefixes", [])}
+        thresholds[cat_name] = cat_data.get("bulk_threshold", {
+            "max_window_seconds": 300,
+            "min_count_base": 5,
+            "min_count_ratio": 0.01,
+            "rate_factor": 1.0,
+        })
+    if "ip" not in categories:
+        categories["ip"] = {"prefixes": []}
+        thresholds["ip"] = {"max_window_seconds": 300, "min_count_base": 8, "min_count_ratio": 0.02, "rate_factor": 1.0}
+    if "human" not in categories:
+        categories["human"] = {"prefixes": []}
+        thresholds["human"] = {"max_window_seconds": 600, "min_count_base": 3, "min_count_ratio": 0.01, "rate_factor": 0.5}
+    return categories, thresholds
+
+
+def _classify_subject(subject: str, categories: Dict[str, Dict[str, Any]]) -> str:
+    low = subject.lower()
+    for cat, cfg in categories.items():
+        if cat == "ip":
+            continue
+        for p in cfg.get("prefixes", []):
+            if low.startswith(p) or low == p:
+                return cat
+    if _is_ip_like(subject):
+        return "ip"
+    return "human"
 
 
 # ---------------------------------------------------------------------------
@@ -156,21 +163,19 @@ class Aggregator:
 # ---------------------------------------------------------------------------
 
 class AnomalyDetector:
-    """基于统计方法识别异常：高峰期、不常见动作、批量操作。"""
+    """基于统计方法识别异常。主体分类规则从 DB 表动态加载。"""
 
     def __init__(self, agg: Aggregator, stats: Dict[str, Any]):
         self.agg = agg
         self.stats = stats
+        self._categories, self._thresholds = _load_categories_from_storage(agg.storage)
 
-    # ---- 异常高峰期（多档窗口 + 周期基线） ----
+    def reload_categories(self) -> None:
+        """重新从 DB 加载主体类别（/admin/reload 触发）。"""
+        self.agg.storage.invalidate_categories_cache()
+        self._categories, self._thresholds = _load_categories_from_storage(self.agg.storage)
+
     def detect_spikes(self, z_threshold: float = 2.5, min_abs: int = 10) -> List[Dict[str, Any]]:
-        """多档窗口分别检测：5min / 1h / 24h，对每档使用「同周期位置基线」做 Z-Score。
-
-        周期基线算法：
-        - 5min 窗口：按「小时内的第几个 5min 槽」分组，用同槽位历史均值作基线；
-        - 1h 窗口：按「天内的第几小时」分组，用同小时历史均值作基线；
-        - 24h 窗口：用全局均值作基线（跨天数据不足时退化为全局基线）。
-        """
         all_spikes: List[Dict[str, Any]] = []
         for tier_sec in self.agg.spike_tiers:
             if self.agg.span < tier_sec:
@@ -221,17 +226,14 @@ class AnomalyDetector:
         return all_spikes
 
     def _cycle_baselines(self, buckets: List[Dict[str, Any]], tier_sec: int) -> Dict[int, Tuple[float, float]]:
-        """按业务流量周期分组计算基线 (mean, stdev)。"""
         if tier_sec <= 3600:
             slots_per_cycle = max(1, 3600 // tier_sec)
         else:
             slots_per_cycle = max(1, 86400 // tier_sec)
-
         slot_values: Dict[int, List[float]] = defaultdict(list)
         for b in buckets:
             slot = int(b["bucket"]) % slots_per_cycle
             slot_values[slot].append(float(b["cnt"]))
-
         baselines: Dict[int, Tuple[float, float]] = {}
         for b in buckets:
             slot = int(b["bucket"]) % slots_per_cycle
@@ -245,7 +247,6 @@ class AnomalyDetector:
             baselines[b["bucket"]] = (mu, sigma)
         return baselines
 
-    # ---- 不常见操作 ----
     def detect_rare_actions(self, percentile: float = 0.1, min_occurrences: int = 1, max_occurrences: Optional[int] = None) -> List[Dict[str, Any]]:
         actions = self.stats["by_action"]
         if not actions:
@@ -271,19 +272,8 @@ class AnomalyDetector:
         rare.sort(key=lambda x: (x["count"], -x["failures"]))
         return rare
 
-    # ---- 批量操作（按主体类别动态阈值） ----
     def detect_bulk_actions(self, max_window_seconds: int = 300, min_count: int = 10,
                             dynamic_threshold: bool = True) -> List[Dict[str, Any]]:
-        """同主体+同动作在滑动窗口内重复超过阈值判定为批量操作。
-
-        当 dynamic_threshold=True 时：
-        - 对每个 (subject, action) 组合，先统计该 subject 的总操作数和动作种类，
-          然后根据主体类别（human/service/ip）动态计算 min_count 和 max_window_seconds：
-            human:   min_count = max(3, 总操作数 * 0.01),  window = 600s
-            service: min_count = max(15, 总操作数 * 0.03), window = 300s
-            ip:      min_count = max(8, 总操作数 * 0.02),  window = 300s
-        - 还考虑动作类型的平均频率作为倍数参考。
-        """
         series = self.stats["subject_action_ts"]
         if not series:
             return []
@@ -305,24 +295,22 @@ class AnomalyDetector:
         total = self.stats["total_logs"]
 
         for (subject, action), rows in groups.items():
-            cat = _classify_subject(subject) if dynamic_threshold else "human"
-            defaults = _SUBJECT_CATEGORY_DEFAULTS.get(cat, _SUBJECT_CATEGORY_DEFAULTS["human"])
+            cat = _classify_subject(subject, self._categories) if dynamic_threshold else "human"
+            bt = self._thresholds.get(cat, self._thresholds.get("human", {
+                "max_window_seconds": 600, "min_count_base": 3,
+                "min_count_ratio": 0.01, "rate_factor": 0.5,
+            }))
 
             if dynamic_threshold:
                 s_info = subject_stats.get(subject, {})
                 s_total = s_info.get("cnt", 0)
-                effective_window = defaults["max_window_seconds"]
-                if cat == "human":
-                    effective_min = max(3, int(s_total * 0.01))
-                elif cat == "service":
-                    effective_min = max(15, int(s_total * 0.03))
-                else:
-                    effective_min = max(8, int(s_total * 0.02))
+                effective_window = bt["max_window_seconds"]
+                effective_min = max(bt["min_count_base"], int(s_total * bt["min_count_ratio"]))
 
                 avg_rate = action_avg.get(action, 0)
                 if avg_rate > 0:
                     expected_in_window = avg_rate * effective_window
-                    effective_min = max(effective_min, int(expected_in_window * defaults["rate_factor"] * 2))
+                    effective_min = max(effective_min, int(expected_in_window * bt["rate_factor"] * 2))
             else:
                 effective_window = max_window_seconds
                 effective_min = min_count
@@ -363,7 +351,6 @@ class AnomalyDetector:
         bulks.sort(key=lambda x: x["count"], reverse=True)
         return bulks
 
-    # ---- 高频失败主体 ----
     def detect_high_failure_subjects(self, min_fail_ratio: float = 0.2, min_fails: int = 5) -> List[Dict[str, Any]]:
         out = []
         for s in self.stats["by_subject"]:
@@ -377,12 +364,11 @@ class AnomalyDetector:
                     "fail_ratio": round(fails * 100.0 / total, 2),
                     "first_seen": _fmt_ts(s["t_min"]),
                     "last_seen": _fmt_ts(s["t_max"]),
-                    "subject_category": _classify_subject(s["subject"]),
+                    "subject_category": _classify_subject(s["subject"], self._categories),
                 })
         out.sort(key=lambda x: x["fail_ratio"], reverse=True)
         return out
 
-    # ---- 全部检测汇总 ----
     def all_anomalies(self, dynamic_bulk: bool = True) -> Dict[str, Any]:
         return {
             "spikes": self.detect_spikes(),
@@ -392,10 +378,138 @@ class AnomalyDetector:
         }
 
 
+# ---------------------------------------------------------------------------
+# /admin/reload HTTP 服务
+# ---------------------------------------------------------------------------
+
+class _ReloadHandler(BaseHTTPRequestHandler):
+    storage: Optional[Storage] = None
+    detector: Optional[AnomalyDetector] = None
+
+    def do_POST(self):
+        if self.path == "/admin/reload":
+            self._handle_reload()
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def do_GET(self):
+        if self.path == "/admin/health":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok"}).encode())
+        elif self.path == "/admin/categories":
+            self._handle_list_categories()
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def _handle_reload(self):
+        try:
+            cfg = get_config()
+            cfg.reload()
+            content_len = int(self.headers.get("Content-Length", 0))
+            body = {}
+            if content_len > 0:
+                raw = self.rfile.read(content_len)
+                body = json.loads(raw)
+
+            if body.get("spike_tiers"):
+                tiers = []
+                for t in body["spike_tiers"]:
+                    if isinstance(t, int):
+                        tiers.append(t)
+                    elif isinstance(t, str) and t in SPIKE_WINDOWS:
+                        tiers.append(SPIKE_WINDOWS[t])
+                if tiers and self.detector:
+                    self.detector.agg.spike_tiers = tiers
+
+            if body.get("categories"):
+                if self.storage:
+                    for cat_name, cat_data in body["categories"].items():
+                        prefixes = cat_data.get("prefixes", [])
+                        bt = cat_data.get("bulk_threshold", {})
+                        for p in prefixes:
+                            self.storage.add_subject_category(
+                                cat_name, p,
+                                bt.get("max_window_seconds", 300),
+                                bt.get("min_count_base", 5),
+                                bt.get("min_count_ratio", 0.01),
+                                bt.get("rate_factor", 1.0),
+                            )
+
+            if self.detector:
+                self.detector.reload_categories()
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            result = {"status": "reloaded", "spike_tiers": self.detector.agg.spike_tiers if self.detector else []}
+            self.wfile.write(json.dumps(result).encode())
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode())
+
+    def _handle_list_categories(self):
+        if not self.storage:
+            self.send_response(500)
+            self.end_headers()
+            return
+        cats = self.storage.get_subject_categories(use_cache=False)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(cats, ensure_ascii=False).encode())
+
+    def log_message(self, format, *args):
+        pass
+
+
+class AdminServer:
+    """/admin/reload 轻量 HTTP 服务，支持运行时热加载配置。"""
+
+    def __init__(self, storage: Storage, detector: Optional[AnomalyDetector] = None,
+                 host: str = "127.0.0.1", port: int = 0):
+        self.storage = storage
+        self.detector = detector
+        self.host = host
+        self.port = port
+        self._server: Optional[HTTPServer] = None
+        self._thread: Optional[threading.Thread] = None
+
+    def start(self) -> int:
+        handler = type("Handler", (_ReloadHandler,), {
+            "storage": self.storage,
+            "detector": self.detector,
+        })
+        self._server = HTTPServer((self.host, self.port), handler)
+        actual_port = self._server.server_address[1]
+        self._thread = threading.Thread(target=self._server.serve_forever, daemon=True)
+        self._thread.start()
+        return actual_port
+
+    def stop(self) -> None:
+        if self._server:
+            self._server.shutdown()
+            self._server = None
+
+    def update_detector(self, detector: AnomalyDetector) -> None:
+        self.detector = detector
+        if self._server:
+            if hasattr(self._server, 'RequestHandlerClass'):
+                self._server.RequestHandlerClass.detector = detector
+
+
+# ---------------------------------------------------------------------------
+# 一站式入口
+# ---------------------------------------------------------------------------
+
 def analyze(storage: Storage, window_seconds: Optional[int] = None,
             spike_tiers: Optional[List[int]] = None,
             dynamic_bulk: bool = True) -> Dict[str, Any]:
-    """一站式分析入口：聚合 + 异常检测。"""
     agg = Aggregator(storage, window_seconds, spike_tiers)
     stats = agg.all_stats()
     det = AnomalyDetector(agg, stats)
@@ -410,4 +524,5 @@ def analyze(storage: Storage, window_seconds: Optional[int] = None,
         },
         "stats": stats,
         "anomalies": anomalies,
+        "_detector": det,
     }

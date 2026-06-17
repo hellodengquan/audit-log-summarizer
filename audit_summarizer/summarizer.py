@@ -278,8 +278,9 @@ def _write_timeline(path: str, analysis: Dict[str, Any], storage: Storage,
 
     lines.append("## 八、附录：日志样本（随机 10 条）")
     lines.append("")
+    uv = storage.unified_view_name
     samples = storage.query(
-        "SELECT ts, subject, action, resource, status, source_file FROM logs_all ORDER BY RANDOM() LIMIT 10"
+        f"SELECT ts, subject, action, resource, status, source_file FROM {uv} ORDER BY RANDOM() LIMIT 10"
     )
     if samples:
         lines.append("| 时间 | 主体 | 动作 | 资源 | 状态 | 来源 |")
@@ -304,12 +305,24 @@ def write_summaries(
     window_seconds: Optional[int] = None,
     spike_tiers: Optional[List[int]] = None,
     dynamic_bulk: bool = True,
-    page_size: int = 0,
+    page_size: Optional[int] = None,
     page: int = 1,
-    sort_by: str = "count",
-    sort_order: str = "desc",
+    sort_by: Optional[str] = None,
+    sort_order: Optional[str] = None,
 ) -> Tuple[str, str, Dict[str, Any]]:
-    """生成两份摘要文件，返回 (timeline_path, stats_path, analysis_dict)。"""
+    """生成两份摘要文件，返回 (timeline_path, stats_path, analysis_dict)。
+
+    page_size / sort_by / sort_order 为 None 时从 audit.yaml 配置读取默认值。
+    """
+    from .config import get_config
+    cfg = get_config()
+    if page_size is None:
+        page_size = cfg.default_page_size
+    if sort_by is None:
+        sort_by = cfg.default_sort_by
+    if sort_order is None:
+        sort_order = cfg.default_sort_order
+
     os.makedirs(output_dir, exist_ok=True)
     analysis = analyze(storage, window_seconds, spike_tiers, dynamic_bulk)
     timeline_path = os.path.join(output_dir, timeline_name)

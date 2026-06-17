@@ -1,10 +1,10 @@
-"""SQLite 存储层：按月分表 + TTL 清理 + 多维聚合查询接口。
+"""SQLite 存储层：按月分表 + 统一视图 + 主体类别表 + TTL 清理。
 
 设计：
-- 每个月份一张 logs_YYYYMM 表，结构与原 logs 表一致
-- UNION ALL 视图 logs_all 提供透明跨月查询
-- TTL 清理：按月表粒度删除过期数据
-- 所有查询方法默认走 logs_all 视图
+- 每个月份一张 logs_YYYYMM 表
+- audit_unified_view 封装跨月 UNION ALL 查询（视图名可配置）
+- _subject_categories 表存储主体分类规则（运维可动态增删）
+- TTL 清理按月表粒度
 """
 
 import sqlite3
@@ -39,8 +39,6 @@ _INDEX_TEMPLATES = [
     "CREATE INDEX IF NOT EXISTS idx_{table}_action_ts ON {table}(action, ts);",
 ]
 
-_ALL_VIEW_TEMPLATE = "CREATE VIEW IF NOT EXISTS logs_all AS {union};"
-
 _META_TABLE = """
 CREATE TABLE IF NOT EXISTS _meta (
     key TEXT PRIMARY KEY,
@@ -48,17 +46,32 @@ CREATE TABLE IF NOT EXISTS _meta (
 );
 """
 
+_SUBJECT_CATEGORIES_TABLE = """
+CREATE TABLE IF NOT EXISTS _subject_categories (
+    category TEXT NOT NULL,
+    prefix TEXT NOT NULL,
+    max_window_seconds INTEGER NOT NULL DEFAULT 300,
+    min_count_base INTEGER NOT NULL DEFAULT 5,
+    min_count_ratio REAL NOT NULL DEFAULT 0.01,
+    rate_factor REAL NOT NULL DEFAULT 1.0,
+    PRIMARY KEY (category, prefix)
+);
+"""
 
-def _month_table_name(ts: float) -> str:
+
+def _month_table_name(ts: float, prefix: str = "logs_") -> str:
     dt = datetime.fromtimestamp(ts, timezone.utc)
-    return f"logs_{dt.strftime('%Y%m')}"
+    return f"{prefix}{dt.strftime('%Y%m')}"
 
 
-def _known_month_tables(conn: sqlite3.Connection) -> List[str]:
+def _known_month_tables(conn: sqlite3.Connection, prefix: str = "logs_") -> List[str]:
+    esc = prefix.replace("_", "\\_") + "%"
     cur = conn.execute(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'logs_2%' ORDER BY name"
+        "SELECT name FROM sqlite_master WHERE type='table' AND name LIKE ? ESCAPE '\\' ORDER BY name",
+        (esc,)
     )
-    return [row[0] for row in cur if re.match(r'^logs_2\d{5,6}$', row[0])]
+    pattern = re.compile(r'^' + re.escape(prefix) + r'\d{5,6}$')
+    return [row[0] for row in cur if pattern.match(row[0])]
 
 
 def _ensure_table(conn: sqlite3.Connection, table: str) -> None:
@@ -67,21 +80,26 @@ def _ensure_table(conn: sqlite3.Connection, table: str) -> None:
         conn.execute(idx_sql.format(table=table))
 
 
-def _rebuild_all_view(conn: sqlite3.Connection) -> None:
-    tables = _known_month_tables(conn)
-    conn.execute("DROP VIEW IF EXISTS logs_all;")
+def _build_unified_view_sql(tables: List[str], view_name: str) -> str:
     if not tables:
-        return
+        return f"CREATE VIEW IF NOT EXISTS {view_name} AS SELECT 0 AS id, 0.0 AS ts, '' AS subject, '' AS action, '' AS resource, '' AS status, '' AS source_file, '' AS raw WHERE 0;"
     union = " UNION ALL ".join(f"SELECT * FROM {t}" for t in tables)
-    conn.execute(_ALL_VIEW_TEMPLATE.format(union=union))
+    return f"CREATE VIEW IF NOT EXISTS {view_name} AS {union};"
 
 
 class Storage:
-    """SQLite 存储封装（按月分表 + TTL 清理）。"""
+    """SQLite 存储封装（按月分表 + 统一视图 + 主体类别表 + TTL 清理）。"""
 
-    def __init__(self, db_path: str = ":memory:", ttl_days: Optional[int] = None):
+    def __init__(self, db_path: str = ":memory:", ttl_days: Optional[int] = None,
+                 table_prefix: Optional[str] = None, unified_view_name: Optional[str] = None):
         self.db_path = db_path
         self.ttl_days = ttl_days
+
+        from .config import get_config
+        cfg = get_config()
+        self.table_prefix = table_prefix or cfg.table_prefix
+        self.unified_view_name = unified_view_name or cfg.unified_view_name
+
         is_new = (db_path == ":memory:") or (not os.path.exists(db_path))
         self._conn = sqlite3.connect(db_path)
         self._conn.row_factory = sqlite3.Row
@@ -89,31 +107,111 @@ class Storage:
         self._conn.execute("PRAGMA synchronous=NORMAL;")
         self._conn.execute("PRAGMA cache_size=-65536;")
         self._table_cache: set = set()
+        self._categories_cache: Optional[Dict[str, Dict[str, Any]]] = None
         if is_new:
-            self._init_meta()
-            self._rebuild_view()
+            self._init_system_tables()
+            self._seed_categories(cfg)
+            self._rebuild_unified_view()
 
-    def _init_meta(self) -> None:
+    def _init_system_tables(self) -> None:
         with self._conn:
             self._conn.execute(_META_TABLE)
+            self._conn.execute(_SUBJECT_CATEGORIES_TABLE)
             if self.ttl_days is not None:
                 self._conn.execute(
                     "INSERT OR REPLACE INTO _meta (key, value) VALUES ('ttl_days', ?)",
                     (str(self.ttl_days),)
                 )
 
-    def _rebuild_view(self) -> None:
-        with self._conn:
-            _rebuild_all_view(self._conn)
-
-    def _ensure_month_table(self, ts: float) -> str:
-        table = _month_table_name(ts)
-        if table not in self._table_cache:
+    def _seed_categories(self, cfg: Any) -> None:
+        cur = self._conn.execute("SELECT COUNT(*) FROM _subject_categories")
+        if cur.fetchone()[0] > 0:
+            return
+        cats = cfg.subject_categories
+        rows = []
+        for cat_name, cat_def in cats.items():
+            raw_prefixes = cat_def.get("prefixes", [])
+            prefixes = [p for p in raw_prefixes if isinstance(p, str)]
+            bt = cat_def.get("bulk_threshold", {})
+            if not isinstance(bt, dict):
+                bt = {}
+            for p in prefixes:
+                rows.append((
+                    cat_name, p,
+                    bt.get("max_window_seconds", 300),
+                    bt.get("min_count_base", 5),
+                    bt.get("min_count_ratio", 0.01),
+                    bt.get("rate_factor", 1.0),
+                ))
+            if not prefixes:
+                rows.append((
+                    cat_name, "",
+                    bt.get("max_window_seconds", 300),
+                    bt.get("min_count_base", 5),
+                    bt.get("min_count_ratio", 0.01),
+                    bt.get("rate_factor", 1.0),
+                ))
+        if rows:
             with self._conn:
-                _ensure_table(self._conn, table)
-            self._table_cache.add(table)
-        return table
+                self._conn.executemany(
+                    "INSERT OR IGNORE INTO _subject_categories (category, prefix, max_window_seconds, min_count_base, min_count_ratio, rate_factor) VALUES (?, ?, ?, ?, ?, ?)",
+                    rows,
+                )
 
+    def _rebuild_unified_view(self) -> None:
+        with self._conn:
+            tables = _known_month_tables(self._conn, self.table_prefix)
+            self._conn.execute(f"DROP VIEW IF EXISTS {self.unified_view_name};")
+            self._conn.execute(_build_unified_view_sql(tables, self.unified_view_name))
+
+    # ---- 主体类别 CRUD ----
+    def get_subject_categories(self, use_cache: bool = True) -> Dict[str, Dict[str, Any]]:
+        """从 _subject_categories 表读取全部类别，返回 {category: {prefixes: [...], bulk_threshold: {...}}}。"""
+        if use_cache and self._categories_cache is not None:
+            return self._categories_cache
+
+        cur = self._conn.execute(
+            "SELECT category, prefix, max_window_seconds, min_count_base, min_count_ratio, rate_factor FROM _subject_categories ORDER BY category, prefix"
+        )
+        result: Dict[str, Dict[str, Any]] = defaultdict(lambda: {"prefixes": [], "bulk_threshold": {}})
+        for row in cur:
+            cat = row["category"]
+            prefix = row["prefix"]
+            if prefix:
+                result[cat]["prefixes"].append(prefix)
+            result[cat]["bulk_threshold"] = {
+                "max_window_seconds": row["max_window_seconds"],
+                "min_count_base": row["min_count_base"],
+                "min_count_ratio": row["min_count_ratio"],
+                "rate_factor": row["rate_factor"],
+            }
+
+        self._categories_cache = dict(result)
+        return self._categories_cache
+
+    def add_subject_category(self, category: str, prefix: str,
+                             max_window_seconds: int = 300, min_count_base: int = 5,
+                             min_count_ratio: float = 0.01, rate_factor: float = 1.0) -> None:
+        with self._conn:
+            self._conn.execute(
+                "INSERT OR REPLACE INTO _subject_categories (category, prefix, max_window_seconds, min_count_base, min_count_ratio, rate_factor) VALUES (?, ?, ?, ?, ?, ?)",
+                (category, prefix, max_window_seconds, min_count_base, min_count_ratio, rate_factor),
+            )
+        self._categories_cache = None
+
+    def remove_subject_category(self, category: str, prefix: str) -> bool:
+        cur = self._conn.execute(
+            "DELETE FROM _subject_categories WHERE category=? AND prefix=?",
+            (category, prefix),
+        )
+        self._conn.commit()
+        self._categories_cache = None
+        return cur.rowcount > 0
+
+    def invalidate_categories_cache(self) -> None:
+        self._categories_cache = None
+
+    # ---- 事务 ----
     @contextmanager
     def transaction(self):
         try:
@@ -123,8 +221,8 @@ class Storage:
             self._conn.rollback()
             raise
 
+    # ---- 数据写入 ----
     def insert_many(self, rows: Iterable[Dict[str, Any]]) -> int:
-        """批量写入日志记录（自动按月份分表），返回写入数量。"""
         sql_template = (
             "INSERT INTO {table} (ts, subject, action, resource, status, source_file, raw) "
             "VALUES (?, ?, ?, ?, ?, ?, ?)"
@@ -132,15 +230,11 @@ class Storage:
         by_table: Dict[str, List[Tuple]] = defaultdict(list)
         for r in rows:
             ts = r["ts"]
-            table = _month_table_name(ts)
+            table = _month_table_name(ts, self.table_prefix)
             by_table[table].append((
-                ts,
-                r["subject"],
-                r["action"],
-                r.get("resource", ""),
-                r.get("status", ""),
-                r.get("source_file", ""),
-                r.get("raw", ""),
+                ts, r["subject"], r["action"],
+                r.get("resource", ""), r.get("status", ""),
+                r.get("source_file", ""), r.get("raw", ""),
             ))
 
         total = 0
@@ -155,29 +249,23 @@ class Storage:
                 total += len(tuples)
 
         if new_tables:
-            self._rebuild_view()
+            self._rebuild_unified_view()
         return total
 
     # ---- TTL 清理 ----
     def purge_expired(self, ttl_days: Optional[int] = None) -> int:
-        """删除超过 ttl_days 天的月表，返回被删除的行数。
-
-        策略：按月表粒度整表删除（而非逐行），因为审计日志通常按月归档。
-        如果某月表中有部分数据仍在 TTL 内，则保留整张表不删。
-        """
         days = ttl_days or self.ttl_days
         if days is None:
             return 0
-
         cutoff_ts = time.time() - days * 86400
         cutoff_dt = datetime.fromtimestamp(cutoff_ts, timezone.utc)
         cutoff_month = cutoff_dt.strftime("%Y%m")
 
-        tables = _known_month_tables(self._conn)
+        tables = _known_month_tables(self._conn, self.table_prefix)
         deleted_rows = 0
         tables_dropped = []
         for table in tables:
-            month_str = table.replace("logs_", "")
+            month_str = table.replace(self.table_prefix, "")
             if month_str < cutoff_month:
                 cur = self._conn.execute(f"SELECT COUNT(*) FROM {table}")
                 cnt = cur.fetchone()[0]
@@ -187,22 +275,24 @@ class Storage:
 
         if tables_dropped:
             self._table_cache -= set(tables_dropped)
-            self._rebuild_view()
+            self._rebuild_unified_view()
             self._conn.commit()
-
         return deleted_rows
 
-    # ---- 基础查询 ----
+    # ---- 基础查询（走统一视图） ----
+    def _uv(self) -> str:
+        return self.unified_view_name
+
     def count(self) -> int:
         try:
-            cur = self._conn.execute("SELECT COUNT(*) FROM logs_all")
+            cur = self._conn.execute(f"SELECT COUNT(*) FROM {self._uv()}")
             return cur.fetchone()[0]
         except sqlite3.OperationalError:
             return 0
 
     def time_range(self) -> Optional[Tuple[float, float]]:
         try:
-            cur = self._conn.execute("SELECT MIN(ts), MAX(ts) FROM logs_all")
+            cur = self._conn.execute(f"SELECT MIN(ts), MAX(ts) FROM {self._uv()}")
             row = cur.fetchone()
             if row[0] is None:
                 return None
@@ -213,7 +303,7 @@ class Storage:
     def iter_all(self):
         try:
             cur = self._conn.execute(
-                "SELECT ts, subject, action, resource, status, source_file FROM logs_all ORDER BY ts"
+                f"SELECT ts, subject, action, resource, status, source_file FROM {self._uv()} ORDER BY ts"
             )
             for r in cur:
                 yield dict(r)
@@ -222,14 +312,15 @@ class Storage:
 
     # ---- 多维聚合查询 ----
     def group_by_subject(self) -> List[Dict[str, Any]]:
-        sql = """
+        uv = self._uv()
+        sql = f"""
             SELECT subject,
                    COUNT(*) AS cnt,
                    MIN(ts) AS t_min,
                    MAX(ts) AS t_max,
                    COUNT(DISTINCT action) AS action_types,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM logs_all
+            FROM {uv}
             GROUP BY subject
             ORDER BY cnt DESC
         """
@@ -239,14 +330,15 @@ class Storage:
             return []
 
     def group_by_action(self) -> List[Dict[str, Any]]:
-        sql = """
+        uv = self._uv()
+        sql = f"""
             SELECT action,
                    COUNT(*) AS cnt,
                    COUNT(DISTINCT subject) AS subject_cnt,
                    MIN(ts) AS t_min,
                    MAX(ts) AS t_max,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM logs_all
+            FROM {uv}
             GROUP BY action
             ORDER BY cnt DESC
         """
@@ -256,9 +348,10 @@ class Storage:
             return []
 
     def group_by_status(self) -> List[Dict[str, Any]]:
-        sql = """
+        uv = self._uv()
+        sql = f"""
             SELECT status, COUNT(*) AS cnt
-            FROM logs_all
+            FROM {uv}
             GROUP BY status
             ORDER BY cnt DESC
         """
@@ -268,6 +361,7 @@ class Storage:
             return []
 
     def group_by_time_window(self, window_seconds: int) -> List[Dict[str, Any]]:
+        uv = self._uv()
         sql = f"""
             SELECT CAST(ts / {window_seconds} AS INTEGER) AS bucket,
                    COUNT(*) AS cnt,
@@ -276,7 +370,7 @@ class Storage:
                    COUNT(DISTINCT subject) AS subject_cnt,
                    COUNT(DISTINCT action) AS action_cnt,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM logs_all
+            FROM {uv}
             GROUP BY bucket
             ORDER BY bucket
         """
@@ -286,9 +380,10 @@ class Storage:
             return []
 
     def group_by_subject_action(self) -> List[Dict[str, Any]]:
-        sql = """
+        uv = self._uv()
+        sql = f"""
             SELECT subject, action, COUNT(*) AS cnt, MIN(ts) AS t_min, MAX(ts) AS t_max
-            FROM logs_all
+            FROM {uv}
             GROUP BY subject, action
             ORDER BY cnt DESC
         """
@@ -298,13 +393,14 @@ class Storage:
             return []
 
     def subject_action_time_series(self, window_seconds: int) -> List[Dict[str, Any]]:
+        uv = self._uv()
         sql = f"""
             SELECT CAST(ts / {window_seconds} AS INTEGER) AS bucket,
                    subject,
                    action,
                    COUNT(*) AS cnt,
                    MIN(ts) AS t_min
-            FROM logs_all
+            FROM {uv}
             GROUP BY bucket, subject, action
             ORDER BY bucket, cnt DESC
         """
@@ -314,7 +410,7 @@ class Storage:
             return []
 
     def list_month_tables(self) -> List[str]:
-        return _known_month_tables(self._conn)
+        return _known_month_tables(self._conn, self.table_prefix)
 
     def query(self, sql: str, params: Tuple = ()) -> List[Dict[str, Any]]:
         try:
