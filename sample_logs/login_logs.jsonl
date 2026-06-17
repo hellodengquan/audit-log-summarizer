@@ -1,0 +1,781 @@
+{"ts": "2026-06-16T00:00:00Z", "event": "login", "user": "bob", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_7887950851"}
+{"ts": "2026-06-16T00:01:53Z", "event": "login", "user": "grace", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_8995970241"}
+{"ts": "2026-06-16T00:07:02Z", "event": "login", "user": "frank", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_9896606039"}
+{"ts": "2026-06-16T00:08:34Z", "event": "login", "user": "grace", "src_ip": "10.0.2.131", "status": "failure", "service": "sso", "session_id": "sess_3392080953"}
+{"ts": "2026-06-16T00:16:05Z", "event": "login", "user": "charlie", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_7609857128"}
+{"ts": "2026-06-16T00:20:12Z", "event": "login", "user": "charlie", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_6947530309"}
+{"ts": "2026-06-16T00:26:27Z", "event": "login", "user": "grace", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_4919706735"}
+{"ts": "2026-06-16T00:33:19Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T00:35:29Z", "event": "login", "user": "henry", "src_ip": "10.0.2.37", "status": "failure", "service": "sso", "session_id": "sess_1540137296"}
+{"ts": "2026-06-16T00:46:36Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_1030884438"}
+{"ts": "2026-06-16T00:52:23Z", "event": "login", "user": "admin", "src_ip": "10.0.1.196", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T00:53:02Z", "event": "login", "user": "grace", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_4131356954"}
+{"ts": "2026-06-16T00:53:34Z", "event": "login", "user": "frank", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_2926780541"}
+{"ts": "2026-06-16T00:58:06Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.8", "status": "failure", "service": "sso", "session_id": "sess_4645120421"}
+{"ts": "2026-06-16T01:05:49Z", "event": "login", "user": "eve", "src_ip": "10.0.1.9", "status": "failure", "service": "sso", "session_id": "sess_3328710672"}
+{"ts": "2026-06-16T01:06:06Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T01:06:49Z", "event": "login", "user": "jack", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_1676168421"}
+{"ts": "2026-06-16T01:08:14Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_6305160342"}
+{"ts": "2026-06-16T01:15:47Z", "event": "login", "user": "eve", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_1311570307"}
+{"ts": "2026-06-16T01:17:37Z", "event": "login", "user": "david", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_9303285822"}
+{"ts": "2026-06-16T01:21:41Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T01:22:53Z", "event": "login", "user": "ivy", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_4771526597"}
+{"ts": "2026-06-16T01:23:46Z", "event": "login", "user": "bob", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_2472659626"}
+{"ts": "2026-06-16T01:25:57Z", "event": "login", "user": "grace", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_9503167458"}
+{"ts": "2026-06-16T01:28:28Z", "event": "login", "user": "charlie", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_3373077218"}
+{"ts": "2026-06-16T01:29:43Z", "event": "login", "user": "eve", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_4696689457"}
+{"ts": "2026-06-16T01:36:11Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T01:36:30Z", "event": "login", "user": "frank", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_4482141802"}
+{"ts": "2026-06-16T01:37:24Z", "event": "login", "user": "bob", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_8982597239"}
+{"ts": "2026-06-16T01:40:47Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T01:46:09Z", "event": "login", "user": "eve", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_9519284858"}
+{"ts": "2026-06-16T01:46:33Z", "event": "login", "user": "grace", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_6642201119"}
+{"ts": "2026-06-16T01:47:58Z", "event": "login", "user": "jack", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_8339176912"}
+{"ts": "2026-06-16T01:50:13Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T02:06:42Z", "event": "login", "user": "david", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_1855256552"}
+{"ts": "2026-06-16T02:07:05Z", "event": "login", "user": "henry", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_5607762160"}
+{"ts": "2026-06-16T02:11:02Z", "event": "login", "user": "alice", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_1939915527"}
+{"ts": "2026-06-16T02:29:14Z", "event": "login", "user": "david", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_4034047118"}
+{"ts": "2026-06-16T02:31:57Z", "event": "login", "user": "grace", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_3987248494"}
+{"ts": "2026-06-16T02:34:56Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T02:35:37Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T02:44:04Z", "event": "login", "user": "grace", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_1116402431"}
+{"ts": "2026-06-16T02:45:18Z", "event": "login", "user": "henry", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_6923206003"}
+{"ts": "2026-06-16T02:50:09Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T02:51:28Z", "event": "login", "user": "frank", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_3799264931"}
+{"ts": "2026-06-16T03:01:34Z", "event": "login", "user": "david", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_4459716271"}
+{"ts": "2026-06-16T03:04:44Z", "event": "login", "user": "grace", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_9421518487"}
+{"ts": "2026-06-16T03:07:17Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_8622026979"}
+{"ts": "2026-06-16T03:08:07Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T03:10:13Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T03:25:27Z", "event": "login", "user": "david", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_7792729530"}
+{"ts": "2026-06-16T03:40:53Z", "event": "login", "user": "alice", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_3108307952"}
+{"ts": "2026-06-16T03:43:38Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T03:44:51Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T03:45:24Z", "event": "login", "user": "bob", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_3948284698"}
+{"ts": "2026-06-16T03:46:03Z", "event": "login", "user": "jack", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_2065972034"}
+{"ts": "2026-06-16T03:53:42Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T03:56:30Z", "event": "login", "user": "alice", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_7845366946"}
+{"ts": "2026-06-16T03:57:27Z", "event": "login", "user": "eve", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_2950049698"}
+{"ts": "2026-06-16T04:01:47Z", "event": "login", "user": "charlie", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_9251459094"}
+{"ts": "2026-06-16T04:03:03Z", "event": "login", "user": "eve", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_7415801613"}
+{"ts": "2026-06-16T04:05:40Z", "event": "login", "user": "david", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_8822944679"}
+{"ts": "2026-06-16T04:09:44Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T04:17:36Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T04:19:24Z", "event": "login", "user": "bob", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_8613035386"}
+{"ts": "2026-06-16T04:27:29Z", "event": "login", "user": "eve", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_3081821325"}
+{"ts": "2026-06-16T04:34:15Z", "event": "login", "user": "admin", "src_ip": "10.0.5.24", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T04:38:38Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T04:44:09Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T04:54:24Z", "event": "login", "user": "henry", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_5212581851"}
+{"ts": "2026-06-16T04:56:36Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T04:58:41Z", "event": "login", "user": "henry", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_1662976399"}
+{"ts": "2026-06-16T05:13:01Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T05:15:12Z", "event": "login", "user": "bob", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_6329323383"}
+{"ts": "2026-06-16T05:19:51Z", "event": "login", "user": "henry", "src_ip": "10.0.5.109", "status": "failure", "service": "sso", "session_id": "sess_9426850694"}
+{"ts": "2026-06-16T05:25:25Z", "event": "login", "user": "grace", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_5181592277"}
+{"ts": "2026-06-16T05:25:58Z", "event": "login", "user": "admin", "src_ip": "10.0.1.196", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T05:26:11Z", "event": "login", "user": "admin", "src_ip": "10.0.5.110", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T05:32:40Z", "event": "login", "user": "frank", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_6562457052"}
+{"ts": "2026-06-16T05:33:53Z", "event": "login", "user": "charlie", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_6001680218"}
+{"ts": "2026-06-16T05:37:00Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T05:42:15Z", "event": "login", "user": "grace", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_5825776872"}
+{"ts": "2026-06-16T05:45:22Z", "event": "login", "user": "david", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_7706193636"}
+{"ts": "2026-06-16T05:49:01Z", "event": "login", "user": "alice", "src_ip": "10.0.5.8", "status": "failure", "service": "sso", "session_id": "sess_1498733671"}
+{"ts": "2026-06-16T05:56:22Z", "event": "login", "user": "frank", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_5082603360"}
+{"ts": "2026-06-16T05:57:28Z", "event": "login", "user": "frank", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_8064477344"}
+{"ts": "2026-06-16T05:59:57Z", "event": "login", "user": "david", "src_ip": "10.0.3.28", "status": "failure", "service": "sso", "session_id": "sess_2432410914"}
+{"ts": "2026-06-16T06:01:19Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_6295689007"}
+{"ts": "2026-06-16T06:02:33Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T06:05:06Z", "event": "login", "user": "alice", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_2390587865"}
+{"ts": "2026-06-16T06:07:51Z", "event": "login", "user": "bob", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_3549776132"}
+{"ts": "2026-06-16T06:11:22Z", "event": "login", "user": "henry", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_5758659815"}
+{"ts": "2026-06-16T06:12:38Z", "event": "login", "user": "bob", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_1282103057"}
+{"ts": "2026-06-16T06:13:07Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T06:22:19Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T06:23:40Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T06:28:31Z", "event": "login", "user": "bob", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_9847550931"}
+{"ts": "2026-06-16T06:33:00Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T06:37:49Z", "event": "login", "user": "eve", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_3391179068"}
+{"ts": "2026-06-16T06:38:43Z", "event": "login", "user": "eve", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_2507634128"}
+{"ts": "2026-06-16T06:40:37Z", "event": "login", "user": "alice", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_6218955985"}
+{"ts": "2026-06-16T06:44:40Z", "event": "login", "user": "jack", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_6463640105"}
+{"ts": "2026-06-16T06:45:52Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T06:49:20Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T06:51:26Z", "event": "login", "user": "grace", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_6172957943"}
+{"ts": "2026-06-16T06:53:40Z", "event": "login", "user": "grace", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_2521136431"}
+{"ts": "2026-06-16T07:01:08Z", "event": "login", "user": "frank", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_7949795085"}
+{"ts": "2026-06-16T07:02:14Z", "event": "login", "user": "bob", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_5632753983"}
+{"ts": "2026-06-16T07:04:42Z", "event": "login", "user": "bob", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_6795522649"}
+{"ts": "2026-06-16T07:07:09Z", "event": "login", "user": "henry", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_7977267911"}
+{"ts": "2026-06-16T07:07:26Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:08:09Z", "event": "login", "user": "bob", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_5536224717"}
+{"ts": "2026-06-16T07:09:33Z", "event": "login", "user": "henry", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_2232986477"}
+{"ts": "2026-06-16T07:18:09Z", "event": "login", "user": "henry", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_3619094295"}
+{"ts": "2026-06-16T07:22:42Z", "event": "login", "user": "bob", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_6515369278"}
+{"ts": "2026-06-16T07:26:08Z", "event": "login", "user": "bob", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_9991312028"}
+{"ts": "2026-06-16T07:28:14Z", "event": "login", "user": "admin", "src_ip": "10.0.3.64", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:31:29Z", "event": "login", "user": "eve", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_3261436148"}
+{"ts": "2026-06-16T07:33:47Z", "event": "login", "user": "jack", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_5482624860"}
+{"ts": "2026-06-16T07:34:54Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:34:57Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:43:51Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:50:11Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_3204833223"}
+{"ts": "2026-06-16T07:51:26Z", "event": "login", "user": "david", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_4996346509"}
+{"ts": "2026-06-16T07:52:39Z", "event": "login", "user": "ivy", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_5271453859"}
+{"ts": "2026-06-16T07:55:22Z", "event": "login", "user": "admin", "src_ip": "10.0.5.24", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T07:56:25Z", "event": "login", "user": "henry", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_7309779967"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:01Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:03Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:04Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:05Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:06Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:07Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:08Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:09Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:11Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:12Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:18Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:20Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:22Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:26Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:27Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:28Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:28Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:29Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:30Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:31Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:32Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:36Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:37Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:39Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:41Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:42Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:44Z", "event": "login", "user": "grace", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_9182543558"}
+{"ts": "2026-06-16T08:00:46Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:47Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:49Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:50Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:00:55Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:05Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:06Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:07Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:08Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:10Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:11Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:12Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:14Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:15Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:16Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:18Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:20Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:21Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:24Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:24Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:25Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:27Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:30Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:31Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:32Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:32Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:34Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:36Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:40Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:44Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:44Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:45Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:47Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:51Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:53Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:54Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:57Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:01:58Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:02Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:02Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:04Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:04Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:05Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:06Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:06Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:12Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:12Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_5911625145"}
+{"ts": "2026-06-16T08:02:16Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:17Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:19Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:20Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:22Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:26Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:29Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:30Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:31Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:34Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:35Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:38Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:38Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:44Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:46Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:47Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:51Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:52Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:52Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:55Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:58Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:02:58Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:00Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:02Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:07Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:09Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:10Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:10Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:11Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:12Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:16Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:18Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:22Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:26Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:26Z", "event": "login", "user": "frank", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_3869961166"}
+{"ts": "2026-06-16T08:03:27Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:29Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:30Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:32Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:32Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:36Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:37Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:38Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:46Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:49Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:50Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:52Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:54Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:03:58Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:00Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:01Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:02Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:03Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:06Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:14Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:16Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:16Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:20Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:23Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:28Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:32Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:33Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:38Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:39Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:41Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:42Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:44Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:48Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:50Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:50Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:52Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:04:59Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:03Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:04Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:06Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:08Z", "event": "login", "user": "user", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:12Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:14Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:16Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:19Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:20Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:22Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:23Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:24Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:25Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:28Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:30Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:32Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:32Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:34Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:37Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:38Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:39Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:40Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:42Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:46Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:46Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:47Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:48Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:49Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:50Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:52Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:54Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:05:58Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:00Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:02Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:02Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:04Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:06Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:08Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:08Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:11Z", "event": "login", "user": "test", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:12Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:14Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:16Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:19Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:24Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:25Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:26Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:27Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:28Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:30Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:31Z", "event": "login", "user": "test", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:38Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:38Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:46Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:06:48Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:02Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:06Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:26Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:28Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:34Z", "event": "login", "user": "admin", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:42Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:44Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:54Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:07:56Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:10Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:14Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:16Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:30Z", "event": "login", "user": "admin", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:36Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:42Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:44Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:52Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:08:53Z", "event": "login", "user": "admin", "src_ip": "10.0.5.24", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T08:08:58Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:02Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:08Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:12Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:30Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:34Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:36Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:38Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:44Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:46Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:48Z", "event": "login", "user": "user", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:50Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:09:56Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:04Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:16Z", "event": "login", "user": "user", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:18Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:20Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:22Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:40Z", "event": "login", "user": "root", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:52Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:54Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:56Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:10:58Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:02Z", "event": "login", "user": "test", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:10Z", "event": "login", "user": "user", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:12Z", "event": "login", "user": "root", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:22Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:30Z", "event": "login", "user": "root", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:42Z", "event": "login", "user": "admin", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:46Z", "event": "login", "user": "admin", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:48Z", "event": "login", "user": "test", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:50Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:52Z", "event": "login", "user": "test", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:54Z", "event": "login", "user": "admin", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:11:58Z", "event": "login", "user": "root", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:12:06Z", "event": "login", "user": "test", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:12:18Z", "event": "login", "user": "root", "src_ip": "185.220.101.4", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:12:36Z", "event": "login", "user": "user", "src_ip": "185.220.101.5", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:12:44Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:12:46Z", "event": "login", "user": "user", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:04Z", "event": "login", "user": "root", "src_ip": "185.220.101.2", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:06Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:08Z", "event": "login", "user": "user", "src_ip": "185.220.101.6", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:12Z", "event": "login", "user": "test", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:14Z", "event": "login", "user": "administrator", "src_ip": "185.220.101.7", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:18Z", "event": "login", "user": "root", "src_ip": "185.220.101.3", "status": "failure", "service": "sso", "reason": "invalid_credentials"}
+{"ts": "2026-06-16T08:13:20Z", "event": "login", "user": "frank", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_3760786161"}
+{"ts": "2026-06-16T08:16:37Z", "event": "login", "user": "henry", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_5474951950"}
+{"ts": "2026-06-16T08:31:24Z", "event": "login", "user": "frank", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_2830154607"}
+{"ts": "2026-06-16T08:35:52Z", "event": "login", "user": "grace", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_1133747952"}
+{"ts": "2026-06-16T08:37:08Z", "event": "login", "user": "bob", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_6868336102"}
+{"ts": "2026-06-16T08:39:08Z", "event": "login", "user": "admin", "src_ip": "10.0.5.109", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T08:53:05Z", "event": "login", "user": "henry", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_9532273208"}
+{"ts": "2026-06-16T09:03:19Z", "event": "login", "user": "bob", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_8382488970"}
+{"ts": "2026-06-16T09:06:27Z", "event": "login", "user": "frank", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_2479679716"}
+{"ts": "2026-06-16T09:11:09Z", "event": "login", "user": "charlie", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_4046558332"}
+{"ts": "2026-06-16T09:18:28Z", "event": "login", "user": "jack", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_4709911999"}
+{"ts": "2026-06-16T09:18:58Z", "event": "login", "user": "jack", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_3744446292"}
+{"ts": "2026-06-16T09:35:03Z", "event": "login", "user": "alice", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_2795875043"}
+{"ts": "2026-06-16T09:43:37Z", "event": "login", "user": "eve", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_8183421297"}
+{"ts": "2026-06-16T09:48:21Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_2239534867"}
+{"ts": "2026-06-16T09:51:35Z", "event": "login", "user": "bob", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_9533188043"}
+{"ts": "2026-06-16T09:53:05Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T09:55:02Z", "event": "login", "user": "frank", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_5895322075"}
+{"ts": "2026-06-16T09:56:02Z", "event": "login", "user": "jack", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_7712708591"}
+{"ts": "2026-06-16T10:03:28Z", "event": "login", "user": "jack", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_3923699745"}
+{"ts": "2026-06-16T10:04:21Z", "event": "login", "user": "admin", "src_ip": "10.0.3.41", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T10:12:40Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T10:15:13Z", "event": "login", "user": "admin", "src_ip": "10.0.2.131", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T10:16:29Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T10:18:48Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T10:34:10Z", "event": "login", "user": "jack", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_9807970435"}
+{"ts": "2026-06-16T10:34:34Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T10:36:26Z", "event": "login", "user": "grace", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_4310415016"}
+{"ts": "2026-06-16T10:53:55Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T10:55:12Z", "event": "login", "user": "frank", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_4252504650"}
+{"ts": "2026-06-16T11:01:06Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:02:36Z", "event": "login", "user": "grace", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_6710697191"}
+{"ts": "2026-06-16T11:05:17Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:12:20Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:13:27Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:19:31Z", "event": "login", "user": "ivy", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_3304937838"}
+{"ts": "2026-06-16T11:21:53Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:23:46Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_2947476917"}
+{"ts": "2026-06-16T11:28:36Z", "event": "login", "user": "frank", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_4840638976"}
+{"ts": "2026-06-16T11:29:13Z", "event": "login", "user": "admin", "src_ip": "10.0.3.41", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:29:56Z", "event": "login", "user": "grace", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_7100408092"}
+{"ts": "2026-06-16T11:31:37Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T11:33:41Z", "event": "login", "user": "frank", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_7602474923"}
+{"ts": "2026-06-16T11:35:08Z", "event": "login", "user": "david", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_9497552788"}
+{"ts": "2026-06-16T11:40:58Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T11:41:08Z", "event": "login", "user": "grace", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_1067198189"}
+{"ts": "2026-06-16T11:41:54Z", "event": "login", "user": "jack", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_4746123831"}
+{"ts": "2026-06-16T11:45:52Z", "event": "login", "user": "eve", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_2377246195"}
+{"ts": "2026-06-16T11:47:37Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T11:50:47Z", "event": "login", "user": "admin", "src_ip": "10.0.3.41", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T11:54:56Z", "event": "login", "user": "grace", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_3033747850"}
+{"ts": "2026-06-16T12:01:08Z", "event": "login", "user": "david", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_3589530484"}
+{"ts": "2026-06-16T12:01:36Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:05:59Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:08:04Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:14:10Z", "event": "login", "user": "henry", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_6887132821"}
+{"ts": "2026-06-16T12:15:22Z", "event": "login", "user": "david", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_8387395021"}
+{"ts": "2026-06-16T12:16:19Z", "event": "login", "user": "frank", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_4579265601"}
+{"ts": "2026-06-16T12:18:14Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:19:59Z", "event": "login", "user": "admin", "src_ip": "10.0.3.41", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:22:34Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_5111301175"}
+{"ts": "2026-06-16T12:22:59Z", "event": "login", "user": "admin", "src_ip": "10.0.2.180", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:24:01Z", "event": "login", "user": "bob", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_2771211118"}
+{"ts": "2026-06-16T12:24:50Z", "event": "login", "user": "charlie", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_7253513875"}
+{"ts": "2026-06-16T12:27:00Z", "event": "login", "user": "ivy", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_9493209128"}
+{"ts": "2026-06-16T12:29:19Z", "event": "login", "user": "bob", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_7556078550"}
+{"ts": "2026-06-16T12:31:34Z", "event": "login", "user": "grace", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_6265016831"}
+{"ts": "2026-06-16T12:32:03Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:32:28Z", "event": "login", "user": "grace", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_9830946410"}
+{"ts": "2026-06-16T12:39:41Z", "event": "login", "user": "frank", "src_ip": "10.0.1.8", "status": "failure", "service": "sso", "session_id": "sess_3521300895"}
+{"ts": "2026-06-16T12:41:49Z", "event": "login", "user": "david", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_6719736115"}
+{"ts": "2026-06-16T12:43:49Z", "event": "login", "user": "admin", "src_ip": "10.0.3.41", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:44:00Z", "event": "login", "user": "grace", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_8617360361"}
+{"ts": "2026-06-16T12:47:44Z", "event": "login", "user": "admin", "src_ip": "10.0.2.180", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:49:01Z", "event": "login", "user": "jack", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_4062777850"}
+{"ts": "2026-06-16T12:52:26Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T12:52:49Z", "event": "login", "user": "eve", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_2158638062"}
+{"ts": "2026-06-16T12:53:25Z", "event": "login", "user": "grace", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_7495883972"}
+{"ts": "2026-06-16T12:53:58Z", "event": "login", "user": "frank", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_2654584280"}
+{"ts": "2026-06-16T12:57:38Z", "event": "login", "user": "eve", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_1271730355"}
+{"ts": "2026-06-16T13:18:07Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.8", "status": "failure", "service": "sso", "session_id": "sess_4042413312"}
+{"ts": "2026-06-16T13:24:17Z", "event": "login", "user": "jack", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_9454334062"}
+{"ts": "2026-06-16T13:26:15Z", "event": "login", "user": "david", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_3631431563"}
+{"ts": "2026-06-16T13:29:43Z", "event": "login", "user": "bob", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_6244291385"}
+{"ts": "2026-06-16T13:32:14Z", "event": "login", "user": "alice", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_5130589741"}
+{"ts": "2026-06-16T13:39:43Z", "event": "login", "user": "admin", "src_ip": "185.220.101.1", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T13:39:50Z", "event": "login", "user": "bob", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_3783009621"}
+{"ts": "2026-06-16T13:42:52Z", "event": "login", "user": "ivy", "src_ip": "10.0.5.73", "status": "failure", "service": "sso", "session_id": "sess_1792214339"}
+{"ts": "2026-06-16T13:56:13Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T13:58:46Z", "event": "login", "user": "eve", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_3978287288"}
+{"ts": "2026-06-16T14:00:09Z", "event": "login", "user": "admin", "src_ip": "10.0.5.109", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T14:10:01Z", "event": "login", "user": "grace", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_7420846622"}
+{"ts": "2026-06-16T14:11:55Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T14:15:48Z", "event": "login", "user": "henry", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_8584566722"}
+{"ts": "2026-06-16T14:16:30Z", "event": "login", "user": "admin", "src_ip": "10.0.5.110", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T14:23:22Z", "event": "login", "user": "david", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_5433395802"}
+{"ts": "2026-06-16T14:28:29Z", "event": "login", "user": "charlie", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_4459340599"}
+{"ts": "2026-06-16T14:31:01Z", "event": "login", "user": "eve", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_4501175349"}
+{"ts": "2026-06-16T14:35:35Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T14:46:28Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T14:53:44Z", "event": "login", "user": "henry", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_4683585586"}
+{"ts": "2026-06-16T14:57:48Z", "event": "login", "user": "eve", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_2075413763"}
+{"ts": "2026-06-16T14:59:36Z", "event": "login", "user": "eve", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_9981632126"}
+{"ts": "2026-06-16T15:00:08Z", "event": "login", "user": "henry", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_8215470878"}
+{"ts": "2026-06-16T15:00:29Z", "event": "login", "user": "frank", "src_ip": "10.0.1.175", "status": "failure", "service": "sso", "session_id": "sess_5862655247"}
+{"ts": "2026-06-16T15:02:02Z", "event": "login", "user": "frank", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_1613549255"}
+{"ts": "2026-06-16T15:04:17Z", "event": "login", "user": "admin", "src_ip": "10.0.3.64", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T15:05:46Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T15:08:27Z", "event": "login", "user": "admin", "src_ip": "10.0.1.196", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T15:20:02Z", "event": "login", "user": "jack", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_3933213766"}
+{"ts": "2026-06-16T15:21:51Z", "event": "login", "user": "bob", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_8684942020"}
+{"ts": "2026-06-16T15:28:46Z", "event": "login", "user": "bob", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_6698349136"}
+{"ts": "2026-06-16T15:31:19Z", "event": "login", "user": "bob", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_5531313426"}
+{"ts": "2026-06-16T15:32:01Z", "event": "login", "user": "charlie", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_9388140708"}
+{"ts": "2026-06-16T15:34:20Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_4865030023"}
+{"ts": "2026-06-16T15:43:58Z", "event": "login", "user": "alice", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_6858234447"}
+{"ts": "2026-06-16T15:44:37Z", "event": "login", "user": "alice", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_8111191488"}
+{"ts": "2026-06-16T15:49:08Z", "event": "login", "user": "ivy", "src_ip": "10.0.3.64", "status": "failure", "service": "sso", "session_id": "sess_8923555411"}
+{"ts": "2026-06-16T15:50:09Z", "event": "login", "user": "henry", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_8664400151"}
+{"ts": "2026-06-16T15:51:02Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T15:55:28Z", "event": "login", "user": "grace", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_4767539382"}
+{"ts": "2026-06-16T15:56:30Z", "event": "login", "user": "grace", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_6317889312"}
+{"ts": "2026-06-16T15:59:01Z", "event": "login", "user": "david", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_9141445255"}
+{"ts": "2026-06-16T16:02:13Z", "event": "login", "user": "grace", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_5562470175"}
+{"ts": "2026-06-16T16:03:37Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T16:07:32Z", "event": "login", "user": "jack", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_6000952470"}
+{"ts": "2026-06-16T16:09:26Z", "event": "login", "user": "admin", "src_ip": "10.0.4.89", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T16:12:06Z", "event": "login", "user": "eve", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_2407863065"}
+{"ts": "2026-06-16T16:12:35Z", "event": "login", "user": "admin", "src_ip": "10.0.5.110", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T16:13:56Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T16:15:43Z", "event": "login", "user": "grace", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_3362751242"}
+{"ts": "2026-06-16T16:16:52Z", "event": "login", "user": "alice", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_8832617672"}
+{"ts": "2026-06-16T16:19:51Z", "event": "login", "user": "bob", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_1553155490"}
+{"ts": "2026-06-16T16:20:53Z", "event": "login", "user": "henry", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_7759781156"}
+{"ts": "2026-06-16T16:23:08Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T16:32:38Z", "event": "login", "user": "admin", "src_ip": "10.0.4.89", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T16:39:58Z", "event": "login", "user": "frank", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_8638763775"}
+{"ts": "2026-06-16T16:47:02Z", "event": "login", "user": "jack", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_8291250562"}
+{"ts": "2026-06-16T16:52:28Z", "event": "login", "user": "jack", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_3052947074"}
+{"ts": "2026-06-16T16:56:19Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_5606488160"}
+{"ts": "2026-06-16T16:57:19Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T17:02:57Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T17:05:12Z", "event": "login", "user": "alice", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_1139082827"}
+{"ts": "2026-06-16T17:09:40Z", "event": "login", "user": "bob", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_2139078760"}
+{"ts": "2026-06-16T17:16:33Z", "event": "login", "user": "admin", "src_ip": "10.0.3.64", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T17:17:15Z", "event": "login", "user": "henry", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_3951331472"}
+{"ts": "2026-06-16T17:17:22Z", "event": "login", "user": "admin", "src_ip": "10.0.5.24", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T17:19:52Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_9912067529"}
+{"ts": "2026-06-16T17:24:55Z", "event": "login", "user": "bob", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_6110943464"}
+{"ts": "2026-06-16T17:29:22Z", "event": "login", "user": "jack", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_1659663750"}
+{"ts": "2026-06-16T17:30:28Z", "event": "login", "user": "bob", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_3062994753"}
+{"ts": "2026-06-16T17:31:00Z", "event": "login", "user": "charlie", "src_ip": "10.0.5.8", "status": "failure", "service": "sso", "session_id": "sess_5791074361"}
+{"ts": "2026-06-16T17:31:50Z", "event": "login", "user": "admin", "src_ip": "10.0.5.24", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T17:33:03Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_9098129449"}
+{"ts": "2026-06-16T17:33:45Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T17:34:23Z", "event": "login", "user": "admin", "src_ip": "10.0.4.89", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T17:37:59Z", "event": "login", "user": "frank", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_7539441086"}
+{"ts": "2026-06-16T17:43:12Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T17:44:35Z", "event": "login", "user": "henry", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_1827752234"}
+{"ts": "2026-06-16T17:48:14Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_8974140139"}
+{"ts": "2026-06-16T17:59:05Z", "event": "login", "user": "eve", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_8274219704"}
+{"ts": "2026-06-16T18:05:54Z", "event": "login", "user": "henry", "src_ip": "10.0.5.52", "status": "success", "service": "sso", "session_id": "sess_3772636814"}
+{"ts": "2026-06-16T18:10:23Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_1124331395"}
+{"ts": "2026-06-16T18:12:43Z", "event": "login", "user": "alice", "src_ip": "10.0.5.109", "status": "success", "service": "sso", "session_id": "sess_6471691689"}
+{"ts": "2026-06-16T18:16:44Z", "event": "login", "user": "henry", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_2478538226"}
+{"ts": "2026-06-16T18:19:17Z", "event": "login", "user": "jack", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_3780475472"}
+{"ts": "2026-06-16T18:47:32Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T18:51:52Z", "event": "login", "user": "eve", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_1383539822"}
+{"ts": "2026-06-16T19:00:03Z", "event": "login", "user": "charlie", "src_ip": "10.0.5.24", "status": "failure", "service": "sso", "session_id": "sess_6766723248"}
+{"ts": "2026-06-16T19:01:04Z", "event": "login", "user": "admin", "src_ip": "10.0.1.175", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T19:01:21Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_6054421752"}
+{"ts": "2026-06-16T19:01:48Z", "event": "login", "user": "eve", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_4283432667"}
+{"ts": "2026-06-16T19:03:41Z", "event": "login", "user": "grace", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_9441018790"}
+{"ts": "2026-06-16T19:03:52Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T19:04:50Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_5080513633"}
+{"ts": "2026-06-16T19:11:05Z", "event": "login", "user": "alice", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_7546035453"}
+{"ts": "2026-06-16T19:15:03Z", "event": "login", "user": "grace", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_1563524533"}
+{"ts": "2026-06-16T19:16:06Z", "event": "login", "user": "alice", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_9798613995"}
+{"ts": "2026-06-16T19:16:54Z", "event": "login", "user": "bob", "src_ip": "10.0.5.73", "status": "success", "service": "sso", "session_id": "sess_6380470008"}
+{"ts": "2026-06-16T19:25:24Z", "event": "login", "user": "admin", "src_ip": "10.0.2.37", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T19:25:51Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_7359403225"}
+{"ts": "2026-06-16T19:26:41Z", "event": "login", "user": "bob", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_8168394616"}
+{"ts": "2026-06-16T19:28:45Z", "event": "login", "user": "bob", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_9492399988"}
+{"ts": "2026-06-16T19:33:01Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T19:33:15Z", "event": "login", "user": "alice", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_6027311960"}
+{"ts": "2026-06-16T19:42:28Z", "event": "login", "user": "alice", "src_ip": "10.0.5.110", "status": "success", "service": "sso", "session_id": "sess_2881894932"}
+{"ts": "2026-06-16T19:45:57Z", "event": "login", "user": "grace", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_2349641712"}
+{"ts": "2026-06-16T19:49:32Z", "event": "login", "user": "admin", "src_ip": "10.0.1.57", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T19:50:49Z", "event": "login", "user": "admin", "src_ip": "10.0.1.9", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T19:51:47Z", "event": "login", "user": "ivy", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_8940731272"}
+{"ts": "2026-06-16T19:55:35Z", "event": "login", "user": "david", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_2009317340"}
+{"ts": "2026-06-16T19:58:10Z", "event": "login", "user": "henry", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_9506916058"}
+{"ts": "2026-06-16T19:58:32Z", "event": "login", "user": "grace", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_8178927766"}
+{"ts": "2026-06-16T19:59:03Z", "event": "login", "user": "admin", "src_ip": "10.0.3.64", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T20:00:06Z", "event": "login", "user": "admin", "src_ip": "10.0.5.52", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T20:04:19Z", "event": "login", "user": "david", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_7536876169"}
+{"ts": "2026-06-16T20:04:52Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_8394040015"}
+{"ts": "2026-06-16T20:12:18Z", "event": "login", "user": "henry", "src_ip": "10.0.1.8", "status": "success", "service": "sso", "session_id": "sess_9798548049"}
+{"ts": "2026-06-16T20:16:54Z", "event": "login", "user": "jack", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_6947080764"}
+{"ts": "2026-06-16T20:23:24Z", "event": "login", "user": "admin", "src_ip": "10.0.5.109", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T20:35:34Z", "event": "login", "user": "grace", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_1243115672"}
+{"ts": "2026-06-16T20:38:00Z", "event": "login", "user": "alice", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_3324316421"}
+{"ts": "2026-06-16T20:42:49Z", "event": "login", "user": "admin", "src_ip": "10.0.3.28", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T20:45:32Z", "event": "login", "user": "eve", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_9032096058"}
+{"ts": "2026-06-16T20:55:00Z", "event": "login", "user": "jack", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_5026508020"}
+{"ts": "2026-06-16T20:55:25Z", "event": "login", "user": "frank", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_8137764127"}
+{"ts": "2026-06-16T21:01:24Z", "event": "login", "user": "ivy", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_2500674245"}
+{"ts": "2026-06-16T21:02:31Z", "event": "login", "user": "admin", "src_ip": "10.0.2.180", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T21:05:48Z", "event": "login", "user": "frank", "src_ip": "10.0.1.196", "status": "success", "service": "sso", "session_id": "sess_9761206076"}
+{"ts": "2026-06-16T21:21:13Z", "event": "login", "user": "frank", "src_ip": "10.0.3.64", "status": "success", "service": "sso", "session_id": "sess_1233079614"}
+{"ts": "2026-06-16T21:29:00Z", "event": "login", "user": "eve", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_7174772035"}
+{"ts": "2026-06-16T21:29:13Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T21:37:24Z", "event": "login", "user": "alice", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_5067245523"}
+{"ts": "2026-06-16T21:40:52Z", "event": "login", "user": "charlie", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_2085517692"}
+{"ts": "2026-06-16T21:42:14Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T21:42:52Z", "event": "login", "user": "admin", "src_ip": "10.0.2.116", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T21:44:52Z", "event": "login", "user": "bob", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_6715961218"}
+{"ts": "2026-06-16T21:46:18Z", "event": "login", "user": "jack", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_6659847491"}
+{"ts": "2026-06-16T21:51:33Z", "event": "login", "user": "frank", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_8047347877"}
+{"ts": "2026-06-16T21:56:58Z", "event": "login", "user": "jack", "src_ip": "10.0.2.37", "status": "success", "service": "sso", "session_id": "sess_3313346852"}
+{"ts": "2026-06-16T22:00:23Z", "event": "login", "user": "admin", "src_ip": "10.0.5.73", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T22:00:25Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T22:06:26Z", "event": "login", "user": "ivy", "src_ip": "10.0.4.89", "status": "success", "service": "sso", "session_id": "sess_9635425513"}
+{"ts": "2026-06-16T22:15:49Z", "event": "login", "user": "admin", "src_ip": "10.0.4.89", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T22:19:36Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_6041646576"}
+{"ts": "2026-06-16T22:21:56Z", "event": "login", "user": "admin", "src_ip": "10.0.2.247", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T22:27:43Z", "event": "login", "user": "admin", "src_ip": "10.0.2.131", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T22:28:25Z", "event": "login", "user": "eve", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_5970811968"}
+{"ts": "2026-06-16T22:34:00Z", "event": "login", "user": "alice", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_1692044390"}
+{"ts": "2026-06-16T22:35:25Z", "event": "login", "user": "jack", "src_ip": "10.0.5.24", "status": "success", "service": "sso", "session_id": "sess_9410569618"}
+{"ts": "2026-06-16T22:36:19Z", "event": "login", "user": "admin", "src_ip": "10.0.1.57", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T22:45:31Z", "event": "login", "user": "alice", "src_ip": "10.0.1.9", "status": "success", "service": "sso", "session_id": "sess_8234304760"}
+{"ts": "2026-06-16T22:49:19Z", "event": "login", "user": "charlie", "src_ip": "10.0.3.28", "status": "success", "service": "sso", "session_id": "sess_7101791420"}
+{"ts": "2026-06-16T22:58:23Z", "event": "login", "user": "alice", "src_ip": "10.0.2.247", "status": "success", "service": "sso", "session_id": "sess_3232360156"}
+{"ts": "2026-06-16T23:00:18Z", "event": "login", "user": "admin", "src_ip": "10.0.2.180", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T23:01:04Z", "event": "login", "user": "jack", "src_ip": "10.0.2.131", "status": "success", "service": "sso", "session_id": "sess_7597520265"}
+{"ts": "2026-06-16T23:05:53Z", "event": "login", "user": "ivy", "src_ip": "10.0.3.41", "status": "success", "service": "sso", "session_id": "sess_9540577974"}
+{"ts": "2026-06-16T23:09:39Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T23:10:39Z", "event": "login", "user": "ivy", "src_ip": "10.0.2.116", "status": "success", "service": "sso", "session_id": "sess_1223565082"}
+{"ts": "2026-06-16T23:14:01Z", "event": "login", "user": "eve", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_3615759047"}
+{"ts": "2026-06-16T23:20:12Z", "event": "login", "user": "ivy", "src_ip": "10.0.5.8", "status": "success", "service": "sso", "session_id": "sess_3999818762"}
+{"ts": "2026-06-16T23:27:45Z", "event": "login", "user": "admin", "src_ip": "10.0.1.196", "status": "success", "service": "sso"}
+{"ts": "2026-06-16T23:29:00Z", "event": "login", "user": "admin", "src_ip": "185.220.101.2", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T23:32:41Z", "event": "login", "user": "ivy", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_7456062427"}
+{"ts": "2026-06-16T23:36:25Z", "event": "login", "user": "admin", "src_ip": "10.0.1.8", "status": "failure", "service": "sso"}
+{"ts": "2026-06-16T23:42:02Z", "event": "login", "user": "david", "src_ip": "10.0.1.57", "status": "success", "service": "sso", "session_id": "sess_3300607428"}
+{"ts": "2026-06-16T23:44:29Z", "event": "login", "user": "charlie", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_7759044245"}
+{"ts": "2026-06-16T23:50:13Z", "event": "login", "user": "bob", "src_ip": "10.0.1.175", "status": "success", "service": "sso", "session_id": "sess_8144352013"}
+{"ts": "2026-06-16T23:58:07Z", "event": "login", "user": "grace", "src_ip": "10.0.2.180", "status": "success", "service": "sso", "session_id": "sess_9729790084"}
+{"ts": "2026-06-16T23:59:34Z", "event": "login", "user": "admin", "src_ip": "10.0.5.8", "status": "failure", "service": "sso"}

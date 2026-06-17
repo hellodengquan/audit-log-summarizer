@@ -1,0 +1,4613 @@
+{
+  "generated_at": "2026-06-17T04:13:40.237207+00:00",
+  "version": "1.0",
+  "meta": {
+    "start_ts": 1781568000.0,
+    "end_ts": 1781654374.0,
+    "start": "2026-06-16 00:00:00 UTC",
+    "end": "2026-06-16 23:59:34 UTC",
+    "span_seconds": 86374.0,
+    "window_seconds": 300
+  },
+  "overview": {
+    "total_logs": 8502,
+    "unique_subjects": 45,
+    "unique_actions": 24,
+    "windows_covered": 288
+  },
+  "by_status": [
+    {
+      "status": "",
+      "cnt": 6584
+    },
+    {
+      "status": "success",
+      "cnt": 1278
+    },
+    {
+      "status": "failure",
+      "cnt": 640
+    }
+  ],
+  "by_subject": [
+    {
+      "subject": "45.33.32.156",
+      "cnt": 1500,
+      "t_min": 1781618400.0,
+      "t_max": 1781621396.0,
+      "action_types": 1,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "unknown",
+      "cnt": 1205,
+      "t_min": 1781568008.0,
+      "t_max": 1781654361.0,
+      "action_types": 19,
+      "fail_cnt": 118
+    },
+    {
+      "subject": "10.0.2.116",
+      "cnt": 262,
+      "t_min": 1781568162.0,
+      "t_max": 1781654148.0,
+      "action_types": 5,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.5.110",
+      "cnt": 260,
+      "t_min": 1781568935.0,
+      "t_max": 1781654317.0,
+      "action_types": 6,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "10.0.2.180",
+      "cnt": 251,
+      "t_min": 1781568183.0,
+      "t_max": 1781654006.0,
+      "action_types": 6,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "10.0.2.37",
+      "cnt": 251,
+      "t_min": 1781568663.0,
+      "t_max": 1781654311.0,
+      "action_types": 6,
+      "fail_cnt": 5
+    },
+    {
+      "subject": "10.0.2.247",
+      "cnt": 249,
+      "t_min": 1781568392.0,
+      "t_max": 1781654270.0,
+      "action_types": 6,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.1.8",
+      "cnt": 246,
+      "t_min": 1781568363.0,
+      "t_max": 1781654090.0,
+      "action_types": 6,
+      "fail_cnt": 3
+    },
+    {
+      "subject": "10.0.5.73",
+      "cnt": 245,
+      "t_min": 1781568130.0,
+      "t_max": 1781653996.0,
+      "action_types": 5,
+      "fail_cnt": 3
+    },
+    {
+      "subject": "10.0.5.24",
+      "cnt": 243,
+      "t_min": 1781568352.0,
+      "t_max": 1781654070.0,
+      "action_types": 5,
+      "fail_cnt": 3
+    },
+    {
+      "subject": "10.0.1.9",
+      "cnt": 241,
+      "t_min": 1781568990.0,
+      "t_max": 1781654186.0,
+      "action_types": 5,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.2.131",
+      "cnt": 241,
+      "t_min": 1781568630.0,
+      "t_max": 1781654215.0,
+      "action_types": 5,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "10.0.1.175",
+      "cnt": 236,
+      "t_min": 1781568064.0,
+      "t_max": 1781654076.0,
+      "action_types": 5,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "10.0.3.64",
+      "cnt": 234,
+      "t_min": 1781568242.0,
+      "t_max": 1781653587.0,
+      "action_types": 5,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "10.0.5.8",
+      "cnt": 234,
+      "t_min": 1781568344.0,
+      "t_max": 1781654332.0,
+      "action_types": 5,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.5.109",
+      "cnt": 227,
+      "t_min": 1781568098.0,
+      "t_max": 1781654121.0,
+      "action_types": 6,
+      "fail_cnt": 4
+    },
+    {
+      "subject": "10.0.5.52",
+      "cnt": 224,
+      "t_min": 1781568082.0,
+      "t_max": 1781654259.0,
+      "action_types": 5,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.3.41",
+      "cnt": 221,
+      "t_min": 1781568031.0,
+      "t_max": 1781654314.0,
+      "action_types": 6,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "10.0.1.196",
+      "cnt": 220,
+      "t_min": 1781568011.0,
+      "t_max": 1781654031.0,
+      "action_types": 6,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "10.0.4.89",
+      "cnt": 220,
+      "t_min": 1781568134.0,
+      "t_max": 1781654065.0,
+      "action_types": 6,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "10.0.3.28",
+      "cnt": 209,
+      "t_min": 1781568071.0,
+      "t_max": 1781654358.0,
+      "action_types": 5,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "admin",
+      "cnt": 205,
+      "t_min": 1781569999.0,
+      "t_max": 1781654374.0,
+      "action_types": 1,
+      "fail_cnt": 119
+    },
+    {
+      "subject": "10.0.1.57",
+      "cnt": 198,
+      "t_min": 1781569189.0,
+      "t_max": 1781652823.0,
+      "action_types": 6,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "root ;",
+      "cnt": 121,
+      "t_min": 1781568573.0,
+      "t_max": 1781652763.0,
+      "action_types": 4,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "root",
+      "cnt": 101,
+      "t_min": 1781576253.0,
+      "t_max": 1781648287.0,
+      "action_types": 1,
+      "fail_cnt": 101
+    },
+    {
+      "subject": "user",
+      "cnt": 88,
+      "t_min": 1781596800.0,
+      "t_max": 1781597588.0,
+      "action_types": 1,
+      "fail_cnt": 88
+    },
+    {
+      "subject": "test",
+      "cnt": 77,
+      "t_min": 1781596800.0,
+      "t_max": 1781597592.0,
+      "action_types": 1,
+      "fail_cnt": 77
+    },
+    {
+      "subject": "administrator",
+      "cnt": 76,
+      "t_min": 1781596800.0,
+      "t_max": 1781597594.0,
+      "action_types": 1,
+      "fail_cnt": 76
+    },
+    {
+      "subject": "grace",
+      "cnt": 48,
+      "t_min": 1781568113.0,
+      "t_max": 1781654287.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "bob",
+      "cnt": 47,
+      "t_min": 1781568000.0,
+      "t_max": 1781653813.0,
+      "action_types": 2,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "frank",
+      "cnt": 46,
+      "t_min": 1781568422.0,
+      "t_max": 1781652763.0,
+      "action_types": 2,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "henry",
+      "cnt": 40,
+      "t_min": 1781570129.0,
+      "t_max": 1781648595.0,
+      "action_types": 2,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "charlie",
+      "cnt": 38,
+      "t_min": 1781568965.0,
+      "t_max": 1781653469.0,
+      "action_types": 2,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "eve",
+      "cnt": 38,
+      "t_min": 1781569577.0,
+      "t_max": 1781651641.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "alice",
+      "cnt": 37,
+      "t_min": 1781572962.0,
+      "t_max": 1781650703.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "david",
+      "cnt": 35,
+      "t_min": 1781569032.0,
+      "t_max": 1781653322.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "ivy",
+      "cnt": 28,
+      "t_min": 1781570796.0,
+      "t_max": 1781652761.0,
+      "action_types": 1,
+      "fail_cnt": 4
+    },
+    {
+      "subject": "jack",
+      "cnt": 25,
+      "t_min": 1781572009.0,
+      "t_max": 1781650864.0,
+      "action_types": 1,
+      "fail_cnt": 0
+    },
+    {
+      "subject": "185.220.101.6",
+      "cnt": 10,
+      "t_min": 1781568543.0,
+      "t_max": 1781647360.0,
+      "action_types": 3,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "185.220.101.2",
+      "cnt": 6,
+      "t_min": 1781589242.0,
+      "t_max": 1781649492.0,
+      "action_types": 2,
+      "fail_cnt": 3
+    },
+    {
+      "subject": "185.220.101.3",
+      "cnt": 5,
+      "t_min": 1781576414.0,
+      "t_max": 1781649892.0,
+      "action_types": 3,
+      "fail_cnt": 2
+    },
+    {
+      "subject": "185.220.101.4",
+      "cnt": 5,
+      "t_min": 1781574082.0,
+      "t_max": 1781646120.0,
+      "action_types": 2,
+      "fail_cnt": 3
+    },
+    {
+      "subject": "185.220.101.7",
+      "cnt": 4,
+      "t_min": 1781569494.0,
+      "t_max": 1781633887.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "185.220.101.5",
+      "cnt": 3,
+      "t_min": 1781575897.0,
+      "t_max": 1781609013.0,
+      "action_types": 2,
+      "fail_cnt": 1
+    },
+    {
+      "subject": "185.220.101.1",
+      "cnt": 2,
+      "t_min": 1781601217.0,
+      "t_max": 1781618567.0,
+      "action_types": 2,
+      "fail_cnt": 0
+    }
+  ],
+  "by_action": [
+    {
+      "action": "read",
+      "cnt": 4531,
+      "subject_cnt": 22,
+      "t_min": 1781568008.0,
+      "t_max": 1781654358.0,
+      "fail_cnt": 15
+    },
+    {
+      "action": "create",
+      "cnt": 974,
+      "subject_cnt": 21,
+      "t_min": 1781568064.0,
+      "t_max": 1781654242.0,
+      "fail_cnt": 5
+    },
+    {
+      "action": "login",
+      "cnt": 808,
+      "subject_cnt": 15,
+      "t_min": 1781568000.0,
+      "t_max": 1781654374.0,
+      "fail_cnt": 475
+    },
+    {
+      "action": "write",
+      "cnt": 766,
+      "subject_cnt": 21,
+      "t_min": 1781568031.0,
+      "t_max": 1781654311.0,
+      "fail_cnt": 11
+    },
+    {
+      "action": "sudo",
+      "cnt": 271,
+      "subject_cnt": 9,
+      "t_min": 1781568573.0,
+      "t_max": 1781654306.0,
+      "fail_cnt": 19
+    },
+    {
+      "action": "delete",
+      "cnt": 260,
+      "subject_cnt": 21,
+      "t_min": 1781568924.0,
+      "t_max": 1781654013.0,
+      "fail_cnt": 8
+    },
+    {
+      "action": "deploy",
+      "cnt": 200,
+      "subject_cnt": 1,
+      "t_min": 1781568298.0,
+      "t_max": 1781654106.0,
+      "fail_cnt": 24
+    },
+    {
+      "action": "restart",
+      "cnt": 134,
+      "subject_cnt": 1,
+      "t_min": 1781568875.0,
+      "t_max": 1781654361.0,
+      "fail_cnt": 11
+    },
+    {
+      "action": "backup",
+      "cnt": 104,
+      "subject_cnt": 1,
+      "t_min": 1781569777.0,
+      "t_max": 1781654139.0,
+      "fail_cnt": 5
+    },
+    {
+      "action": "password_change",
+      "cnt": 98,
+      "subject_cnt": 27,
+      "t_min": 1781569494.0,
+      "t_max": 1781653696.0,
+      "fail_cnt": 37
+    },
+    {
+      "action": "ssh",
+      "cnt": 80,
+      "subject_cnt": 1,
+      "t_min": 1781568421.0,
+      "t_max": 1781651983.0,
+      "fail_cnt": 8
+    },
+    {
+      "action": "config_change",
+      "cnt": 60,
+      "subject_cnt": 1,
+      "t_min": 1781568726.0,
+      "t_max": 1781649347.0,
+      "fail_cnt": 11
+    },
+    {
+      "action": "other",
+      "cnt": 43,
+      "subject_cnt": 6,
+      "t_min": 1781568543.0,
+      "t_max": 1781653245.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "api_call",
+      "cnt": 39,
+      "subject_cnt": 16,
+      "t_min": 1781568980.0,
+      "t_max": 1781653465.0,
+      "fail_cnt": 10
+    },
+    {
+      "action": "useradd",
+      "cnt": 35,
+      "subject_cnt": 1,
+      "t_min": 1781573432.0,
+      "t_max": 1781650000.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "systemctl_restart_nginx",
+      "cnt": 34,
+      "subject_cnt": 1,
+      "t_min": 1781568573.0,
+      "t_max": 1781652763.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "apt-get_update",
+      "cnt": 31,
+      "subject_cnt": 1,
+      "t_min": 1781569032.0,
+      "t_max": 1781651596.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "cat_/etc/shadow",
+      "cnt": 21,
+      "subject_cnt": 1,
+      "t_min": 1781576954.0,
+      "t_max": 1781650777.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "permission_grant_global",
+      "cnt": 4,
+      "subject_cnt": 1,
+      "t_min": 1781599414.0,
+      "t_max": 1781636885.0,
+      "fail_cnt": 1
+    },
+    {
+      "action": "rollback",
+      "cnt": 3,
+      "subject_cnt": 1,
+      "t_min": 1781602931.0,
+      "t_max": 1781641138.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "db_restore",
+      "cnt": 2,
+      "subject_cnt": 1,
+      "t_min": 1781629438.0,
+      "t_max": 1781643168.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "key_rotate",
+      "cnt": 2,
+      "subject_cnt": 1,
+      "t_min": 1781602601.0,
+      "t_max": 1781604896.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "cert_revoke",
+      "cnt": 1,
+      "subject_cnt": 1,
+      "t_min": 1781640412.0,
+      "t_max": 1781640412.0,
+      "fail_cnt": 0
+    },
+    {
+      "action": "emergency_shutdown",
+      "cnt": 1,
+      "subject_cnt": 1,
+      "t_min": 1781623780.0,
+      "t_max": 1781623780.0,
+      "fail_cnt": 0
+    }
+  ],
+  "by_subject_action": [
+    {
+      "subject": "45.33.32.156",
+      "action": "read",
+      "cnt": 1500,
+      "t_min": 1781618400.0,
+      "t_max": 1781621396.0
+    },
+    {
+      "subject": "admin",
+      "action": "login",
+      "cnt": 205,
+      "t_min": 1781569999.0,
+      "t_max": 1781654374.0
+    },
+    {
+      "subject": "unknown",
+      "action": "deploy",
+      "cnt": 200,
+      "t_min": 1781568298.0,
+      "t_max": 1781654106.0
+    },
+    {
+      "subject": "unknown",
+      "action": "read",
+      "cnt": 200,
+      "t_min": 1781568008.0,
+      "t_max": 1781653015.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "read",
+      "cnt": 161,
+      "t_min": 1781569164.0,
+      "t_max": 1781654317.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "read",
+      "cnt": 157,
+      "t_min": 1781568162.0,
+      "t_max": 1781654148.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "read",
+      "cnt": 157,
+      "t_min": 1781568344.0,
+      "t_max": 1781654332.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "read",
+      "cnt": 153,
+      "t_min": 1781568183.0,
+      "t_max": 1781654006.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "read",
+      "cnt": 151,
+      "t_min": 1781569075.0,
+      "t_max": 1781654186.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "read",
+      "cnt": 151,
+      "t_min": 1781568457.0,
+      "t_max": 1781653996.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "read",
+      "cnt": 150,
+      "t_min": 1781568975.0,
+      "t_max": 1781653781.0
+    },
+    {
+      "subject": "unknown",
+      "action": "sudo",
+      "cnt": 150,
+      "t_min": 1781568968.0,
+      "t_max": 1781654306.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "read",
+      "cnt": 149,
+      "t_min": 1781568392.0,
+      "t_max": 1781654270.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "read",
+      "cnt": 145,
+      "t_min": 1781568242.0,
+      "t_max": 1781653587.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "read",
+      "cnt": 142,
+      "t_min": 1781569239.0,
+      "t_max": 1781654090.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "read",
+      "cnt": 141,
+      "t_min": 1781569294.0,
+      "t_max": 1781654070.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "read",
+      "cnt": 140,
+      "t_min": 1781568267.0,
+      "t_max": 1781653585.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "read",
+      "cnt": 139,
+      "t_min": 1781568683.0,
+      "t_max": 1781654259.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "read",
+      "cnt": 137,
+      "t_min": 1781568401.0,
+      "t_max": 1781654314.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "read",
+      "cnt": 136,
+      "t_min": 1781568011.0,
+      "t_max": 1781654031.0
+    },
+    {
+      "subject": "unknown",
+      "action": "restart",
+      "cnt": 134,
+      "t_min": 1781568875.0,
+      "t_max": 1781654361.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "read",
+      "cnt": 133,
+      "t_min": 1781568630.0,
+      "t_max": 1781653859.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "read",
+      "cnt": 126,
+      "t_min": 1781568098.0,
+      "t_max": 1781654121.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "read",
+      "cnt": 125,
+      "t_min": 1781568307.0,
+      "t_max": 1781654065.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "read",
+      "cnt": 120,
+      "t_min": 1781568828.0,
+      "t_max": 1781654358.0
+    },
+    {
+      "subject": "unknown",
+      "action": "write",
+      "cnt": 120,
+      "t_min": 1781569240.0,
+      "t_max": 1781651404.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "read",
+      "cnt": 118,
+      "t_min": 1781569189.0,
+      "t_max": 1781652823.0
+    },
+    {
+      "subject": "unknown",
+      "action": "backup",
+      "cnt": 104,
+      "t_min": 1781569777.0,
+      "t_max": 1781654139.0
+    },
+    {
+      "subject": "root",
+      "action": "login",
+      "cnt": 101,
+      "t_min": 1781576253.0,
+      "t_max": 1781648287.0
+    },
+    {
+      "subject": "user",
+      "action": "login",
+      "cnt": 88,
+      "t_min": 1781596800.0,
+      "t_max": 1781597588.0
+    },
+    {
+      "subject": "unknown",
+      "action": "ssh",
+      "cnt": 80,
+      "t_min": 1781568421.0,
+      "t_max": 1781651983.0
+    },
+    {
+      "subject": "test",
+      "action": "login",
+      "cnt": 77,
+      "t_min": 1781596800.0,
+      "t_max": 1781597592.0
+    },
+    {
+      "subject": "administrator",
+      "action": "login",
+      "cnt": 76,
+      "t_min": 1781596800.0,
+      "t_max": 1781597594.0
+    },
+    {
+      "subject": "unknown",
+      "action": "config_change",
+      "cnt": 60,
+      "t_min": 1781568726.0,
+      "t_max": 1781649347.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "create",
+      "cnt": 57,
+      "t_min": 1781568363.0,
+      "t_max": 1781653756.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "create",
+      "cnt": 56,
+      "t_min": 1781569182.0,
+      "t_max": 1781654215.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "create",
+      "cnt": 53,
+      "t_min": 1781569970.0,
+      "t_max": 1781652696.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "create",
+      "cnt": 52,
+      "t_min": 1781569185.0,
+      "t_max": 1781653218.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "create",
+      "cnt": 51,
+      "t_min": 1781568071.0,
+      "t_max": 1781652668.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "create",
+      "cnt": 50,
+      "t_min": 1781568497.0,
+      "t_max": 1781649299.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "create",
+      "cnt": 50,
+      "t_min": 1781568130.0,
+      "t_max": 1781653094.0
+    },
+    {
+      "subject": "unknown",
+      "action": "create",
+      "cnt": 50,
+      "t_min": 1781568433.0,
+      "t_max": 1781652344.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "create",
+      "cnt": 49,
+      "t_min": 1781568064.0,
+      "t_max": 1781654076.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "create",
+      "cnt": 48,
+      "t_min": 1781571132.0,
+      "t_max": 1781651280.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "create",
+      "cnt": 47,
+      "t_min": 1781568586.0,
+      "t_max": 1781653937.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "create",
+      "cnt": 46,
+      "t_min": 1781569155.0,
+      "t_max": 1781652896.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "create",
+      "cnt": 45,
+      "t_min": 1781569602.0,
+      "t_max": 1781654242.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "create",
+      "cnt": 45,
+      "t_min": 1781568082.0,
+      "t_max": 1781652772.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "create",
+      "cnt": 44,
+      "t_min": 1781568990.0,
+      "t_max": 1781651924.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "create",
+      "cnt": 43,
+      "t_min": 1781568672.0,
+      "t_max": 1781650565.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "write",
+      "cnt": 43,
+      "t_min": 1781568663.0,
+      "t_max": 1781654311.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "write",
+      "cnt": 42,
+      "t_min": 1781568352.0,
+      "t_max": 1781652228.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "create",
+      "cnt": 41,
+      "t_min": 1781568716.0,
+      "t_max": 1781653738.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "write",
+      "cnt": 41,
+      "t_min": 1781568435.0,
+      "t_max": 1781652869.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "create",
+      "cnt": 41,
+      "t_min": 1781569480.0,
+      "t_max": 1781650905.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "create",
+      "cnt": 40,
+      "t_min": 1781568917.0,
+      "t_max": 1781652209.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781569010.0,
+      "t_max": 1781651973.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781568900.0,
+      "t_max": 1781648513.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781570908.0,
+      "t_max": 1781649985.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "write",
+      "cnt": 35,
+      "t_min": 1781572627.0,
+      "t_max": 1781651448.0
+    },
+    {
+      "subject": "grace",
+      "action": "login",
+      "cnt": 35,
+      "t_min": 1781568113.0,
+      "t_max": 1781654287.0
+    },
+    {
+      "subject": "root ;",
+      "action": "useradd",
+      "cnt": 35,
+      "t_min": 1781573432.0,
+      "t_max": 1781650000.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "write",
+      "cnt": 34,
+      "t_min": 1781569004.0,
+      "t_max": 1781652632.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "create",
+      "cnt": 34,
+      "t_min": 1781569478.0,
+      "t_max": 1781652161.0
+    },
+    {
+      "subject": "root ;",
+      "action": "systemctl_restart_nginx",
+      "cnt": 34,
+      "t_min": 1781568573.0,
+      "t_max": 1781652763.0
+    },
+    {
+      "subject": "bob",
+      "action": "login",
+      "cnt": 33,
+      "t_min": 1781568000.0,
+      "t_max": 1781653813.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "write",
+      "cnt": 32,
+      "t_min": 1781569309.0,
+      "t_max": 1781653272.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "create",
+      "cnt": 32,
+      "t_min": 1781571426.0,
+      "t_max": 1781649528.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "write",
+      "cnt": 32,
+      "t_min": 1781572678.0,
+      "t_max": 1781652151.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "write",
+      "cnt": 31,
+      "t_min": 1781570969.0,
+      "t_max": 1781651600.0
+    },
+    {
+      "subject": "root ;",
+      "action": "apt-get_update",
+      "cnt": 31,
+      "t_min": 1781569032.0,
+      "t_max": 1781651596.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781569284.0,
+      "t_max": 1781649494.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781568552.0,
+      "t_max": 1781649966.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781568134.0,
+      "t_max": 1781652435.0
+    },
+    {
+      "subject": "unknown",
+      "action": "delete",
+      "cnt": 30,
+      "t_min": 1781577318.0,
+      "t_max": 1781654013.0
+    },
+    {
+      "subject": "unknown",
+      "action": "other",
+      "cnt": 30,
+      "t_min": 1781570470.0,
+      "t_max": 1781653245.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "write",
+      "cnt": 28,
+      "t_min": 1781569343.0,
+      "t_max": 1781648913.0
+    },
+    {
+      "subject": "ivy",
+      "action": "login",
+      "cnt": 28,
+      "t_min": 1781570796.0,
+      "t_max": 1781652761.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "write",
+      "cnt": 27,
+      "t_min": 1781571291.0,
+      "t_max": 1781651233.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "write",
+      "cnt": 27,
+      "t_min": 1781568841.0,
+      "t_max": 1781648710.0
+    },
+    {
+      "subject": "frank",
+      "action": "login",
+      "cnt": 27,
+      "t_min": 1781568422.0,
+      "t_max": 1781646693.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "write",
+      "cnt": 26,
+      "t_min": 1781569265.0,
+      "t_max": 1781652333.0
+    },
+    {
+      "subject": "eve",
+      "action": "login",
+      "cnt": 26,
+      "t_min": 1781571949.0,
+      "t_max": 1781651641.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "write",
+      "cnt": 25,
+      "t_min": 1781569546.0,
+      "t_max": 1781650984.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "write",
+      "cnt": 25,
+      "t_min": 1781568031.0,
+      "t_max": 1781649909.0
+    },
+    {
+      "subject": "henry",
+      "action": "login",
+      "cnt": 25,
+      "t_min": 1781570129.0,
+      "t_max": 1781640738.0
+    },
+    {
+      "subject": "jack",
+      "action": "login",
+      "cnt": 25,
+      "t_min": 1781572009.0,
+      "t_max": 1781650864.0
+    },
+    {
+      "subject": "alice",
+      "action": "login",
+      "cnt": 22,
+      "t_min": 1781575862.0,
+      "t_max": 1781650703.0
+    },
+    {
+      "subject": "charlie",
+      "action": "login",
+      "cnt": 21,
+      "t_min": 1781568965.0,
+      "t_max": 1781653469.0
+    },
+    {
+      "subject": "root ;",
+      "action": "cat_/etc/shadow",
+      "cnt": 21,
+      "t_min": 1781576954.0,
+      "t_max": 1781650777.0
+    },
+    {
+      "subject": "david",
+      "action": "login",
+      "cnt": 19,
+      "t_min": 1781572657.0,
+      "t_max": 1781653322.0
+    },
+    {
+      "subject": "frank",
+      "action": "sudo",
+      "cnt": 19,
+      "t_min": 1781579222.0,
+      "t_max": 1781652763.0
+    },
+    {
+      "subject": "unknown",
+      "action": "password_change",
+      "cnt": 19,
+      "t_min": 1781578088.0,
+      "t_max": 1781647998.0
+    },
+    {
+      "subject": "charlie",
+      "action": "sudo",
+      "cnt": 17,
+      "t_min": 1781579720.0,
+      "t_max": 1781636953.0
+    },
+    {
+      "subject": "david",
+      "action": "sudo",
+      "cnt": 16,
+      "t_min": 1781569032.0,
+      "t_max": 1781649394.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "delete",
+      "cnt": 15,
+      "t_min": 1781568931.0,
+      "t_max": 1781650468.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "delete",
+      "cnt": 15,
+      "t_min": 1781570691.0,
+      "t_max": 1781622543.0
+    },
+    {
+      "subject": "alice",
+      "action": "sudo",
+      "cnt": 15,
+      "t_min": 1781572962.0,
+      "t_max": 1781642372.0
+    },
+    {
+      "subject": "henry",
+      "action": "sudo",
+      "cnt": 15,
+      "t_min": 1781580733.0,
+      "t_max": 1781648595.0
+    },
+    {
+      "subject": "unknown",
+      "action": "api_call",
+      "cnt": 15,
+      "t_min": 1781574873.0,
+      "t_max": 1781653465.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781572865.0,
+      "t_max": 1781646659.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781583528.0,
+      "t_max": 1781652723.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781568935.0,
+      "t_max": 1781645849.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781570954.0,
+      "t_max": 1781644083.0
+    },
+    {
+      "subject": "bob",
+      "action": "sudo",
+      "cnt": 14,
+      "t_min": 1781574116.0,
+      "t_max": 1781642304.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "delete",
+      "cnt": 13,
+      "t_min": 1781573148.0,
+      "t_max": 1781653842.0
+    },
+    {
+      "subject": "grace",
+      "action": "sudo",
+      "cnt": 13,
+      "t_min": 1781568573.0,
+      "t_max": 1781642179.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781581349.0,
+      "t_max": 1781647475.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781569930.0,
+      "t_max": 1781653342.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781585130.0,
+      "t_max": 1781652953.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781578416.0,
+      "t_max": 1781647495.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781575718.0,
+      "t_max": 1781652851.0
+    },
+    {
+      "subject": "eve",
+      "action": "sudo",
+      "cnt": 12,
+      "t_min": 1781569577.0,
+      "t_max": 1781650000.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "delete",
+      "cnt": 11,
+      "t_min": 1781575259.0,
+      "t_max": 1781645879.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "delete",
+      "cnt": 10,
+      "t_min": 1781586341.0,
+      "t_max": 1781641775.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "delete",
+      "cnt": 10,
+      "t_min": 1781590969.0,
+      "t_max": 1781651411.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781575487.0,
+      "t_max": 1781651736.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781570464.0,
+      "t_max": 1781650283.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781588543.0,
+      "t_max": 1781651799.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "delete",
+      "cnt": 7,
+      "t_min": 1781568924.0,
+      "t_max": 1781646717.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "password_change",
+      "cnt": 6,
+      "t_min": 1781575789.0,
+      "t_max": 1781653696.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "delete",
+      "cnt": 6,
+      "t_min": 1781579540.0,
+      "t_max": 1781639203.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "other",
+      "cnt": 6,
+      "t_min": 1781568543.0,
+      "t_max": 1781647360.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781585838.0,
+      "t_max": 1781626986.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781577163.0,
+      "t_max": 1781624263.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781582632.0,
+      "t_max": 1781650531.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781583526.0,
+      "t_max": 1781625963.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781574218.0,
+      "t_max": 1781648883.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781597069.0,
+      "t_max": 1781622169.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781576787.0,
+      "t_max": 1781653516.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781603360.0,
+      "t_max": 1781614683.0
+    },
+    {
+      "subject": "185.220.101.2",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781589242.0,
+      "t_max": 1781644573.0
+    },
+    {
+      "subject": "185.220.101.4",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781574082.0,
+      "t_max": 1781646120.0
+    },
+    {
+      "subject": "unknown",
+      "action": "permission_grant_global",
+      "cnt": 4,
+      "t_min": 1781599414.0,
+      "t_max": 1781636885.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781586715.0,
+      "t_max": 1781640250.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781587434.0,
+      "t_max": 1781627413.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781573057.0,
+      "t_max": 1781589850.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781570986.0,
+      "t_max": 1781631424.0
+    },
+    {
+      "subject": "185.220.101.7",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781569494.0,
+      "t_max": 1781633887.0
+    },
+    {
+      "subject": "unknown",
+      "action": "rollback",
+      "cnt": 3,
+      "t_min": 1781602931.0,
+      "t_max": 1781641138.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781608875.0,
+      "t_max": 1781634177.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781593557.0,
+      "t_max": 1781606593.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781595704.0,
+      "t_max": 1781641611.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781579122.0,
+      "t_max": 1781638474.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781577741.0,
+      "t_max": 1781638754.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781568980.0,
+      "t_max": 1781570882.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781602087.0,
+      "t_max": 1781650746.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781587791.0,
+      "t_max": 1781651552.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781615434.0,
+      "t_max": 1781633736.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781573361.0,
+      "t_max": 1781617050.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781583573.0,
+      "t_max": 1781648539.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781607294.0,
+      "t_max": 1781637830.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781635331.0,
+      "t_max": 1781639612.0
+    },
+    {
+      "subject": "185.220.101.2",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781637634.0,
+      "t_max": 1781649492.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781594462.0,
+      "t_max": 1781649892.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781610758.0,
+      "t_max": 1781621245.0
+    },
+    {
+      "subject": "185.220.101.5",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781575897.0,
+      "t_max": 1781609013.0
+    },
+    {
+      "subject": "unknown",
+      "action": "db_restore",
+      "cnt": 2,
+      "t_min": 1781629438.0,
+      "t_max": 1781643168.0
+    },
+    {
+      "subject": "unknown",
+      "action": "key_rotate",
+      "cnt": 2,
+      "t_min": 1781602601.0,
+      "t_max": 1781604896.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781573924.0,
+      "t_max": 1781573924.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781635860.0,
+      "t_max": 1781635860.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781638988.0,
+      "t_max": 1781638988.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781601873.0,
+      "t_max": 1781601873.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781572137.0,
+      "t_max": 1781572137.0
+    },
+    {
+      "subject": "185.220.101.1",
+      "action": "other",
+      "cnt": 1,
+      "t_min": 1781618567.0,
+      "t_max": 1781618567.0
+    },
+    {
+      "subject": "185.220.101.1",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781601217.0,
+      "t_max": 1781601217.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781576414.0,
+      "t_max": 1781576414.0
+    },
+    {
+      "subject": "185.220.101.4",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781645318.0,
+      "t_max": 1781645318.0
+    },
+    {
+      "subject": "185.220.101.5",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781598541.0,
+      "t_max": 1781598541.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781598948.0,
+      "t_max": 1781598948.0
+    },
+    {
+      "subject": "185.220.101.7",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781628209.0,
+      "t_max": 1781628209.0
+    },
+    {
+      "subject": "unknown",
+      "action": "cert_revoke",
+      "cnt": 1,
+      "t_min": 1781640412.0,
+      "t_max": 1781640412.0
+    },
+    {
+      "subject": "unknown",
+      "action": "emergency_shutdown",
+      "cnt": 1,
+      "t_min": 1781623780.0,
+      "t_max": 1781623780.0
+    }
+  ],
+  "time_series": [
+    {
+      "bucket": 5938560,
+      "cnt": 19,
+      "t_min": 1781568000.0,
+      "t_max": 1781568298.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938561,
+      "cnt": 31,
+      "t_min": 1781568307.0,
+      "t_max": 1781568594.0,
+      "subject_cnt": 19,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938562,
+      "cnt": 26,
+      "t_min": 1781568630.0,
+      "t_max": 1781568889.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938563,
+      "cnt": 29,
+      "t_min": 1781568900.0,
+      "t_max": 1781569189.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938564,
+      "cnt": 30,
+      "t_min": 1781569205.0,
+      "t_max": 1781569494.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938565,
+      "cnt": 26,
+      "t_min": 1781569507.0,
+      "t_max": 1781569777.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938566,
+      "cnt": 14,
+      "t_min": 1781569858.0,
+      "t_max": 1781570080.0,
+      "subject_cnt": 8,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938567,
+      "cnt": 24,
+      "t_min": 1781570111.0,
+      "t_max": 1781570392.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938568,
+      "cnt": 16,
+      "t_min": 1781570443.0,
+      "t_max": 1781570691.0,
+      "subject_cnt": 11,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938569,
+      "cnt": 23,
+      "t_min": 1781570700.0,
+      "t_max": 1781570992.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938570,
+      "cnt": 22,
+      "t_min": 1781571024.0,
+      "t_max": 1781571291.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938571,
+      "cnt": 22,
+      "t_min": 1781571327.0,
+      "t_max": 1781571599.0,
+      "subject_cnt": 17,
+      "action_cnt": 6,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938572,
+      "cnt": 19,
+      "t_min": 1781571616.0,
+      "t_max": 1781571895.0,
+      "subject_cnt": 11,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938573,
+      "cnt": 21,
+      "t_min": 1781571921.0,
+      "t_max": 1781572196.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938574,
+      "cnt": 18,
+      "t_min": 1781572200.0,
+      "t_max": 1781572492.0,
+      "subject_cnt": 8,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938575,
+      "cnt": 27,
+      "t_min": 1781572514.0,
+      "t_max": 1781572794.0,
+      "subject_cnt": 12,
+      "action_cnt": 11,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938576,
+      "cnt": 18,
+      "t_min": 1781572821.0,
+      "t_max": 1781573095.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938577,
+      "cnt": 35,
+      "t_min": 1781573100.0,
+      "t_max": 1781573399.0,
+      "subject_cnt": 20,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938578,
+      "cnt": 23,
+      "t_min": 1781573417.0,
+      "t_max": 1781573669.0,
+      "subject_cnt": 16,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938579,
+      "cnt": 24,
+      "t_min": 1781573712.0,
+      "t_max": 1781573998.0,
+      "subject_cnt": 15,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938580,
+      "cnt": 30,
+      "t_min": 1781574012.0,
+      "t_max": 1781574280.0,
+      "subject_cnt": 17,
+      "action_cnt": 12,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938581,
+      "cnt": 21,
+      "t_min": 1781574310.0,
+      "t_max": 1781574591.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938582,
+      "cnt": 21,
+      "t_min": 1781574613.0,
+      "t_max": 1781574899.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938583,
+      "cnt": 32,
+      "t_min": 1781574907.0,
+      "t_max": 1781575198.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938584,
+      "cnt": 20,
+      "t_min": 1781575209.0,
+      "t_max": 1781575494.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938585,
+      "cnt": 31,
+      "t_min": 1781575511.0,
+      "t_max": 1781575798.0,
+      "subject_cnt": 16,
+      "action_cnt": 12,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938586,
+      "cnt": 25,
+      "t_min": 1781575807.0,
+      "t_max": 1781576091.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938587,
+      "cnt": 25,
+      "t_min": 1781576100.0,
+      "t_max": 1781576389.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938588,
+      "cnt": 20,
+      "t_min": 1781576414.0,
+      "t_max": 1781576692.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938589,
+      "cnt": 22,
+      "t_min": 1781576704.0,
+      "t_max": 1781576991.0,
+      "subject_cnt": 15,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938590,
+      "cnt": 26,
+      "t_min": 1781577010.0,
+      "t_max": 1781577296.0,
+      "subject_cnt": 17,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938591,
+      "cnt": 28,
+      "t_min": 1781577309.0,
+      "t_max": 1781577591.0,
+      "subject_cnt": 13,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938592,
+      "cnt": 23,
+      "t_min": 1781577650.0,
+      "t_max": 1781577891.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938593,
+      "cnt": 22,
+      "t_min": 1781577900.0,
+      "t_max": 1781578192.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938594,
+      "cnt": 19,
+      "t_min": 1781578208.0,
+      "t_max": 1781578499.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938595,
+      "cnt": 16,
+      "t_min": 1781578508.0,
+      "t_max": 1781578785.0,
+      "subject_cnt": 10,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938596,
+      "cnt": 29,
+      "t_min": 1781578800.0,
+      "t_max": 1781579084.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938597,
+      "cnt": 32,
+      "t_min": 1781579122.0,
+      "t_max": 1781579389.0,
+      "subject_cnt": 19,
+      "action_cnt": 14,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938598,
+      "cnt": 24,
+      "t_min": 1781579412.0,
+      "t_max": 1781579699.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938599,
+      "cnt": 25,
+      "t_min": 1781579716.0,
+      "t_max": 1781579996.0,
+      "subject_cnt": 11,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938600,
+      "cnt": 21,
+      "t_min": 1781580001.0,
+      "t_max": 1781580278.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938601,
+      "cnt": 20,
+      "t_min": 1781580327.0,
+      "t_max": 1781580595.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938602,
+      "cnt": 22,
+      "t_min": 1781580620.0,
+      "t_max": 1781580898.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938603,
+      "cnt": 21,
+      "t_min": 1781580907.0,
+      "t_max": 1781581192.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938604,
+      "cnt": 27,
+      "t_min": 1781581220.0,
+      "t_max": 1781581491.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938605,
+      "cnt": 16,
+      "t_min": 1781581524.0,
+      "t_max": 1781581758.0,
+      "subject_cnt": 13,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938606,
+      "cnt": 24,
+      "t_min": 1781581806.0,
+      "t_max": 1781582083.0,
+      "subject_cnt": 12,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938607,
+      "cnt": 23,
+      "t_min": 1781582109.0,
+      "t_max": 1781582384.0,
+      "subject_cnt": 15,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938608,
+      "cnt": 15,
+      "t_min": 1781582421.0,
+      "t_max": 1781582694.0,
+      "subject_cnt": 11,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938609,
+      "cnt": 22,
+      "t_min": 1781582720.0,
+      "t_max": 1781582997.0,
+      "subject_cnt": 18,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938610,
+      "cnt": 19,
+      "t_min": 1781583015.0,
+      "t_max": 1781583249.0,
+      "subject_cnt": 11,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938611,
+      "cnt": 22,
+      "t_min": 1781583308.0,
+      "t_max": 1781583599.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938612,
+      "cnt": 22,
+      "t_min": 1781583611.0,
+      "t_max": 1781583895.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938613,
+      "cnt": 19,
+      "t_min": 1781583907.0,
+      "t_max": 1781584172.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938614,
+      "cnt": 17,
+      "t_min": 1781584210.0,
+      "t_max": 1781584488.0,
+      "subject_cnt": 15,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938615,
+      "cnt": 26,
+      "t_min": 1781584501.0,
+      "t_max": 1781584796.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938616,
+      "cnt": 24,
+      "t_min": 1781584803.0,
+      "t_max": 1781585094.0,
+      "subject_cnt": 17,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938617,
+      "cnt": 24,
+      "t_min": 1781585101.0,
+      "t_max": 1781585366.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938618,
+      "cnt": 21,
+      "t_min": 1781585402.0,
+      "t_max": 1781585688.0,
+      "subject_cnt": 17,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938619,
+      "cnt": 18,
+      "t_min": 1781585700.0,
+      "t_max": 1781585995.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938620,
+      "cnt": 20,
+      "t_min": 1781586006.0,
+      "t_max": 1781586270.0,
+      "subject_cnt": 12,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938621,
+      "cnt": 25,
+      "t_min": 1781586301.0,
+      "t_max": 1781586587.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938622,
+      "cnt": 16,
+      "t_min": 1781586640.0,
+      "t_max": 1781586890.0,
+      "subject_cnt": 10,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938623,
+      "cnt": 26,
+      "t_min": 1781586912.0,
+      "t_max": 1781587191.0,
+      "subject_cnt": 15,
+      "action_cnt": 10,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938624,
+      "cnt": 20,
+      "t_min": 1781587238.0,
+      "t_max": 1781587496.0,
+      "subject_cnt": 15,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938625,
+      "cnt": 29,
+      "t_min": 1781587519.0,
+      "t_max": 1781587791.0,
+      "subject_cnt": 17,
+      "action_cnt": 11,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938626,
+      "cnt": 24,
+      "t_min": 1781587811.0,
+      "t_max": 1781588092.0,
+      "subject_cnt": 14,
+      "action_cnt": 10,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938627,
+      "cnt": 19,
+      "t_min": 1781588112.0,
+      "t_max": 1781588397.0,
+      "subject_cnt": 13,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938628,
+      "cnt": 22,
+      "t_min": 1781588402.0,
+      "t_max": 1781588692.0,
+      "subject_cnt": 14,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938629,
+      "cnt": 22,
+      "t_min": 1781588722.0,
+      "t_max": 1781588991.0,
+      "subject_cnt": 19,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938630,
+      "cnt": 17,
+      "t_min": 1781589011.0,
+      "t_max": 1781589242.0,
+      "subject_cnt": 11,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938631,
+      "cnt": 25,
+      "t_min": 1781589308.0,
+      "t_max": 1781589597.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938632,
+      "cnt": 24,
+      "t_min": 1781589633.0,
+      "t_max": 1781589898.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938633,
+      "cnt": 21,
+      "t_min": 1781589904.0,
+      "t_max": 1781590173.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938634,
+      "cnt": 26,
+      "t_min": 1781590216.0,
+      "t_max": 1781590498.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938635,
+      "cnt": 21,
+      "t_min": 1781590515.0,
+      "t_max": 1781590788.0,
+      "subject_cnt": 16,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938636,
+      "cnt": 18,
+      "t_min": 1781590800.0,
+      "t_max": 1781591089.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938637,
+      "cnt": 26,
+      "t_min": 1781591103.0,
+      "t_max": 1781591381.0,
+      "subject_cnt": 13,
+      "action_cnt": 10,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938638,
+      "cnt": 14,
+      "t_min": 1781591406.0,
+      "t_max": 1781591695.0,
+      "subject_cnt": 9,
+      "action_cnt": 5,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938639,
+      "cnt": 21,
+      "t_min": 1781591707.0,
+      "t_max": 1781591990.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938640,
+      "cnt": 19,
+      "t_min": 1781592004.0,
+      "t_max": 1781592280.0,
+      "subject_cnt": 13,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938641,
+      "cnt": 25,
+      "t_min": 1781592305.0,
+      "t_max": 1781592597.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938642,
+      "cnt": 25,
+      "t_min": 1781592637.0,
+      "t_max": 1781592888.0,
+      "subject_cnt": 11,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938643,
+      "cnt": 20,
+      "t_min": 1781592906.0,
+      "t_max": 1781593199.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938644,
+      "cnt": 29,
+      "t_min": 1781593209.0,
+      "t_max": 1781593495.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938645,
+      "cnt": 22,
+      "t_min": 1781593510.0,
+      "t_max": 1781593799.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938646,
+      "cnt": 21,
+      "t_min": 1781593817.0,
+      "t_max": 1781594094.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938647,
+      "cnt": 24,
+      "t_min": 1781594148.0,
+      "t_max": 1781594375.0,
+      "subject_cnt": 15,
+      "action_cnt": 11,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938648,
+      "cnt": 27,
+      "t_min": 1781594406.0,
+      "t_max": 1781594696.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938649,
+      "cnt": 25,
+      "t_min": 1781594701.0,
+      "t_max": 1781594964.0,
+      "subject_cnt": 15,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938650,
+      "cnt": 25,
+      "t_min": 1781595000.0,
+      "t_max": 1781595297.0,
+      "subject_cnt": 17,
+      "action_cnt": 10,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938651,
+      "cnt": 30,
+      "t_min": 1781595300.0,
+      "t_max": 1781595592.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938652,
+      "cnt": 29,
+      "t_min": 1781595601.0,
+      "t_max": 1781595896.0,
+      "subject_cnt": 19,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938653,
+      "cnt": 24,
+      "t_min": 1781595906.0,
+      "t_max": 1781596193.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938654,
+      "cnt": 21,
+      "t_min": 1781596200.0,
+      "t_max": 1781596497.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938655,
+      "cnt": 26,
+      "t_min": 1781596522.0,
+      "t_max": 1781596789.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938656,
+      "cnt": 308,
+      "t_min": 1781596800.0,
+      "t_max": 1781597099.0,
+      "subject_cnt": 24,
+      "action_cnt": 10,
+      "fail_cnt": 283
+    },
+    {
+      "bucket": 5938657,
+      "cnt": 101,
+      "t_min": 1781597102.0,
+      "t_max": 1781597396.0,
+      "subject_cnt": 16,
+      "action_cnt": 6,
+      "fail_cnt": 86
+    },
+    {
+      "bucket": 5938658,
+      "cnt": 52,
+      "t_min": 1781597400.0,
+      "t_max": 1781597696.0,
+      "subject_cnt": 17,
+      "action_cnt": 4,
+      "fail_cnt": 35
+    },
+    {
+      "bucket": 5938659,
+      "cnt": 16,
+      "t_min": 1781597701.0,
+      "t_max": 1781597985.0,
+      "subject_cnt": 12,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938660,
+      "cnt": 27,
+      "t_min": 1781598000.0,
+      "t_max": 1781598291.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938661,
+      "cnt": 20,
+      "t_min": 1781598305.0,
+      "t_max": 1781598574.0,
+      "subject_cnt": 11,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938662,
+      "cnt": 19,
+      "t_min": 1781598622.0,
+      "t_max": 1781598883.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938663,
+      "cnt": 25,
+      "t_min": 1781598948.0,
+      "t_max": 1781599198.0,
+      "subject_cnt": 20,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938664,
+      "cnt": 24,
+      "t_min": 1781599206.0,
+      "t_max": 1781599486.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938665,
+      "cnt": 19,
+      "t_min": 1781599508.0,
+      "t_max": 1781599788.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938666,
+      "cnt": 22,
+      "t_min": 1781599805.0,
+      "t_max": 1781600093.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938667,
+      "cnt": 25,
+      "t_min": 1781600148.0,
+      "t_max": 1781600396.0,
+      "subject_cnt": 18,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938668,
+      "cnt": 23,
+      "t_min": 1781600413.0,
+      "t_max": 1781600689.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938669,
+      "cnt": 23,
+      "t_min": 1781600706.0,
+      "t_max": 1781600994.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938670,
+      "cnt": 30,
+      "t_min": 1781601001.0,
+      "t_max": 1781601281.0,
+      "subject_cnt": 18,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938671,
+      "cnt": 36,
+      "t_min": 1781601312.0,
+      "t_max": 1781601582.0,
+      "subject_cnt": 15,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938672,
+      "cnt": 29,
+      "t_min": 1781601607.0,
+      "t_max": 1781601874.0,
+      "subject_cnt": 17,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938673,
+      "cnt": 19,
+      "t_min": 1781601904.0,
+      "t_max": 1781602171.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938674,
+      "cnt": 26,
+      "t_min": 1781602243.0,
+      "t_max": 1781602498.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938675,
+      "cnt": 23,
+      "t_min": 1781602503.0,
+      "t_max": 1781602796.0,
+      "subject_cnt": 15,
+      "action_cnt": 10,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938676,
+      "cnt": 24,
+      "t_min": 1781602802.0,
+      "t_max": 1781603099.0,
+      "subject_cnt": 15,
+      "action_cnt": 11,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938677,
+      "cnt": 25,
+      "t_min": 1781603108.0,
+      "t_max": 1781603388.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938678,
+      "cnt": 28,
+      "t_min": 1781603405.0,
+      "t_max": 1781603694.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938679,
+      "cnt": 24,
+      "t_min": 1781603702.0,
+      "t_max": 1781603986.0,
+      "subject_cnt": 17,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938680,
+      "cnt": 26,
+      "t_min": 1781604018.0,
+      "t_max": 1781604284.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938681,
+      "cnt": 23,
+      "t_min": 1781604302.0,
+      "t_max": 1781604597.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938682,
+      "cnt": 28,
+      "t_min": 1781604609.0,
+      "t_max": 1781604896.0,
+      "subject_cnt": 17,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938683,
+      "cnt": 24,
+      "t_min": 1781604913.0,
+      "t_max": 1781605196.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938684,
+      "cnt": 17,
+      "t_min": 1781605219.0,
+      "t_max": 1781605453.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938685,
+      "cnt": 22,
+      "t_min": 1781605508.0,
+      "t_max": 1781605782.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938686,
+      "cnt": 22,
+      "t_min": 1781605860.0,
+      "t_max": 1781606088.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938687,
+      "cnt": 20,
+      "t_min": 1781606124.0,
+      "t_max": 1781606396.0,
+      "subject_cnt": 11,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938688,
+      "cnt": 18,
+      "t_min": 1781606408.0,
+      "t_max": 1781606674.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938689,
+      "cnt": 25,
+      "t_min": 1781606719.0,
+      "t_max": 1781606987.0,
+      "subject_cnt": 13,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938690,
+      "cnt": 18,
+      "t_min": 1781607061.0,
+      "t_max": 1781607299.0,
+      "subject_cnt": 11,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938691,
+      "cnt": 24,
+      "t_min": 1781607312.0,
+      "t_max": 1781607582.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938692,
+      "cnt": 14,
+      "t_min": 1781607612.0,
+      "t_max": 1781607887.0,
+      "subject_cnt": 13,
+      "action_cnt": 4,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938693,
+      "cnt": 19,
+      "t_min": 1781607912.0,
+      "t_max": 1781608199.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938694,
+      "cnt": 26,
+      "t_min": 1781608215.0,
+      "t_max": 1781608487.0,
+      "subject_cnt": 12,
+      "action_cnt": 11,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938695,
+      "cnt": 25,
+      "t_min": 1781608504.0,
+      "t_max": 1781608794.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938696,
+      "cnt": 28,
+      "t_min": 1781608800.0,
+      "t_max": 1781609080.0,
+      "subject_cnt": 18,
+      "action_cnt": 12,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938697,
+      "cnt": 22,
+      "t_min": 1781609123.0,
+      "t_max": 1781609396.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938698,
+      "cnt": 17,
+      "t_min": 1781609410.0,
+      "t_max": 1781609695.0,
+      "subject_cnt": 11,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938699,
+      "cnt": 15,
+      "t_min": 1781609708.0,
+      "t_max": 1781609998.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938700,
+      "cnt": 28,
+      "t_min": 1781610019.0,
+      "t_max": 1781610298.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938701,
+      "cnt": 29,
+      "t_min": 1781610309.0,
+      "t_max": 1781610593.0,
+      "subject_cnt": 19,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938702,
+      "cnt": 32,
+      "t_min": 1781610609.0,
+      "t_max": 1781610898.0,
+      "subject_cnt": 19,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938703,
+      "cnt": 21,
+      "t_min": 1781610947.0,
+      "t_max": 1781611190.0,
+      "subject_cnt": 12,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938704,
+      "cnt": 23,
+      "t_min": 1781611200.0,
+      "t_max": 1781611471.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938705,
+      "cnt": 20,
+      "t_min": 1781611508.0,
+      "t_max": 1781611798.0,
+      "subject_cnt": 10,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938706,
+      "cnt": 20,
+      "t_min": 1781611824.0,
+      "t_max": 1781612050.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938707,
+      "cnt": 24,
+      "t_min": 1781612107.0,
+      "t_max": 1781612399.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938708,
+      "cnt": 30,
+      "t_min": 1781612405.0,
+      "t_max": 1781612690.0,
+      "subject_cnt": 17,
+      "action_cnt": 12,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938709,
+      "cnt": 15,
+      "t_min": 1781612709.0,
+      "t_max": 1781612995.0,
+      "subject_cnt": 12,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938710,
+      "cnt": 31,
+      "t_min": 1781613000.0,
+      "t_max": 1781613294.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938711,
+      "cnt": 24,
+      "t_min": 1781613317.0,
+      "t_max": 1781613595.0,
+      "subject_cnt": 15,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938712,
+      "cnt": 25,
+      "t_min": 1781613604.0,
+      "t_max": 1781613883.0,
+      "subject_cnt": 20,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938713,
+      "cnt": 16,
+      "t_min": 1781613903.0,
+      "t_max": 1781614170.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938714,
+      "cnt": 21,
+      "t_min": 1781614200.0,
+      "t_max": 1781614491.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938715,
+      "cnt": 19,
+      "t_min": 1781614502.0,
+      "t_max": 1781614786.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938716,
+      "cnt": 22,
+      "t_min": 1781614803.0,
+      "t_max": 1781615077.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938717,
+      "cnt": 25,
+      "t_min": 1781615104.0,
+      "t_max": 1781615373.0,
+      "subject_cnt": 11,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938718,
+      "cnt": 31,
+      "t_min": 1781615403.0,
+      "t_max": 1781615687.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938719,
+      "cnt": 24,
+      "t_min": 1781615702.0,
+      "t_max": 1781615989.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938720,
+      "cnt": 20,
+      "t_min": 1781616015.0,
+      "t_max": 1781616299.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938721,
+      "cnt": 16,
+      "t_min": 1781616307.0,
+      "t_max": 1781616583.0,
+      "subject_cnt": 10,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938722,
+      "cnt": 19,
+      "t_min": 1781616607.0,
+      "t_max": 1781616892.0,
+      "subject_cnt": 11,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938723,
+      "cnt": 26,
+      "t_min": 1781616903.0,
+      "t_max": 1781617196.0,
+      "subject_cnt": 15,
+      "action_cnt": 11,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938724,
+      "cnt": 20,
+      "t_min": 1781617244.0,
+      "t_max": 1781617480.0,
+      "subject_cnt": 10,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938725,
+      "cnt": 24,
+      "t_min": 1781617501.0,
+      "t_max": 1781617791.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938726,
+      "cnt": 24,
+      "t_min": 1781617800.0,
+      "t_max": 1781618083.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938727,
+      "cnt": 23,
+      "t_min": 1781618108.0,
+      "t_max": 1781618399.0,
+      "subject_cnt": 13,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938728,
+      "cnt": 678,
+      "t_min": 1781618400.0,
+      "t_max": 1781618696.0,
+      "subject_cnt": 15,
+      "action_cnt": 12,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938729,
+      "cnt": 170,
+      "t_min": 1781618702.0,
+      "t_max": 1781618999.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938730,
+      "cnt": 171,
+      "t_min": 1781619001.0,
+      "t_max": 1781619298.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938731,
+      "cnt": 171,
+      "t_min": 1781619300.0,
+      "t_max": 1781619599.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938732,
+      "cnt": 176,
+      "t_min": 1781619600.0,
+      "t_max": 1781619899.0,
+      "subject_cnt": 17,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938733,
+      "cnt": 79,
+      "t_min": 1781619900.0,
+      "t_max": 1781620198.0,
+      "subject_cnt": 16,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938734,
+      "cnt": 65,
+      "t_min": 1781620204.0,
+      "t_max": 1781620488.0,
+      "subject_cnt": 12,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938735,
+      "cnt": 76,
+      "t_min": 1781620507.0,
+      "t_max": 1781620798.0,
+      "subject_cnt": 16,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938736,
+      "cnt": 80,
+      "t_min": 1781620806.0,
+      "t_max": 1781621098.0,
+      "subject_cnt": 19,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938737,
+      "cnt": 56,
+      "t_min": 1781621104.0,
+      "t_max": 1781621396.0,
+      "subject_cnt": 16,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938738,
+      "cnt": 26,
+      "t_min": 1781621413.0,
+      "t_max": 1781621684.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938739,
+      "cnt": 28,
+      "t_min": 1781621703.0,
+      "t_max": 1781621989.0,
+      "subject_cnt": 19,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938740,
+      "cnt": 27,
+      "t_min": 1781622008.0,
+      "t_max": 1781622272.0,
+      "subject_cnt": 18,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938741,
+      "cnt": 23,
+      "t_min": 1781622307.0,
+      "t_max": 1781622576.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938742,
+      "cnt": 8,
+      "t_min": 1781622612.0,
+      "t_max": 1781622862.0,
+      "subject_cnt": 7,
+      "action_cnt": 3,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938743,
+      "cnt": 29,
+      "t_min": 1781622910.0,
+      "t_max": 1781623199.0,
+      "subject_cnt": 18,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938744,
+      "cnt": 20,
+      "t_min": 1781623202.0,
+      "t_max": 1781623491.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938745,
+      "cnt": 24,
+      "t_min": 1781623504.0,
+      "t_max": 1781623795.0,
+      "subject_cnt": 15,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938746,
+      "cnt": 23,
+      "t_min": 1781623803.0,
+      "t_max": 1781624094.0,
+      "subject_cnt": 17,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938747,
+      "cnt": 30,
+      "t_min": 1781624115.0,
+      "t_max": 1781624397.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938748,
+      "cnt": 19,
+      "t_min": 1781624401.0,
+      "t_max": 1781624694.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938749,
+      "cnt": 18,
+      "t_min": 1781624701.0,
+      "t_max": 1781624980.0,
+      "subject_cnt": 12,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938750,
+      "cnt": 29,
+      "t_min": 1781625009.0,
+      "t_max": 1781625296.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938751,
+      "cnt": 27,
+      "t_min": 1781625310.0,
+      "t_max": 1781625571.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938752,
+      "cnt": 17,
+      "t_min": 1781625612.0,
+      "t_max": 1781625856.0,
+      "subject_cnt": 12,
+      "action_cnt": 4,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938753,
+      "cnt": 27,
+      "t_min": 1781625909.0,
+      "t_max": 1781626184.0,
+      "subject_cnt": 20,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938754,
+      "cnt": 18,
+      "t_min": 1781626206.0,
+      "t_max": 1781626490.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938755,
+      "cnt": 28,
+      "t_min": 1781626500.0,
+      "t_max": 1781626795.0,
+      "subject_cnt": 16,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938756,
+      "cnt": 18,
+      "t_min": 1781626804.0,
+      "t_max": 1781627076.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938757,
+      "cnt": 20,
+      "t_min": 1781627130.0,
+      "t_max": 1781627390.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938758,
+      "cnt": 28,
+      "t_min": 1781627401.0,
+      "t_max": 1781627684.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938759,
+      "cnt": 21,
+      "t_min": 1781627701.0,
+      "t_max": 1781627998.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938760,
+      "cnt": 23,
+      "t_min": 1781628002.0,
+      "t_max": 1781628294.0,
+      "subject_cnt": 15,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938761,
+      "cnt": 17,
+      "t_min": 1781628335.0,
+      "t_max": 1781628576.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938762,
+      "cnt": 16,
+      "t_min": 1781628622.0,
+      "t_max": 1781628894.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938763,
+      "cnt": 29,
+      "t_min": 1781628905.0,
+      "t_max": 1781629187.0,
+      "subject_cnt": 18,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938764,
+      "cnt": 24,
+      "t_min": 1781629210.0,
+      "t_max": 1781629490.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938765,
+      "cnt": 23,
+      "t_min": 1781629512.0,
+      "t_max": 1781629791.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938766,
+      "cnt": 25,
+      "t_min": 1781629807.0,
+      "t_max": 1781630093.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938767,
+      "cnt": 28,
+      "t_min": 1781630107.0,
+      "t_max": 1781630394.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938768,
+      "cnt": 30,
+      "t_min": 1781630400.0,
+      "t_max": 1781630695.0,
+      "subject_cnt": 18,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938769,
+      "cnt": 30,
+      "t_min": 1781630715.0,
+      "t_max": 1781630995.0,
+      "subject_cnt": 19,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938770,
+      "cnt": 27,
+      "t_min": 1781631027.0,
+      "t_max": 1781631283.0,
+      "subject_cnt": 15,
+      "action_cnt": 7,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938771,
+      "cnt": 27,
+      "t_min": 1781631312.0,
+      "t_max": 1781631597.0,
+      "subject_cnt": 18,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938772,
+      "cnt": 24,
+      "t_min": 1781631605.0,
+      "t_max": 1781631892.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938773,
+      "cnt": 15,
+      "t_min": 1781631904.0,
+      "t_max": 1781632196.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938774,
+      "cnt": 20,
+      "t_min": 1781632233.0,
+      "t_max": 1781632478.0,
+      "subject_cnt": 13,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938775,
+      "cnt": 26,
+      "t_min": 1781632518.0,
+      "t_max": 1781632790.0,
+      "subject_cnt": 16,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938776,
+      "cnt": 17,
+      "t_min": 1781632874.0,
+      "t_max": 1781633095.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938777,
+      "cnt": 20,
+      "t_min": 1781633102.0,
+      "t_max": 1781633399.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938778,
+      "cnt": 22,
+      "t_min": 1781633423.0,
+      "t_max": 1781633678.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938779,
+      "cnt": 25,
+      "t_min": 1781633714.0,
+      "t_max": 1781633998.0,
+      "subject_cnt": 17,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938780,
+      "cnt": 25,
+      "t_min": 1781634017.0,
+      "t_max": 1781634273.0,
+      "subject_cnt": 18,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938781,
+      "cnt": 18,
+      "t_min": 1781634303.0,
+      "t_max": 1781634597.0,
+      "subject_cnt": 10,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938782,
+      "cnt": 17,
+      "t_min": 1781634602.0,
+      "t_max": 1781634893.0,
+      "subject_cnt": 11,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938783,
+      "cnt": 29,
+      "t_min": 1781634919.0,
+      "t_max": 1781635197.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938784,
+      "cnt": 18,
+      "t_min": 1781635206.0,
+      "t_max": 1781635489.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938785,
+      "cnt": 31,
+      "t_min": 1781635500.0,
+      "t_max": 1781635787.0,
+      "subject_cnt": 16,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938786,
+      "cnt": 17,
+      "t_min": 1781635841.0,
+      "t_max": 1781636082.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938787,
+      "cnt": 32,
+      "t_min": 1781636109.0,
+      "t_max": 1781636391.0,
+      "subject_cnt": 18,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938788,
+      "cnt": 37,
+      "t_min": 1781636403.0,
+      "t_max": 1781636695.0,
+      "subject_cnt": 23,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938789,
+      "cnt": 27,
+      "t_min": 1781636702.0,
+      "t_max": 1781636999.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938790,
+      "cnt": 19,
+      "t_min": 1781637025.0,
+      "t_max": 1781637242.0,
+      "subject_cnt": 14,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938791,
+      "cnt": 19,
+      "t_min": 1781637303.0,
+      "t_max": 1781637589.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938792,
+      "cnt": 14,
+      "t_min": 1781637622.0,
+      "t_max": 1781637830.0,
+      "subject_cnt": 12,
+      "action_cnt": 4,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938793,
+      "cnt": 25,
+      "t_min": 1781637919.0,
+      "t_max": 1781638182.0,
+      "subject_cnt": 18,
+      "action_cnt": 9,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938794,
+      "cnt": 21,
+      "t_min": 1781638271.0,
+      "t_max": 1781638488.0,
+      "subject_cnt": 13,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938795,
+      "cnt": 20,
+      "t_min": 1781638513.0,
+      "t_max": 1781638796.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938796,
+      "cnt": 24,
+      "t_min": 1781638806.0,
+      "t_max": 1781639062.0,
+      "subject_cnt": 11,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938797,
+      "cnt": 18,
+      "t_min": 1781639105.0,
+      "t_max": 1781639372.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938798,
+      "cnt": 30,
+      "t_min": 1781639442.0,
+      "t_max": 1781639693.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938799,
+      "cnt": 21,
+      "t_min": 1781639710.0,
+      "t_max": 1781639984.0,
+      "subject_cnt": 18,
+      "action_cnt": 5,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938800,
+      "cnt": 25,
+      "t_min": 1781640000.0,
+      "t_max": 1781640294.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938801,
+      "cnt": 21,
+      "t_min": 1781640304.0,
+      "t_max": 1781640594.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938802,
+      "cnt": 17,
+      "t_min": 1781640600.0,
+      "t_max": 1781640893.0,
+      "subject_cnt": 10,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938803,
+      "cnt": 22,
+      "t_min": 1781640943.0,
+      "t_max": 1781641175.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938804,
+      "cnt": 17,
+      "t_min": 1781641216.0,
+      "t_max": 1781641488.0,
+      "subject_cnt": 13,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938805,
+      "cnt": 18,
+      "t_min": 1781641517.0,
+      "t_max": 1781641780.0,
+      "subject_cnt": 11,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938806,
+      "cnt": 20,
+      "t_min": 1781641811.0,
+      "t_max": 1781642090.0,
+      "subject_cnt": 13,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938807,
+      "cnt": 31,
+      "t_min": 1781642110.0,
+      "t_max": 1781642398.0,
+      "subject_cnt": 15,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938808,
+      "cnt": 26,
+      "t_min": 1781642400.0,
+      "t_max": 1781642698.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938809,
+      "cnt": 24,
+      "t_min": 1781642727.0,
+      "t_max": 1781642998.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938810,
+      "cnt": 23,
+      "t_min": 1781643003.0,
+      "t_max": 1781643282.0,
+      "subject_cnt": 12,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938811,
+      "cnt": 25,
+      "t_min": 1781643300.0,
+      "t_max": 1781643599.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938812,
+      "cnt": 28,
+      "t_min": 1781643611.0,
+      "t_max": 1781643873.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938813,
+      "cnt": 18,
+      "t_min": 1781643921.0,
+      "t_max": 1781644194.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938814,
+      "cnt": 17,
+      "t_min": 1781644200.0,
+      "t_max": 1781644495.0,
+      "subject_cnt": 11,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938815,
+      "cnt": 30,
+      "t_min": 1781644502.0,
+      "t_max": 1781644791.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938816,
+      "cnt": 24,
+      "t_min": 1781644815.0,
+      "t_max": 1781645098.0,
+      "subject_cnt": 14,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938817,
+      "cnt": 24,
+      "t_min": 1781645104.0,
+      "t_max": 1781645389.0,
+      "subject_cnt": 16,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938818,
+      "cnt": 24,
+      "t_min": 1781645403.0,
+      "t_max": 1781645695.0,
+      "subject_cnt": 10,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938819,
+      "cnt": 28,
+      "t_min": 1781645716.0,
+      "t_max": 1781645999.0,
+      "subject_cnt": 17,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938820,
+      "cnt": 25,
+      "t_min": 1781646012.0,
+      "t_max": 1781646295.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938821,
+      "cnt": 19,
+      "t_min": 1781646302.0,
+      "t_max": 1781646599.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938822,
+      "cnt": 21,
+      "t_min": 1781646634.0,
+      "t_max": 1781646886.0,
+      "subject_cnt": 10,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938823,
+      "cnt": 17,
+      "t_min": 1781646930.0,
+      "t_max": 1781647187.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938824,
+      "cnt": 26,
+      "t_min": 1781647200.0,
+      "t_max": 1781647499.0,
+      "subject_cnt": 17,
+      "action_cnt": 8,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938825,
+      "cnt": 26,
+      "t_min": 1781647508.0,
+      "t_max": 1781647795.0,
+      "subject_cnt": 14,
+      "action_cnt": 9,
+      "fail_cnt": 2
+    },
+    {
+      "bucket": 5938826,
+      "cnt": 23,
+      "t_min": 1781647811.0,
+      "t_max": 1781648081.0,
+      "subject_cnt": 12,
+      "action_cnt": 7,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938827,
+      "cnt": 24,
+      "t_min": 1781648114.0,
+      "t_max": 1781648385.0,
+      "subject_cnt": 18,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938828,
+      "cnt": 24,
+      "t_min": 1781648405.0,
+      "t_max": 1781648698.0,
+      "subject_cnt": 17,
+      "action_cnt": 10,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938829,
+      "cnt": 34,
+      "t_min": 1781648710.0,
+      "t_max": 1781648998.0,
+      "subject_cnt": 18,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938830,
+      "cnt": 23,
+      "t_min": 1781649006.0,
+      "t_max": 1781649299.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938831,
+      "cnt": 26,
+      "t_min": 1781649312.0,
+      "t_max": 1781649585.0,
+      "subject_cnt": 16,
+      "action_cnt": 9,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938832,
+      "cnt": 10,
+      "t_min": 1781649631.0,
+      "t_max": 1781649892.0,
+      "subject_cnt": 7,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938833,
+      "cnt": 22,
+      "t_min": 1781649909.0,
+      "t_max": 1781650198.0,
+      "subject_cnt": 16,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938834,
+      "cnt": 21,
+      "t_min": 1781650221.0,
+      "t_max": 1781650498.0,
+      "subject_cnt": 12,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938835,
+      "cnt": 26,
+      "t_min": 1781650505.0,
+      "t_max": 1781650795.0,
+      "subject_cnt": 17,
+      "action_cnt": 11,
+      "fail_cnt": 3
+    },
+    {
+      "bucket": 5938836,
+      "cnt": 21,
+      "t_min": 1781650813.0,
+      "t_max": 1781651095.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938837,
+      "cnt": 20,
+      "t_min": 1781651116.0,
+      "t_max": 1781651395.0,
+      "subject_cnt": 14,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938838,
+      "cnt": 22,
+      "t_min": 1781651404.0,
+      "t_max": 1781651685.0,
+      "subject_cnt": 16,
+      "action_cnt": 10,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938839,
+      "cnt": 28,
+      "t_min": 1781651702.0,
+      "t_max": 1781651988.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938840,
+      "cnt": 22,
+      "t_min": 1781652006.0,
+      "t_max": 1781652293.0,
+      "subject_cnt": 15,
+      "action_cnt": 5,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938841,
+      "cnt": 16,
+      "t_min": 1781652321.0,
+      "t_max": 1781652554.0,
+      "subject_cnt": 10,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938842,
+      "cnt": 26,
+      "t_min": 1781652603.0,
+      "t_max": 1781652896.0,
+      "subject_cnt": 18,
+      "action_cnt": 8,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938843,
+      "cnt": 14,
+      "t_min": 1781652907.0,
+      "t_max": 1781653199.0,
+      "subject_cnt": 9,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938844,
+      "cnt": 23,
+      "t_min": 1781653205.0,
+      "t_max": 1781653497.0,
+      "subject_cnt": 12,
+      "action_cnt": 11,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938845,
+      "cnt": 17,
+      "t_min": 1781653508.0,
+      "t_max": 1781653781.0,
+      "subject_cnt": 11,
+      "action_cnt": 5,
+      "fail_cnt": 1
+    },
+    {
+      "bucket": 5938846,
+      "cnt": 20,
+      "t_min": 1781653813.0,
+      "t_max": 1781654090.0,
+      "subject_cnt": 15,
+      "action_cnt": 6,
+      "fail_cnt": 0
+    },
+    {
+      "bucket": 5938847,
+      "cnt": 22,
+      "t_min": 1781654106.0,
+      "t_max": 1781654374.0,
+      "subject_cnt": 14,
+      "action_cnt": 8,
+      "fail_cnt": 1
+    }
+  ],
+  "anomalies": {
+    "spikes": [
+      {
+        "start": "2026-06-16 14:00:00 UTC",
+        "end": "2026-06-16 14:04:56 UTC",
+        "count": 678,
+        "baseline": 29.52,
+        "z_score": 14.05,
+        "subjects_involved": 15,
+        "action_types": 12,
+        "failures": 0,
+        "multiplier": 22.97
+      },
+      {
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:04:59 UTC",
+        "count": 308,
+        "baseline": 29.52,
+        "z_score": 6.03,
+        "subjects_involved": 24,
+        "action_types": 10,
+        "failures": 283,
+        "multiplier": 10.43
+      },
+      {
+        "start": "2026-06-16 14:20:00 UTC",
+        "end": "2026-06-16 14:24:59 UTC",
+        "count": 176,
+        "baseline": 29.52,
+        "z_score": 3.17,
+        "subjects_involved": 17,
+        "action_types": 8,
+        "failures": 1,
+        "multiplier": 5.96
+      },
+      {
+        "start": "2026-06-16 14:10:01 UTC",
+        "end": "2026-06-16 14:14:58 UTC",
+        "count": 171,
+        "baseline": 29.52,
+        "z_score": 3.06,
+        "subjects_involved": 14,
+        "action_types": 7,
+        "failures": 1,
+        "multiplier": 5.79
+      },
+      {
+        "start": "2026-06-16 14:15:00 UTC",
+        "end": "2026-06-16 14:19:59 UTC",
+        "count": 171,
+        "baseline": 29.52,
+        "z_score": 3.06,
+        "subjects_involved": 14,
+        "action_types": 7,
+        "failures": 0,
+        "multiplier": 5.79
+      },
+      {
+        "start": "2026-06-16 14:05:02 UTC",
+        "end": "2026-06-16 14:09:59 UTC",
+        "count": 170,
+        "baseline": 29.52,
+        "z_score": 3.04,
+        "subjects_involved": 17,
+        "action_types": 7,
+        "failures": 1,
+        "multiplier": 5.76
+      }
+    ],
+    "rare_actions": [
+      {
+        "action": "cert_revoke",
+        "count": 1,
+        "unique_subjects": 1,
+        "share": 0.0118,
+        "failures": 0,
+        "first_seen": "2026-06-16 20:06:52 UTC",
+        "last_seen": "2026-06-16 20:06:52 UTC"
+      },
+      {
+        "action": "emergency_shutdown",
+        "count": 1,
+        "unique_subjects": 1,
+        "share": 0.0118,
+        "failures": 0,
+        "first_seen": "2026-06-16 15:29:40 UTC",
+        "last_seen": "2026-06-16 15:29:40 UTC"
+      },
+      {
+        "action": "db_restore",
+        "count": 2,
+        "unique_subjects": 1,
+        "share": 0.0235,
+        "failures": 0,
+        "first_seen": "2026-06-16 17:03:58 UTC",
+        "last_seen": "2026-06-16 20:52:48 UTC"
+      },
+      {
+        "action": "key_rotate",
+        "count": 2,
+        "unique_subjects": 1,
+        "share": 0.0235,
+        "failures": 0,
+        "first_seen": "2026-06-16 09:36:41 UTC",
+        "last_seen": "2026-06-16 10:14:56 UTC"
+      }
+    ],
+    "bulk_actions": [
+      {
+        "subject": "45.33.32.156",
+        "action": "read",
+        "count": 800,
+        "window_seconds": 300,
+        "actual_span_seconds": 302.0,
+        "start": "2026-06-16 14:00:00 UTC",
+        "end": "2026-06-16 14:05:02 UTC",
+        "avg_per_second": 2.649,
+        "share": 9.41
+      },
+      {
+        "subject": "user",
+        "action": "login",
+        "count": 79,
+        "window_seconds": 300,
+        "actual_span_seconds": 308.0,
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:05:08 UTC",
+        "avg_per_second": 0.256,
+        "share": 0.929
+      },
+      {
+        "subject": "root",
+        "action": "login",
+        "count": 77,
+        "window_seconds": 300,
+        "actual_span_seconds": 316.0,
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:05:16 UTC",
+        "avg_per_second": 0.244,
+        "share": 0.906
+      },
+      {
+        "subject": "administrator",
+        "action": "login",
+        "count": 73,
+        "window_seconds": 300,
+        "actual_span_seconds": 303.0,
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:05:03 UTC",
+        "avg_per_second": 0.241,
+        "share": 0.859
+      },
+      {
+        "subject": "test",
+        "action": "login",
+        "count": 70,
+        "window_seconds": 300,
+        "actual_span_seconds": 324.0,
+        "start": "2026-06-16 08:00:00 UTC",
+        "end": "2026-06-16 08:05:24 UTC",
+        "avg_per_second": 0.216,
+        "share": 0.823
+      },
+      {
+        "subject": "admin",
+        "action": "login",
+        "count": 50,
+        "window_seconds": 300,
+        "actual_span_seconds": 278.0,
+        "start": "2026-06-16 07:55:22 UTC",
+        "end": "2026-06-16 08:00:00 UTC",
+        "avg_per_second": 0.18,
+        "share": 0.588
+      }
+    ],
+    "high_failure_subjects": [
+      {
+        "subject": "root",
+        "total": 101,
+        "failures": 101,
+        "fail_ratio": 100.0,
+        "first_seen": "2026-06-16 02:17:33 UTC",
+        "last_seen": "2026-06-16 22:18:07 UTC"
+      },
+      {
+        "subject": "user",
+        "total": 88,
+        "failures": 88,
+        "fail_ratio": 100.0,
+        "first_seen": "2026-06-16 08:00:00 UTC",
+        "last_seen": "2026-06-16 08:13:08 UTC"
+      },
+      {
+        "subject": "test",
+        "total": 77,
+        "failures": 77,
+        "fail_ratio": 100.0,
+        "first_seen": "2026-06-16 08:00:00 UTC",
+        "last_seen": "2026-06-16 08:13:12 UTC"
+      },
+      {
+        "subject": "administrator",
+        "total": 76,
+        "failures": 76,
+        "fail_ratio": 100.0,
+        "first_seen": "2026-06-16 08:00:00 UTC",
+        "last_seen": "2026-06-16 08:13:14 UTC"
+      },
+      {
+        "subject": "admin",
+        "total": 205,
+        "failures": 119,
+        "fail_ratio": 58.05,
+        "first_seen": "2026-06-16 00:33:19 UTC",
+        "last_seen": "2026-06-16 23:59:34 UTC"
+      }
+    ]
+  }
+}

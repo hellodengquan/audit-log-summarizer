@@ -1,0 +1,527 @@
+Jun 16 00:09:03 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=30683 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 00:09:33 staging-api sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 00:09:33 staging-api sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 00:16:20 staging-api sshd[3312]: Failed password for david from 10.0.2.180 port 52770 ssh2
+Jun 16 00:17:12 prod-web-02 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 00:17:12 prod-web-02 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=apt-get update
+Jun 16 00:24:54 prod-web-02 sshd[9402]: Accepted password for grace from 185.220.101.7 port 59148 ssh2
+Jun 16 00:26:17 prod-db-master sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 00:26:17 prod-db-master sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=apt-get update
+Jun 16 00:29:37 prod-db-master CRON[3131]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 00:31:49 prod-db-master CRON[4827]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 00:35:11 prod-web-02 CRON[6130]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 00:41:10 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 00:48:02 staging-api sshd[6647]: Accepted password for bob from 10.0.2.180 port 57255 ssh2
+Jun 16 00:49:46 prod-db-master sshd[1902]: Accepted password for grace from 185.220.101.6 port 13717 ssh2
+Jun 16 01:08:57 staging-api sshd[9424]: Failed password for bob from 10.0.3.41 port 38049 ssh2
+Jun 16 01:15:14 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 01:18:17 staging-api sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 01:18:17 staging-api sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 01:21:52 prod-db-master su[1287]: pam_unix(su:auth): authentication failure; logname=bob uid=1000 euid=0 tty=pts/0 ruser=bob rhost=  user=admin
+Jun 16 01:22:42 prod-db-master sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 01:22:42 prod-db-master sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=apt-get update
+Jun 16 01:24:17 prod-db-master sshd[2227]: Accepted password for henry from 10.0.5.109 port 52376 ssh2
+Jun 16 01:29:21 staging-api sshd[9998]: Failed password for frank from 10.0.5.109 port 27687 ssh2
+Jun 16 01:30:32 prod-db-master sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 01:30:32 prod-db-master sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=useradd
+Jun 16 01:38:15 prod-web-02 CRON[3267]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 01:38:44 prod-web-01 sshd[5004]: Accepted password for bob from 10.0.1.175 port 61142 ssh2
+Jun 16 01:40:49 prod-web-01 CRON[5468]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 01:41:22 prod-web-01 sshd[2912]: Failed password for bob from 185.220.101.4 port 22097 ssh2
+Jun 16 01:41:56 prod-db-master sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 01:41:56 prod-db-master sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=apt-get update
+Jun 16 01:42:18 prod-db-master sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 01:42:18 prod-db-master sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 01:42:41 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 01:43:38 prod-web-02 sshd[1900]: Accepted password for grace from 10.0.3.64 port 39626 ssh2
+Jun 16 01:46:28 prod-db-master CRON[5847]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 01:54:33 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 01:56:53 staging-api sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 01:56:53 staging-api sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=useradd
+Jun 16 02:05:41 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 02:05:41 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 02:08:27 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 02:08:59 prod-web-01 CRON[4063]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 02:09:22 prod-db-master systemd[1]: Started Reboot.
+Jun 16 02:09:22 prod-db-master systemd[1]: Reached target Shutdown.
+Jun 16 02:09:49 prod-web-01 sshd[6953]: Accepted password for grace from 10.0.1.8 port 49583 ssh2
+Jun 16 02:11:37 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.5 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=2781 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 02:15:52 prod-web-02 sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 02:15:52 prod-web-02 sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 02:17:33 staging-api su[1211]: pam_unix(su:auth): authentication failure; logname=bob uid=1000 euid=0 tty=pts/0 ruser=bob rhost=  user=root
+Jun 16 02:20:14 staging-api sshd[6128]: Failed password for henry from 185.220.101.3 port 45542 ssh2
+Jun 16 02:26:27 prod-web-01 sshd[2809]: Failed password for david from 10.0.5.73 port 32740 ssh2
+Jun 16 02:29:14 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 02:29:14 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 02:32:43 prod-db-master sshd[9375]: Accepted password for frank from 10.0.2.37 port 30954 ssh2
+Jun 16 02:34:54 staging-api sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 02:34:54 staging-api sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=apt-get update
+Jun 16 02:39:18 prod-web-02 sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 02:39:18 prod-web-02 sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 02:39:42 prod-web-01 CRON[2740]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 02:42:21 prod-web-02 sshd[5374]: Failed password for bob from 10.0.1.9 port 39238 ssh2
+Jun 16 02:45:00 prod-db-master CRON[3231]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 02:48:08 prod-web-02 passwd: pam_unix(passwd:chauthtok): password changed for david
+Jun 16 02:57:54 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 03:03:31 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 03:03:31 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 03:05:22 staging-api sshd[3753]: Failed password for david from 10.0.1.8 port 5643 ssh2
+Jun 16 03:05:47 prod-web-02 su[1241]: pam_unix(su:auth): authentication failure; logname=charlie uid=1000 euid=0 tty=pts/0 ruser=charlie rhost=  user=admin
+Jun 16 03:06:08 prod-db-master sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 03:06:08 prod-db-master sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 03:07:02 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 03:07:02 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 03:08:17 prod-db-master sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 03:08:17 prod-db-master sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=useradd
+Jun 16 03:10:25 staging-api sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 03:10:25 staging-api sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 03:11:51 prod-web-02 su[1285]: pam_unix(su:auth): authentication failure; logname=frank uid=1000 euid=0 tty=pts/0 ruser=frank rhost=  user=root
+Jun 16 03:15:20 prod-web-02 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 03:15:20 prod-web-02 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=useradd
+Jun 16 03:17:23 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 03:17:23 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 03:32:13 prod-web-02 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 03:32:13 prod-web-02 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 03:40:48 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 03:40:48 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 03:51:27 prod-web-01 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 03:51:27 prod-web-01 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 03:51:35 staging-api CRON[9030]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 03:55:30 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 03:55:30 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 03:57:28 staging-api sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 03:57:28 staging-api sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 03:58:24 prod-db-master CRON[5251]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 04:03:52 prod-db-master sshd[4418]: Accepted password for henry from 10.0.5.24 port 62126 ssh2
+Jun 16 04:05:39 prod-web-01 sshd[4150]: Accepted password for eve from 185.220.101.6 port 59617 ssh2
+Jun 16 04:07:52 prod-db-master systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 04:18:46 prod-web-01 sshd[6931]: Accepted password for david from 10.0.2.116 port 61699 ssh2
+Jun 16 04:19:33 staging-api sshd[5714]: Accepted password for charlie from 10.0.5.110 port 28518 ssh2
+Jun 16 04:26:28 prod-web-02 sshd[5517]: Failed password for bob from 10.0.5.109 port 49902 ssh2
+Jun 16 04:32:51 prod-web-02 sshd[4390]: Accepted password for frank from 10.0.2.116 port 34772 ssh2
+Jun 16 04:35:01 prod-web-01 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 04:35:01 prod-web-01 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 04:38:04 prod-db-master CRON[5563]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 04:50:02 prod-web-02 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 04:50:02 prod-web-02 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=useradd
+Jun 16 04:53:00 prod-db-master sshd[6591]: Failed password for grace from 10.0.2.37 port 27130 ssh2
+Jun 16 04:54:22 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for bob
+Jun 16 04:57:18 prod-db-master sshd[4800]: Failed password for alice from 10.0.2.131 port 60542 ssh2
+Jun 16 05:02:11 prod-web-01 sshd[4869]: Accepted password for charlie from 10.0.5.24 port 36682 ssh2
+Jun 16 05:03:27 prod-db-master CRON[8407]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 05:04:19 prod-web-02 su[1250]: pam_unix(su:auth): authentication failure; logname=alice uid=1000 euid=0 tty=pts/0 ruser=alice rhost=  user=root
+Jun 16 05:08:00 prod-web-01 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 05:08:00 prod-web-01 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 05:08:33 staging-api sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 05:08:33 staging-api sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 05:08:52 prod-web-01 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 05:08:52 prod-web-01 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=apt-get update
+Jun 16 05:10:40 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for grace
+Jun 16 05:11:55 prod-web-02 sshd[7750]: Accepted password for grace from 10.0.2.180 port 5524 ssh2
+Jun 16 05:16:12 prod-web-01 sshd[3568]: Accepted password for eve from 10.0.2.131 port 60325 ssh2
+Jun 16 05:18:18 prod-web-01 CRON[3570]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 05:23:54 prod-web-01 sshd[5478]: Accepted password for charlie from 10.0.2.247 port 35285 ssh2
+Jun 16 05:25:19 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 05:25:19 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=apt-get update
+Jun 16 05:25:31 prod-db-master CRON[4761]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 05:29:00 staging-api su[1297]: pam_unix(su:auth): authentication failure; logname=david uid=1000 euid=0 tty=pts/0 ruser=david rhost=  user=admin
+Jun 16 05:29:51 prod-web-01 sshd[4509]: Accepted password for henry from 10.0.3.41 port 51546 ssh2
+Jun 16 05:30:48 prod-db-master sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 05:30:48 prod-db-master sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 05:31:29 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 05:35:27 prod-db-master CRON[7833]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 05:39:57 prod-web-02 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 05:39:57 prod-web-02 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 05:40:02 prod-db-master sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 05:40:02 prod-db-master sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=useradd
+Jun 16 05:42:29 prod-web-02 sshd[4657]: Failed password for eve from 10.0.2.37 port 53104 ssh2
+Jun 16 05:46:01 prod-web-02 sshd[7625]: Accepted password for henry from 10.0.1.8 port 49565 ssh2
+Jun 16 05:54:02 prod-db-master sshd[5872]: Failed password for grace from 185.220.101.2 port 3222 ssh2
+Jun 16 05:57:29 prod-web-02 su[1269]: pam_unix(su:auth): authentication failure; logname=henry uid=1000 euid=0 tty=pts/0 ruser=henry rhost=  user=root
+Jun 16 05:58:51 staging-api CRON[3797]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 06:04:10 prod-web-02 sshd[1672]: Failed password for grace from 10.0.5.109 port 4584 ssh2
+Jun 16 06:12:19 prod-db-master sshd[8930]: Failed password for eve from 185.220.101.7 port 7658 ssh2
+Jun 16 06:15:50 prod-web-02 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 06:15:50 prod-web-02 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=apt-get update
+Jun 16 06:22:58 staging-api CRON[8950]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 06:27:09 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for alice
+Jun 16 06:27:15 staging-api CRON[6971]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 06:33:01 prod-db-master su[1262]: pam_unix(su:auth): authentication failure; logname=grace uid=1000 euid=0 tty=pts/0 ruser=grace rhost=  user=root
+Jun 16 06:39:36 prod-web-02 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 06:39:36 prod-web-02 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 06:49:02 prod-web-02 sshd[2046]: Accepted password for bob from 185.220.101.4 port 10894 ssh2
+Jun 16 06:52:50 prod-web-01 sshd[6877]: Accepted password for bob from 10.0.1.8 port 3234 ssh2
+Jun 16 06:57:09 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=22016 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 07:03:57 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for frank
+Jun 16 07:05:57 staging-api sshd[8104]: Failed password for charlie from 10.0.1.57 port 7017 ssh2
+Jun 16 07:08:23 staging-api CRON[6372]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 07:16:27 prod-web-01 sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 07:16:27 prod-web-01 sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 07:18:23 prod-web-02 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 07:18:23 prod-web-02 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 07:21:02 prod-web-02 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.3 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=14696 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 07:27:07 prod-web-02 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 07:27:07 prod-web-02 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 07:30:12 prod-web-02 su[1221]: pam_unix(su:auth): authentication failure; logname=frank uid=1000 euid=0 tty=pts/0 ruser=frank rhost=  user=root
+Jun 16 07:32:24 staging-api su[1248]: pam_unix(su:auth): authentication failure; logname=frank uid=1000 euid=0 tty=pts/0 ruser=frank rhost=  user=admin
+Jun 16 07:33:19 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 07:34:09 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 07:34:09 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=apt-get update
+Jun 16 07:34:52 prod-web-02 systemd[1]: Started Reboot.
+Jun 16 07:34:52 prod-web-02 systemd[1]: Reached target Shutdown.
+Jun 16 07:36:23 prod-web-02 sshd[2729]: Accepted password for alice from 10.0.2.131 port 20265 ssh2
+Jun 16 07:40:24 staging-api sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 07:40:24 staging-api sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 07:41:44 prod-db-master sshd[3650]: Accepted password for eve from 10.0.1.57 port 9350 ssh2
+Jun 16 07:47:24 prod-db-master sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 07:47:24 prod-db-master sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 07:56:47 prod-web-01 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 07:56:47 prod-web-01 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 07:57:37 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 07:57:37 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=useradd
+Jun 16 08:01:44 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 08:01:44 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 08:04:29 prod-db-master sshd[3135]: Accepted password for alice from 10.0.4.89 port 10574 ssh2
+Jun 16 08:15:01 staging-api passwd: pam_unix(passwd:chauthtok): password changed for henry
+Jun 16 08:21:17 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 08:21:17 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=useradd
+Jun 16 08:23:12 prod-web-02 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 08:23:12 prod-web-02 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=apt-get update
+Jun 16 08:26:38 prod-web-02 su[1266]: pam_unix(su:auth): authentication failure; logname=david uid=1000 euid=0 tty=pts/0 ruser=david rhost=  user=root
+Jun 16 08:27:00 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 08:27:00 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 08:29:01 prod-web-02 sshd[3676]: Failed password for bob from 185.220.101.5 port 38047 ssh2
+Jun 16 08:31:11 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 08:31:11 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 08:35:48 staging-api kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=21129 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 08:37:17 prod-db-master su[1291]: pam_unix(su:auth): authentication failure; logname=frank uid=1000 euid=0 tty=pts/0 ruser=frank rhost=  user=root
+Jun 16 08:38:52 prod-web-02 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 08:38:52 prod-web-02 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 08:43:52 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 08:43:52 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 08:47:41 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for bob
+Jun 16 08:48:03 prod-web-02 sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 08:48:03 prod-web-02 sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=apt-get update
+Jun 16 08:52:29 prod-web-02 CRON[8716]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 08:58:10 prod-web-01 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 08:58:10 prod-web-01 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=apt-get update
+Jun 16 08:59:33 prod-web-02 sshd[8191]: Failed password for grace from 10.0.5.73 port 34529 ssh2
+Jun 16 09:05:49 prod-web-02 su[1235]: pam_unix(su:auth): authentication failure; logname=charlie uid=1000 euid=0 tty=pts/0 ruser=charlie rhost=  user=admin
+Jun 16 09:07:01 prod-db-master sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 09:07:01 prod-db-master sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 09:07:10 staging-api CRON[3994]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 09:10:26 prod-web-02 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 09:10:26 prod-web-02 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=apt-get update
+Jun 16 09:13:04 prod-db-master kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=9754 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 09:13:37 prod-db-master sshd[1569]: Accepted password for frank from 185.220.101.1 port 59131 ssh2
+Jun 16 09:15:59 staging-api passwd: pam_unix(passwd:chauthtok): password changed for henry
+Jun 16 09:20:45 prod-web-01 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 09:20:45 prod-web-01 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 09:23:46 prod-db-master CRON[6186]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 09:24:33 prod-db-master sshd[9696]: Accepted password for david from 10.0.3.28 port 31081 ssh2
+Jun 16 09:28:07 staging-api sshd[9937]: Accepted password for david from 10.0.2.37 port 29281 ssh2
+Jun 16 09:30:58 prod-web-02 CRON[7031]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 09:33:23 staging-api sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 09:33:23 staging-api sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 09:36:23 prod-web-02 sshd[5638]: Accepted password for frank from 10.0.4.89 port 63554 ssh2
+Jun 16 09:37:43 prod-db-master sshd[3184]: Failed password for grace from 10.0.2.116 port 56444 ssh2
+Jun 16 09:38:01 prod-web-02 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 09:38:01 prod-web-02 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=apt-get update
+Jun 16 09:38:52 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 09:42:26 prod-db-master sshd[4546]: Failed password for henry from 185.220.101.2 port 7557 ssh2
+Jun 16 09:44:15 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 09:44:15 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 09:46:02 prod-db-master sshd[9125]: Failed password for bob from 10.0.2.247 port 11475 ssh2
+Jun 16 09:49:20 prod-web-02 sshd[4475]: Accepted password for eve from 10.0.5.8 port 3750 ssh2
+Jun 16 09:57:31 prod-db-master systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 09:57:59 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=52096 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 10:02:25 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for alice
+Jun 16 10:05:02 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for david
+Jun 16 10:07:59 prod-web-01 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 10:07:59 prod-web-01 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=useradd
+Jun 16 10:12:55 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for charlie
+Jun 16 10:13:21 staging-api su[1254]: pam_unix(su:auth): authentication failure; logname=henry uid=1000 euid=0 tty=pts/0 ruser=henry rhost=  user=admin
+Jun 16 10:19:56 prod-web-01 sshd[7680]: Accepted password for alice from 10.0.5.8 port 2146 ssh2
+Jun 16 10:27:43 prod-web-01 sshd[5069]: Failed password for henry from 10.0.2.131 port 9380 ssh2
+Jun 16 10:31:01 prod-db-master sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 10:31:01 prod-db-master sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 10:43:13 staging-api sshd[1492]: Accepted password for charlie from 10.0.1.57 port 5964 ssh2
+Jun 16 10:44:00 staging-api sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 10:44:00 staging-api sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=useradd
+Jun 16 10:53:54 prod-web-01 CRON[6050]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 10:54:54 prod-web-02 sshd[9179]: Failed password for henry from 10.0.5.110 port 21796 ssh2
+Jun 16 10:58:34 staging-api CRON[1755]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 10:58:45 staging-api su[1283]: pam_unix(su:auth): authentication failure; logname=grace uid=1000 euid=0 tty=pts/0 ruser=grace rhost=  user=admin
+Jun 16 11:05:13 prod-db-master su[1254]: pam_unix(su:auth): authentication failure; logname=alice uid=1000 euid=0 tty=pts/0 ruser=alice rhost=  user=root
+Jun 16 11:10:57 prod-web-01 sshd[7844]: Accepted password for grace from 10.0.2.180 port 36709 ssh2
+Jun 16 11:14:05 prod-web-01 CRON[6840]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 11:14:34 staging-api systemd[1]: Started Reboot.
+Jun 16 11:14:34 staging-api systemd[1]: Reached target Shutdown.
+Jun 16 11:17:50 staging-api sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 11:17:50 staging-api sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 11:19:38 prod-web-02 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 11:19:38 prod-web-02 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 11:21:15 staging-api sshd[2624]: Accepted password for frank from 10.0.1.196 port 9725 ssh2
+Jun 16 11:21:50 staging-api sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 11:21:50 staging-api sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=apt-get update
+Jun 16 11:22:27 prod-web-01 sshd[7086]: Accepted password for alice from 10.0.3.64 port 13732 ssh2
+Jun 16 11:23:33 prod-db-master kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.5 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=35940 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 11:37:08 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=7106 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 11:39:58 prod-web-02 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 11:39:58 prod-web-02 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 11:41:15 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 11:45:09 prod-web-02 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 11:45:09 prod-web-02 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=apt-get update
+Jun 16 11:52:21 prod-web-02 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 11:52:21 prod-web-02 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 11:52:38 prod-web-01 sshd[7382]: Accepted password for henry from 185.220.101.3 port 8400 ssh2
+Jun 16 12:00:19 prod-db-master sshd[2021]: Failed password for david from 10.0.5.8 port 17203 ssh2
+Jun 16 12:01:44 prod-web-01 CRON[8732]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 12:13:42 staging-api su[1228]: pam_unix(su:auth): authentication failure; logname=charlie uid=1000 euid=0 tty=pts/0 ruser=charlie rhost=  user=admin
+Jun 16 12:24:09 prod-web-02 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 12:24:09 prod-web-02 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 12:24:28 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 12:24:28 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=useradd
+Jun 16 12:34:44 prod-web-02 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 12:34:44 prod-web-02 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 12:37:19 prod-db-master sshd[1545]: Failed password for alice from 10.0.5.73 port 58566 ssh2
+Jun 16 12:58:03 prod-web-01 sshd[9327]: Accepted password for henry from 10.0.5.8 port 19472 ssh2
+Jun 16 13:05:49 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 13:07:24 staging-api sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 13:07:24 staging-api sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 13:10:34 staging-api sshd[7806]: Accepted password for eve from 10.0.4.89 port 57644 ssh2
+Jun 16 13:14:45 staging-api CRON[6431]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 13:16:11 prod-db-master su[1214]: pam_unix(su:auth): authentication failure; logname=henry uid=1000 euid=0 tty=pts/0 ruser=henry rhost=  user=admin
+Jun 16 13:18:44 staging-api CRON[1579]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 13:29:36 prod-web-02 passwd: pam_unix(passwd:chauthtok): password changed for david
+Jun 16 13:31:27 prod-web-01 CRON[2490]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 13:34:14 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 13:34:14 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 13:35:03 prod-db-master sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 13:35:03 prod-db-master sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 13:36:55 prod-db-master sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 13:36:55 prod-db-master sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 13:37:30 staging-api sshd[4182]: Failed password for frank from 10.0.5.109 port 12973 ssh2
+Jun 16 13:47:26 prod-web-01 sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 13:47:26 prod-web-01 sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=apt-get update
+Jun 16 13:52:24 staging-api CRON[3374]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 13:54:39 prod-web-02 systemd[1]: Started Reboot.
+Jun 16 13:54:39 prod-web-02 systemd[1]: Reached target Shutdown.
+Jun 16 14:01:22 prod-db-master sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 14:01:22 prod-db-master sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=useradd
+Jun 16 14:02:47 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.1 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=17773 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 14:04:21 prod-web-01 CRON[8958]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:06:15 staging-api sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 14:06:15 staging-api sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=useradd
+Jun 16 14:08:28 prod-web-02 CRON[1605]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:09:33 prod-web-02 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 14:09:33 prod-web-02 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 14:12:57 prod-web-01 sshd[9535]: Failed password for charlie from 10.0.4.89 port 61038 ssh2
+Jun 16 14:17:17 staging-api passwd: pam_unix(passwd:chauthtok): password changed for bob
+Jun 16 14:24:38 staging-api sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 14:24:38 staging-api sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=apt-get update
+Jun 16 14:28:05 prod-db-master sshd[5024]: Failed password for david from 10.0.1.8 port 48254 ssh2
+Jun 16 14:28:57 staging-api sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 14:28:57 staging-api sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=apt-get update
+Jun 16 14:29:39 staging-api sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 14:29:39 staging-api sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 14:30:06 prod-web-02 sshd[1960]: Failed password for frank from 10.0.2.37 port 59989 ssh2
+Jun 16 14:30:19 prod-db-master systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 14:30:44 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 14:35:51 prod-web-01 CRON[8289]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:41:12 prod-web-01 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 14:41:12 prod-web-01 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 14:44:18 prod-db-master CRON[1061]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:47:25 prod-web-02 sshd[1185]: Failed password for david from 185.220.101.3 port 38691 ssh2
+Jun 16 14:50:36 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 14:50:36 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 14:53:19 prod-web-01 sshd[6540]: Accepted password for charlie from 185.220.101.2 port 58094 ssh2
+Jun 16 14:54:06 prod-web-01 su[1212]: pam_unix(su:auth): authentication failure; logname=henry uid=1000 euid=0 tty=pts/0 ruser=henry rhost=  user=root
+Jun 16 14:55:22 prod-web-02 CRON[2918]: (david) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:56:46 prod-web-02 sshd[7777]: Failed password for frank from 10.0.5.24 port 16506 ssh2
+Jun 16 14:56:48 staging-api CRON[4055]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 14:59:49 prod-db-master sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 14:59:49 prod-db-master sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 15:02:49 prod-db-master sshd[3999]: Accepted password for grace from 10.0.4.89 port 44194 ssh2
+Jun 16 15:17:28 staging-api sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 15:17:28 staging-api sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=useradd
+Jun 16 15:18:37 prod-web-02 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 15:18:37 prod-web-02 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 15:29:11 staging-api sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 15:29:11 staging-api sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=useradd
+Jun 16 15:31:25 prod-web-02 su[1298]: pam_unix(su:auth): authentication failure; logname=grace uid=1000 euid=0 tty=pts/0 ruser=grace rhost=  user=admin
+Jun 16 15:37:43 prod-web-02 sshd[5970]: Failed password for eve from 10.0.2.37 port 50301 ssh2
+Jun 16 15:39:22 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 15:39:22 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 15:42:34 prod-web-01 sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 15:42:34 prod-web-01 sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 15:55:36 prod-web-01 sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 15:55:36 prod-web-01 sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=useradd
+Jun 16 16:06:03 prod-db-master sshd[5181]: Accepted password for alice from 10.0.2.116 port 1333 ssh2
+Jun 16 16:08:37 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 16:08:37 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=apt-get update
+Jun 16 16:15:52 prod-web-01 sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 16:15:52 prod-web-01 sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 16:23:06 prod-web-01 sshd[9861]: Accepted password for eve from 10.0.2.131 port 1184 ssh2
+Jun 16 16:23:28 prod-web-01 CRON[9730]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 16:30:13 prod-web-02 sshd[5229]: Accepted password for frank from 10.0.2.247 port 49588 ssh2
+Jun 16 16:30:15 prod-web-02 systemd[1]: Started Reboot.
+Jun 16 16:30:15 prod-web-02 systemd[1]: Reached target Shutdown.
+Jun 16 16:30:49 prod-db-master systemd[1]: Started Reboot.
+Jun 16 16:30:49 prod-db-master systemd[1]: Reached target Shutdown.
+Jun 16 16:35:27 staging-api su[1219]: pam_unix(su:auth): authentication failure; logname=david uid=1000 euid=0 tty=pts/0 ruser=david rhost=  user=root
+Jun 16 16:36:36 prod-db-master CRON[2385]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 16:40:24 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 16:40:24 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=useradd
+Jun 16 16:43:29 staging-api sshd[8769]: Accepted password for henry from 185.220.101.7 port 13723 ssh2
+Jun 16 16:46:51 prod-web-02 CRON[9452]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 16:48:13 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 16:53:05 prod-web-02 CRON[5733]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 16:56:15 prod-db-master sshd[7559]: Accepted password for henry from 10.0.3.64 port 13046 ssh2
+Jun 16 16:56:29 staging-api su[1269]: pam_unix(su:auth): authentication failure; logname=henry uid=1000 euid=0 tty=pts/0 ruser=henry rhost=  user=root
+Jun 16 17:02:54 prod-db-master CRON[5613]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 17:07:53 prod-web-02 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 17:07:53 prod-web-02 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 17:13:47 prod-web-01 CRON[5868]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 17:19:54 staging-api passwd: pam_unix(passwd:chauthtok): password changed for grace
+Jun 16 17:20:36 prod-web-01 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 17:20:36 prod-web-01 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=apt-get update
+Jun 16 17:27:33 prod-db-master sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 17:27:33 prod-db-master sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 17:28:35 prod-web-01 su[1232]: pam_unix(su:auth): authentication failure; logname=eve uid=1000 euid=0 tty=pts/0 ruser=eve rhost=  user=root
+Jun 16 17:30:51 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for grace
+Jun 16 17:37:04 prod-web-01 sshd[3582]: Failed password for david from 185.220.101.6 port 27098 ssh2
+Jun 16 17:37:39 prod-db-master CRON[6861]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 17:38:04 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 17:49:56 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for frank
+Jun 16 17:50:33 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 17:50:33 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 17:52:14 prod-web-01 CRON[3557]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 18:01:31 prod-db-master CRON[3435]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 18:03:32 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 18:03:32 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 18:06:04 prod-web-02 CRON[1920]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 18:09:12 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 18:15:36 staging-api sshd[1391]: Failed password for bob from 10.0.4.89 port 56562 ssh2
+Jun 16 18:18:07 prod-db-master sshd[8115]: Accepted password for grace from 185.220.101.7 port 61125 ssh2
+Jun 16 18:20:17 prod-web-01 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 18:20:17 prod-web-01 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=apt-get update
+Jun 16 18:22:15 prod-db-master sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 18:22:15 prod-db-master sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 18:22:57 staging-api sshd[4950]: Accepted password for charlie from 10.0.1.196 port 60158 ssh2
+Jun 16 18:34:03 prod-db-master sshd[8419]: Failed password for henry from 10.0.5.24 port 11124 ssh2
+Jun 16 18:34:37 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 18:35:24 staging-api systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 18:38:41 prod-web-02 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 18:38:41 prod-web-02 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 18:42:11 staging-api sshd[4221]: Accepted password for alice from 10.0.5.52 port 31660 ssh2
+Jun 16 18:46:26 staging-api CRON[9311]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 18:47:37 staging-api systemd[1]: Started Reboot.
+Jun 16 18:47:37 staging-api systemd[1]: Reached target Shutdown.
+Jun 16 18:51:00 prod-web-02 sshd[5496]: Failed password for alice from 10.0.1.196 port 26591 ssh2
+Jun 16 18:55:09 staging-api sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 18:55:09 staging-api sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=useradd
+Jun 16 19:01:41 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 19:01:41 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=apt-get update
+Jun 16 19:02:08 prod-web-02 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 19:02:08 prod-web-02 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=useradd
+Jun 16 19:03:41 prod-db-master sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 19:03:41 prod-db-master sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 19:04:49 prod-web-02 sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 19:04:49 prod-web-02 sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 19:06:53 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for david
+Jun 16 19:09:13 staging-api sudo: pam_unix(sudo:session): session opened for user charlie by root(uid=0)
+Jun 16 19:09:13 staging-api sudo:  charlie : TTY=pts/0 ; PWD=/home/charlie ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 19:20:34 prod-web-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.2 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=8975 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 19:23:50 prod-db-master sshd[2723]: Failed password for bob from 10.0.5.110 port 58312 ssh2
+Jun 16 19:27:39 staging-api CRON[2295]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 19:29:00 prod-web-02 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 19:29:00 prod-web-02 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 19:34:34 staging-api sshd[7488]: Accepted password for charlie from 10.0.1.8 port 19821 ssh2
+Jun 16 19:35:13 prod-web-02 CRON[5706]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 19:39:14 prod-web-01 sshd[5161]: Accepted password for frank from 10.0.1.9 port 63227 ssh2
+Jun 16 19:41:21 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for grace
+Jun 16 19:42:22 staging-api CRON[5938]: (grace) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 19:43:08 staging-api sshd[4798]: Accepted password for bob from 10.0.2.247 port 65412 ssh2
+Jun 16 19:43:13 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 19:46:14 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for frank
+Jun 16 19:53:32 staging-api sshd[6226]: Failed password for eve from 10.0.5.52 port 35762 ssh2
+Jun 16 19:53:45 prod-db-master su[1218]: pam_unix(su:auth): authentication failure; logname=eve uid=1000 euid=0 tty=pts/0 ruser=eve rhost=  user=admin
+Jun 16 20:04:10 prod-web-02 sshd[2302]: Failed password for eve from 10.0.2.180 port 18630 ssh2
+Jun 16 20:05:36 prod-web-02 sshd[2914]: Accepted password for charlie from 10.0.1.8 port 29662 ssh2
+Jun 16 20:14:08 staging-api CRON[1036]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 20:15:43 prod-web-01 CRON[2399]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 20:23:59 prod-web-01 sshd[2142]: Failed password for frank from 185.220.101.4 port 42155 ssh2
+Jun 16 20:26:51 prod-web-02 sshd[3470]: Failed password for david from 10.0.1.57 port 43655 ssh2
+Jun 16 20:27:33 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 20:27:47 staging-api CRON[7701]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 20:36:19 prod-web-02 sudo: pam_unix(sudo:session): session opened for user grace by root(uid=0)
+Jun 16 20:36:19 prod-web-02 sudo:  grace : TTY=pts/0 ; PWD=/home/grace ; USER=root ; COMMAND=useradd
+Jun 16 20:38:24 staging-api sudo: pam_unix(sudo:session): session opened for user bob by root(uid=0)
+Jun 16 20:38:24 staging-api sudo:  bob : TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=useradd
+Jun 16 20:39:32 staging-api sudo: pam_unix(sudo:session): session opened for user alice by root(uid=0)
+Jun 16 20:39:32 staging-api sudo:  alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 21:07:28 prod-db-master su[1253]: pam_unix(su:auth): authentication failure; logname=frank uid=1000 euid=0 tty=pts/0 ruser=frank rhost=  user=admin
+Jun 16 21:08:24 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 21:08:24 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 21:09:54 prod-db-master CRON[9892]: (eve) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 21:16:13 prod-web-02 sshd[8794]: Failed password for grace from 185.220.101.2 port 31058 ssh2
+Jun 16 21:28:38 staging-api sshd[7508]: Accepted password for henry from 185.220.101.4 port 63649 ssh2
+Jun 16 21:30:10 prod-db-master CRON[5548]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 21:37:11 prod-web-01 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 21:37:11 prod-web-01 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 21:38:00 staging-api sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 21:38:00 staging-api sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 21:38:29 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 21:38:29 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=apt-get update
+Jun 16 21:41:09 prod-web-01 CRON[6763]: (henry) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 21:42:00 prod-web-02 sshd[5366]: Failed password for grace from 185.220.101.4 port 23470 ssh2
+Jun 16 21:48:34 staging-api su[1261]: pam_unix(su:auth): authentication failure; logname=david uid=1000 euid=0 tty=pts/0 ruser=david rhost=  user=admin
+Jun 16 21:54:33 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for alice
+Jun 16 21:57:49 prod-db-master sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 21:57:49 prod-db-master sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 22:02:40 prod-web-02 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.6 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=34703 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 22:03:48 prod-db-master passwd: pam_unix(passwd:chauthtok): password changed for david
+Jun 16 22:09:20 staging-api sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 22:09:20 staging-api sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=useradd
+Jun 16 22:09:54 prod-web-02 passwd: pam_unix(passwd:chauthtok): password changed for frank
+Jun 16 22:13:18 prod-web-01 passwd: pam_unix(passwd:chauthtok): password changed for henry
+Jun 16 22:18:07 staging-api su[1251]: pam_unix(su:auth): authentication failure; logname=alice uid=1000 euid=0 tty=pts/0 ruser=alice rhost=  user=root
+Jun 16 22:19:13 prod-web-01 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 22:19:13 prod-web-01 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=useradd
+Jun 16 22:20:29 prod-web-02 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 22:22:19 staging-api sshd[9972]: Accepted password for eve from 10.0.5.110 port 55927 ssh2
+Jun 16 22:23:15 prod-db-master sudo: pam_unix(sudo:session): session opened for user henry by root(uid=0)
+Jun 16 22:23:15 prod-db-master sudo:  henry : TTY=pts/0 ; PWD=/home/henry ; USER=root ; COMMAND=apt-get update
+Jun 16 22:24:18 prod-db-master CRON[5676]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 22:26:57 prod-db-master systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 22:28:03 prod-web-02 sshd[4971]: Accepted password for eve from 10.0.3.64 port 13565 ssh2
+Jun 16 22:36:34 prod-db-master sudo: pam_unix(sudo:session): session opened for user david by root(uid=0)
+Jun 16 22:36:34 prod-db-master sudo:  david : TTY=pts/0 ; PWD=/home/david ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 22:38:12 prod-db-master kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.2 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=12666 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 22:44:52 prod-db-master kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=185.220.101.3 DST=10.0.1.5 LEN=40 TOS=0x00 PREC=0x00 TTL=241 ID=54321 PROTO=TCP SPT=28477 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
+Jun 16 22:46:40 prod-web-02 sudo: pam_unix(sudo:session): session opened for user eve by root(uid=0)
+Jun 16 22:46:40 prod-web-02 sudo:  eve : TTY=pts/0 ; PWD=/home/eve ; USER=root ; COMMAND=useradd
+Jun 16 22:53:48 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 22:53:48 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 22:55:31 prod-web-01 sshd[1184]: Failed password for eve from 10.0.5.24 port 27399 ssh2
+Jun 16 22:59:06 staging-api sshd[6339]: Failed password for grace from 10.0.2.37 port 45530 ssh2
+Jun 16 22:59:37 prod-web-01 sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 22:59:37 prod-web-01 sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=cat /etc/shadow
+Jun 16 23:04:28 prod-db-master CRON[3082]: (bob) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 23:07:15 prod-web-02 CRON[2054]: (charlie) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 23:11:46 prod-web-01 systemd[1]: Started Reboot.
+Jun 16 23:11:46 prod-web-01 systemd[1]: Reached target Shutdown.
+Jun 16 23:12:32 prod-web-02 sshd[8483]: Failed password for bob from 10.0.3.41 port 37489 ssh2
+Jun 16 23:13:16 staging-api sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 23:13:16 staging-api sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=apt-get update
+Jun 16 23:27:26 staging-api passwd: pam_unix(passwd:chauthtok): password changed for charlie
+Jun 16 23:32:43 staging-api sudo: pam_unix(sudo:session): session opened for user frank by root(uid=0)
+Jun 16 23:32:43 staging-api sudo:  frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=systemctl restart nginx
+Jun 16 23:40:45 prod-web-01 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 16 23:44:25 staging-api passwd: pam_unix(passwd:chauthtok): password changed for alice
+Jun 16 23:44:57 prod-web-02 CRON[2432]: (alice) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 23:45:16 prod-web-02 sshd[7364]: Accepted password for grace from 10.0.5.73 port 35585 ssh2
+Jun 16 23:48:16 prod-web-01 sshd[9783]: Failed password for bob from 10.0.1.8 port 37597 ssh2
+Jun 16 23:52:29 prod-web-02 CRON[1425]: (frank) CMD (/usr/local/bin/backup.sh daily)
+Jun 16 23:55:39 prod-db-master CRON[8871]: (henry) CMD (/usr/local/bin/backup.sh daily)
