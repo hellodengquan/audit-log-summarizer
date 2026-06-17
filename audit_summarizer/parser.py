@@ -420,21 +420,16 @@ def _parse_kv(lines: List[str], source: str, hint_year: Optional[int]) -> Iterat
 
 
 def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:
-    """解析 protobuf text-format 日志。
+    """解析 protobuf text-format 日志，支持多版本 schema。
 
     两种常见形态：
     A) 单行平铺：  field1: val1  field2: val2  field3 { sub: val }
     B) 多行消息：  message_type { field1: val ... }
-    策略：按空行/消息边界切分，每个消息块提取 field: value 对，再归一化。
-    如果 audit.yaml 中配置了 protobuf_schema_path，则加载 schema 做字段名映射。
-    """
-    from .config import get_config
-    cfg = get_config()
-    schema_path = cfg.protobuf_schema_path
-    field_mappings: Dict[str, str] = {}
-    if schema_path and os.path.exists(schema_path):
-        field_mappings = _load_pb_schema(schema_path)
 
+    schema 版本选择：
+    1. 消息块中含 schema_version 字段时，使用指定版本
+    2. 否则使用 audit.yaml 中 protobuf_default_version 配置
+    """
     msg_blocks: List[str] = []
     cur_block: List[str] = []
     for line in lines:
@@ -453,8 +448,6 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
         for m in _PB_FIELD_RE.finditer(block):
             key = m.group(1)
             val = m.group(2).strip().strip('"')
-            if field_mappings and key in field_mappings:
-                key = field_mappings[key]
             if key in d:
                 existing = d[key]
                 if isinstance(existing, list):
@@ -467,6 +460,23 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
             msg_type = m.group(1)
             if "message_type" not in d:
                 d["message_type"] = msg_type
+
+        version = d.get("schema_version") if isinstance(d.get("schema_version"), str) else None
+        field_mappings = _get_pb_schema_mappings(version)
+
+        if field_mappings:
+            mapped: Dict[str, Any] = {}
+            for k, v in d.items():
+                canonical = field_mappings.get(k, k)
+                if canonical in mapped:
+                    if isinstance(mapped[canonical], list):
+                        mapped[canonical].append(v)
+                    else:
+                        mapped[canonical] = [mapped[canonical], v]
+                else:
+                    mapped[canonical] = v
+            d = mapped
+
         if not d:
             rec = _parse_text_line(block.split("\n")[0], source, hint_year)
             if rec:
@@ -483,6 +493,8 @@ def _load_pb_schema(path: str) -> Dict[str, str]:
     支持简单的 proto 描述格式，每行一个映射：
       proto_field_name -> canonical_name
     或纯 proto 文件（自动提取字段名 -> 小写下划线名）。
+    支持元信息注释:
+      # version: v1
     """
     mappings: Dict[str, str] = {}
     try:
@@ -502,6 +514,42 @@ def _load_pb_schema(path: str) -> Dict[str, str]:
     except OSError:
         pass
     return mappings
+
+
+_PB_SCHEMA_CACHE: Dict[str, Dict[str, str]] = {}
+
+
+def _get_pb_schema_mappings(version: Optional[str] = None) -> Dict[str, str]:
+    """根据版本获取 protobuf schema 字段映射。
+
+    Args:
+        version: schema 版本，None 时使用默认版本
+
+    Returns:
+        {proto_field: canonical_name} 映射，无配置时返回空 dict
+    """
+    from .config import get_config
+    cfg = get_config()
+    schemas = cfg.protobuf_schemas
+    if not schemas:
+        return {}
+
+    effective_version = version or cfg.protobuf_default_version
+    schema_path = schemas.get(effective_version)
+    if not schema_path or not os.path.exists(schema_path):
+        return {}
+
+    if schema_path in _PB_SCHEMA_CACHE:
+        return _PB_SCHEMA_CACHE[schema_path]
+
+    mappings = _load_pb_schema(schema_path)
+    _PB_SCHEMA_CACHE[schema_path] = mappings
+    return mappings
+
+
+def _invalidate_pb_schema_cache() -> None:
+    """清空 protobuf schema 缓存（/admin/reload 时调用）。"""
+    _PB_SCHEMA_CACHE.clear()
 
 
 def _parse_text(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:

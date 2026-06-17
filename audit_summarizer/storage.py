@@ -46,6 +46,15 @@ CREATE TABLE IF NOT EXISTS _meta (
 );
 """
 
+_MV_INDEX_TEMPLATES = [
+    "CREATE INDEX IF NOT EXISTS idx_{table}_ts ON {table}(ts);",
+    "CREATE INDEX IF NOT EXISTS idx_{table}_subject ON {table}(subject);",
+    "CREATE INDEX IF NOT EXISTS idx_{table}_action ON {table}(action);",
+    "CREATE INDEX IF NOT EXISTS idx_{table}_status ON {table}(status);",
+    "CREATE INDEX IF NOT EXISTS idx_{table}_subject_ts ON {table}(subject, ts);",
+    "CREATE INDEX IF NOT EXISTS idx_{table}_action_ts ON {table}(action, ts);",
+]
+
 _SUBJECT_CATEGORIES_TABLE = """
 CREATE TABLE IF NOT EXISTS _subject_categories (
     category TEXT NOT NULL,
@@ -88,10 +97,11 @@ def _build_unified_view_sql(tables: List[str], view_name: str) -> str:
 
 
 class Storage:
-    """SQLite 存储封装（按月分表 + 统一视图 + 主体类别表 + TTL 清理）。"""
+    """SQLite 存储封装（按月分表 + 统一视图/物化表 + 主体类别表 + TTL 清理）。"""
 
     def __init__(self, db_path: str = ":memory:", ttl_days: Optional[int] = None,
-                 table_prefix: Optional[str] = None, unified_view_name: Optional[str] = None):
+                 table_prefix: Optional[str] = None, unified_view_name: Optional[str] = None,
+                 use_materialized_view: Optional[bool] = None):
         self.db_path = db_path
         self.ttl_days = ttl_days
 
@@ -99,6 +109,8 @@ class Storage:
         cfg = get_config()
         self.table_prefix = table_prefix or cfg.table_prefix
         self.unified_view_name = unified_view_name or cfg.unified_view_name
+        self.use_materialized_view = use_materialized_view if use_materialized_view is not None else cfg.use_materialized_view
+        self._mv_last_refreshed: Optional[float] = None
 
         is_new = (db_path == ":memory:") or (not os.path.exists(db_path))
         self._conn = sqlite3.connect(db_path)
@@ -108,6 +120,7 @@ class Storage:
         self._conn.execute("PRAGMA cache_size=-65536;")
         self._table_cache: set = set()
         self._categories_cache: Optional[Dict[str, Dict[str, Any]]] = None
+        self._need_mv_refresh = False
         if is_new:
             self._init_system_tables()
             self._seed_categories(cfg)
@@ -159,10 +172,96 @@ class Storage:
                 )
 
     def _rebuild_unified_view(self) -> None:
+        """重建统一视图或物化表。"""
         with self._conn:
             tables = _known_month_tables(self._conn, self.table_prefix)
-            self._conn.execute(f"DROP VIEW IF EXISTS {self.unified_view_name};")
-            self._conn.execute(_build_unified_view_sql(tables, self.unified_view_name))
+            mv_name = self.unified_view_name
+            cur = self._conn.execute(
+                "SELECT type FROM sqlite_master WHERE name = ?",
+                (mv_name,),
+            )
+            row = cur.fetchone()
+            if row:
+                obj_type = row["type"]
+                if obj_type == "view":
+                    self._conn.execute(f"DROP VIEW IF EXISTS {mv_name};")
+                elif obj_type == "table":
+                    self._conn.execute(f"DROP TABLE IF EXISTS {mv_name};")
+            if self.use_materialized_view:
+                self._build_materialized_view(tables)
+            else:
+                self._conn.execute(_build_unified_view_sql(tables, self.unified_view_name))
+
+    def _build_materialized_view(self, tables: List[str]) -> None:
+        """构建物化表（materialized table）并加索引。
+
+        物化表 vs 视图：
+        - 优势：支持索引加速跨月查询，复杂聚合更快
+        - 劣势：需要定期刷新，占用更多磁盘空间
+
+        注意：调用前必须已 DROP 同名表/视图，且必须在事务中调用
+        """
+        mv_name = self.unified_view_name
+        if not tables:
+            self._conn.execute(f"""
+                CREATE TABLE {mv_name} (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ts REAL NOT NULL,
+                    subject TEXT NOT NULL,
+                    action TEXT NOT NULL,
+                    resource TEXT DEFAULT '',
+                    status TEXT DEFAULT '',
+                    source_file TEXT DEFAULT '',
+                    raw TEXT DEFAULT ''
+                );
+            """)
+        else:
+            self._conn.execute(f"""
+                CREATE TABLE {mv_name} (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ts REAL NOT NULL,
+                    subject TEXT NOT NULL,
+                    action TEXT NOT NULL,
+                    resource TEXT DEFAULT '',
+                    status TEXT DEFAULT '',
+                    source_file TEXT DEFAULT '',
+                    raw TEXT DEFAULT ''
+                );
+            """)
+            for t in tables:
+                self._conn.execute(f"""
+                    INSERT INTO {mv_name} (ts, subject, action, resource, status, source_file, raw)
+                    SELECT ts, subject, action, resource, status, source_file, raw FROM {t}
+                """)
+        for idx_sql in _MV_INDEX_TEMPLATES:
+            self._conn.execute(idx_sql.format(table=mv_name))
+        self._mv_last_refreshed = time.time()
+        self._conn.execute(
+            "INSERT OR REPLACE INTO _meta (key, value) VALUES (?, ?)",
+            (f"mv_{mv_name}_last_refresh", str(self._mv_last_refreshed)),
+        )
+
+    def refresh_materialized_view(self) -> None:
+        """手动刷新物化表。"""
+        if self.use_materialized_view:
+            self._rebuild_unified_view()
+
+    def _ensure_mv_fresh(self) -> None:
+        """确保物化表是最新的（检查脏标记和_meta表记录）。"""
+        if not self.use_materialized_view:
+            return
+        if self._need_mv_refresh:
+            self._rebuild_unified_view()
+            self._need_mv_refresh = False
+            return
+        cur = self._conn.execute(
+            "SELECT value FROM _meta WHERE key = ?",
+            (f"mv_{self.unified_view_name}_last_refresh",),
+        )
+        row = cur.fetchone()
+        if row is None:
+            self._rebuild_unified_view()
+            self._need_mv_refresh = False
 
     # ---- 主体类别 CRUD ----
     def get_subject_categories(self, use_cache: bool = True) -> Dict[str, Dict[str, Any]]:
@@ -198,6 +297,17 @@ class Storage:
                 (category, prefix, max_window_seconds, min_count_base, min_count_ratio, rate_factor),
             )
         self._categories_cache = None
+        try:
+            from .analyzer import get_pubsub
+            pubsub = get_pubsub()
+            pubsub.publish("categories_changed", {
+                "source": "storage",
+                "action": "add",
+                "category": category,
+                "prefix": prefix,
+            })
+        except Exception:
+            pass
 
     def remove_subject_category(self, category: str, prefix: str) -> bool:
         cur = self._conn.execute(
@@ -206,7 +316,20 @@ class Storage:
         )
         self._conn.commit()
         self._categories_cache = None
-        return cur.rowcount > 0
+        affected = cur.rowcount > 0
+        if affected:
+            try:
+                from .analyzer import get_pubsub
+                pubsub = get_pubsub()
+                pubsub.publish("categories_changed", {
+                    "source": "storage",
+                    "action": "remove",
+                    "category": category,
+                    "prefix": prefix,
+                })
+            except Exception:
+                pass
+        return affected
 
     def invalidate_categories_cache(self) -> None:
         self._categories_cache = None
@@ -250,6 +373,8 @@ class Storage:
 
         if new_tables:
             self._rebuild_unified_view()
+        elif total > 0 and self.use_materialized_view:
+            self._need_mv_refresh = True
         return total
 
     # ---- TTL 清理 ----
@@ -276,11 +401,13 @@ class Storage:
         if tables_dropped:
             self._table_cache -= set(tables_dropped)
             self._rebuild_unified_view()
+            self._need_mv_refresh = False
             self._conn.commit()
         return deleted_rows
 
-    # ---- 基础查询（走统一视图） ----
+    # ---- 基础查询（走统一视图/物化表） ----
     def _uv(self) -> str:
+        self._ensure_mv_fresh()
         return self.unified_view_name
 
     def count(self) -> int:

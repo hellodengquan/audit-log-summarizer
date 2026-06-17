@@ -313,6 +313,7 @@ def write_summaries(
     """生成两份摘要文件，返回 (timeline_path, stats_path, analysis_dict)。
 
     page_size / sort_by / sort_order 为 None 时从 audit.yaml 配置读取默认值。
+    page_size 超过 max_page_size 时自动截断，防止 OOM。
     """
     from .config import get_config
     cfg = get_config()
@@ -322,6 +323,12 @@ def write_summaries(
         sort_by = cfg.default_sort_by
     if sort_order is None:
         sort_order = cfg.default_sort_order
+
+    max_page_size = cfg.max_page_size
+    if max_page_size > 0 and page_size > max_page_size:
+        import sys
+        print(f"[警告] page_size={page_size} 超过上限 max_page_size={max_page_size}，已自动截断", file=sys.stderr)
+        page_size = max_page_size
 
     os.makedirs(output_dir, exist_ok=True)
     analysis = analyze(storage, window_seconds, spike_tiers, dynamic_bulk)

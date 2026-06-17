@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional, Tuple
 _DEFAULTS: Dict[str, Any] = {
     "parser": {
         "protobuf_schema_path": "",
+        "protobuf_default_version": "default",
         "format_overrides": {},
     },
     "analyzer": {
@@ -57,6 +58,7 @@ _DEFAULTS: Dict[str, Any] = {
     },
     "output": {
         "default_page_size": 0,
+        "max_page_size": 1000,
         "default_sort_by": "count",
         "default_sort_order": "desc",
     },
@@ -64,10 +66,12 @@ _DEFAULTS: Dict[str, Any] = {
         "ttl_days": None,
         "table_prefix": "logs_",
         "unified_view_name": "audit_unified_view",
+        "use_materialized_view": False,
     },
     "admin": {
         "reload_port": 0,
         "reload_host": "127.0.0.1",
+        "admin_token": "",
     },
 }
 
@@ -231,10 +235,42 @@ class AuditConfig:
     @property
     def protobuf_schema_path(self) -> str:
         path = self.get("parser", "protobuf_schema_path", default="")
+        if isinstance(path, dict):
+            return ""
         if path and self.config_path and not os.path.isabs(path):
             base = os.path.dirname(os.path.abspath(self.config_path))
             path = os.path.join(base, path)
         return path
+
+    @property
+    def protobuf_default_version(self) -> str:
+        return self.get("parser", "protobuf_default_version", default="default")
+
+    @property
+    def protobuf_schemas(self) -> Dict[str, str]:
+        """返回 {version: absolute_schema_path} 映射。
+
+        两种配置形式都支持：
+        1. 单路径字符串: 返回 {"default": "/abs/path/to/schema"}
+        2. 多版本 dict: 返回 {"v1": "/abs/v1.schema", "v2": "/abs/v2.schema"}
+        """
+        raw = self.get("parser", "protobuf_schema_path", default="")
+        result: Dict[str, str] = {}
+        if isinstance(raw, dict):
+            for ver, path in raw.items():
+                if not isinstance(path, str) or not path:
+                    continue
+                if self.config_path and not os.path.isabs(path):
+                    base = os.path.dirname(os.path.abspath(self.config_path))
+                    path = os.path.join(base, path)
+                result[str(ver)] = path
+        elif isinstance(raw, str) and raw:
+            path = raw
+            if self.config_path and not os.path.isabs(path):
+                base = os.path.dirname(os.path.abspath(self.config_path))
+                path = os.path.join(base, path)
+            result["default"] = path
+        return result
 
     @property
     def spike_tiers(self) -> Dict[str, int]:
@@ -264,6 +300,10 @@ class AuditConfig:
         return self.get("output", "default_page_size", default=0)
 
     @property
+    def max_page_size(self) -> int:
+        return self.get("output", "max_page_size", default=1000)
+
+    @property
     def default_sort_by(self) -> str:
         return self.get("output", "default_sort_by", default="count")
 
@@ -284,12 +324,20 @@ class AuditConfig:
         return self.get("storage", "unified_view_name", default="audit_unified_view")
 
     @property
+    def use_materialized_view(self) -> bool:
+        return self.get("storage", "use_materialized_view", default=False)
+
+    @property
     def reload_port(self) -> int:
         return self.get("admin", "reload_port", default=0)
 
     @property
     def reload_host(self) -> str:
         return self.get("admin", "reload_host", default="127.0.0.1")
+
+    @property
+    def admin_token(self) -> str:
+        return self.get("admin", "admin_token", default="")
 
     @property
     def format_overrides(self) -> Dict[str, str]:

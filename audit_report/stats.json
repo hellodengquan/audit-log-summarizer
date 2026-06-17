@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-17T05:02:01.855423+00:00",
+  "generated_at": "2026-06-17T05:38:17.213908+00:00",
   "version": "2.0",
   "pagination": {
     "page": 1,
-    "page_size": 50
+    "page_size": "unlimited"
   },
   "sort": {
     "by": "count",
@@ -935,6 +935,867 @@
       "cnt": 43,
       "t_min": 1781568672.0,
       "t_max": 1781650565.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "write",
+      "cnt": 43,
+      "t_min": 1781568663.0,
+      "t_max": 1781654311.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "write",
+      "cnt": 42,
+      "t_min": 1781568352.0,
+      "t_max": 1781652228.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "create",
+      "cnt": 41,
+      "t_min": 1781568716.0,
+      "t_max": 1781653738.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "write",
+      "cnt": 41,
+      "t_min": 1781568435.0,
+      "t_max": 1781652869.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "create",
+      "cnt": 41,
+      "t_min": 1781569480.0,
+      "t_max": 1781650905.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "create",
+      "cnt": 40,
+      "t_min": 1781568917.0,
+      "t_max": 1781652209.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781569010.0,
+      "t_max": 1781651973.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781568900.0,
+      "t_max": 1781648513.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "write",
+      "cnt": 36,
+      "t_min": 1781570908.0,
+      "t_max": 1781649985.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "write",
+      "cnt": 35,
+      "t_min": 1781572627.0,
+      "t_max": 1781651448.0
+    },
+    {
+      "subject": "grace",
+      "action": "login",
+      "cnt": 35,
+      "t_min": 1781568113.0,
+      "t_max": 1781654287.0
+    },
+    {
+      "subject": "root",
+      "action": "useradd",
+      "cnt": 35,
+      "t_min": 1781573432.0,
+      "t_max": 1781650000.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "write",
+      "cnt": 34,
+      "t_min": 1781569004.0,
+      "t_max": 1781652632.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "create",
+      "cnt": 34,
+      "t_min": 1781569478.0,
+      "t_max": 1781652161.0
+    },
+    {
+      "subject": "root",
+      "action": "systemctl",
+      "cnt": 34,
+      "t_min": 1781568573.0,
+      "t_max": 1781652763.0
+    },
+    {
+      "subject": "bob",
+      "action": "login",
+      "cnt": 33,
+      "t_min": 1781568000.0,
+      "t_max": 1781653813.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "write",
+      "cnt": 32,
+      "t_min": 1781569309.0,
+      "t_max": 1781653272.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "create",
+      "cnt": 32,
+      "t_min": 1781571426.0,
+      "t_max": 1781649528.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "write",
+      "cnt": 32,
+      "t_min": 1781572678.0,
+      "t_max": 1781652151.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "write",
+      "cnt": 31,
+      "t_min": 1781570969.0,
+      "t_max": 1781651600.0
+    },
+    {
+      "subject": "root",
+      "action": "apt-get",
+      "cnt": 31,
+      "t_min": 1781569032.0,
+      "t_max": 1781651596.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781569284.0,
+      "t_max": 1781649494.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781568552.0,
+      "t_max": 1781649966.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "write",
+      "cnt": 30,
+      "t_min": 1781568134.0,
+      "t_max": 1781652435.0
+    },
+    {
+      "subject": "unknown",
+      "action": "delete",
+      "cnt": 30,
+      "t_min": 1781577318.0,
+      "t_max": 1781654013.0
+    },
+    {
+      "subject": "unknown",
+      "action": "other",
+      "cnt": 30,
+      "t_min": 1781570470.0,
+      "t_max": 1781653245.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "write",
+      "cnt": 28,
+      "t_min": 1781569343.0,
+      "t_max": 1781648913.0
+    },
+    {
+      "subject": "ivy",
+      "action": "login",
+      "cnt": 28,
+      "t_min": 1781570796.0,
+      "t_max": 1781652761.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "write",
+      "cnt": 27,
+      "t_min": 1781571291.0,
+      "t_max": 1781651233.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "write",
+      "cnt": 27,
+      "t_min": 1781568841.0,
+      "t_max": 1781648710.0
+    },
+    {
+      "subject": "frank",
+      "action": "login",
+      "cnt": 27,
+      "t_min": 1781568422.0,
+      "t_max": 1781646693.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "write",
+      "cnt": 26,
+      "t_min": 1781569265.0,
+      "t_max": 1781652333.0
+    },
+    {
+      "subject": "eve",
+      "action": "login",
+      "cnt": 26,
+      "t_min": 1781571949.0,
+      "t_max": 1781651641.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "write",
+      "cnt": 25,
+      "t_min": 1781569546.0,
+      "t_max": 1781650984.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "write",
+      "cnt": 25,
+      "t_min": 1781568031.0,
+      "t_max": 1781649909.0
+    },
+    {
+      "subject": "henry",
+      "action": "login",
+      "cnt": 25,
+      "t_min": 1781570129.0,
+      "t_max": 1781640738.0
+    },
+    {
+      "subject": "jack",
+      "action": "login",
+      "cnt": 25,
+      "t_min": 1781572009.0,
+      "t_max": 1781650864.0
+    },
+    {
+      "subject": "alice",
+      "action": "login",
+      "cnt": 22,
+      "t_min": 1781575862.0,
+      "t_max": 1781650703.0
+    },
+    {
+      "subject": "charlie",
+      "action": "login",
+      "cnt": 21,
+      "t_min": 1781568965.0,
+      "t_max": 1781653469.0
+    },
+    {
+      "subject": "root",
+      "action": "cat",
+      "cnt": 21,
+      "t_min": 1781576954.0,
+      "t_max": 1781650777.0
+    },
+    {
+      "subject": "david",
+      "action": "login",
+      "cnt": 19,
+      "t_min": 1781572657.0,
+      "t_max": 1781653322.0
+    },
+    {
+      "subject": "frank",
+      "action": "sudo",
+      "cnt": 19,
+      "t_min": 1781579222.0,
+      "t_max": 1781652763.0
+    },
+    {
+      "subject": "unknown",
+      "action": "password_change",
+      "cnt": 19,
+      "t_min": 1781578088.0,
+      "t_max": 1781647998.0
+    },
+    {
+      "subject": "charlie",
+      "action": "sudo",
+      "cnt": 17,
+      "t_min": 1781579720.0,
+      "t_max": 1781636953.0
+    },
+    {
+      "subject": "david",
+      "action": "sudo",
+      "cnt": 16,
+      "t_min": 1781569032.0,
+      "t_max": 1781649394.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "delete",
+      "cnt": 15,
+      "t_min": 1781568931.0,
+      "t_max": 1781650468.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "delete",
+      "cnt": 15,
+      "t_min": 1781570691.0,
+      "t_max": 1781622543.0
+    },
+    {
+      "subject": "alice",
+      "action": "sudo",
+      "cnt": 15,
+      "t_min": 1781572962.0,
+      "t_max": 1781642372.0
+    },
+    {
+      "subject": "henry",
+      "action": "sudo",
+      "cnt": 15,
+      "t_min": 1781580733.0,
+      "t_max": 1781648595.0
+    },
+    {
+      "subject": "unknown",
+      "action": "api_call",
+      "cnt": 15,
+      "t_min": 1781574873.0,
+      "t_max": 1781653465.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781572865.0,
+      "t_max": 1781646659.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781583528.0,
+      "t_max": 1781652723.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781568935.0,
+      "t_max": 1781645849.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "delete",
+      "cnt": 14,
+      "t_min": 1781570954.0,
+      "t_max": 1781644083.0
+    },
+    {
+      "subject": "bob",
+      "action": "sudo",
+      "cnt": 14,
+      "t_min": 1781574116.0,
+      "t_max": 1781642304.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "delete",
+      "cnt": 13,
+      "t_min": 1781573148.0,
+      "t_max": 1781653842.0
+    },
+    {
+      "subject": "grace",
+      "action": "sudo",
+      "cnt": 13,
+      "t_min": 1781568573.0,
+      "t_max": 1781642179.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781581349.0,
+      "t_max": 1781647475.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781569930.0,
+      "t_max": 1781653342.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781585130.0,
+      "t_max": 1781652953.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781578416.0,
+      "t_max": 1781647495.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "delete",
+      "cnt": 12,
+      "t_min": 1781575718.0,
+      "t_max": 1781652851.0
+    },
+    {
+      "subject": "eve",
+      "action": "sudo",
+      "cnt": 12,
+      "t_min": 1781569577.0,
+      "t_max": 1781650000.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "delete",
+      "cnt": 11,
+      "t_min": 1781575259.0,
+      "t_max": 1781645879.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "delete",
+      "cnt": 10,
+      "t_min": 1781586341.0,
+      "t_max": 1781641775.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "delete",
+      "cnt": 10,
+      "t_min": 1781590969.0,
+      "t_max": 1781651411.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781575487.0,
+      "t_max": 1781651736.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781570464.0,
+      "t_max": 1781650283.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "delete",
+      "cnt": 9,
+      "t_min": 1781588543.0,
+      "t_max": 1781651799.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "delete",
+      "cnt": 7,
+      "t_min": 1781568924.0,
+      "t_max": 1781646717.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "password_change",
+      "cnt": 6,
+      "t_min": 1781575789.0,
+      "t_max": 1781653696.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "delete",
+      "cnt": 6,
+      "t_min": 1781579540.0,
+      "t_max": 1781639203.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "other",
+      "cnt": 6,
+      "t_min": 1781568543.0,
+      "t_max": 1781647360.0
+    },
+    {
+      "subject": "10.0.2.131",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781585838.0,
+      "t_max": 1781626986.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781577163.0,
+      "t_max": 1781624263.0
+    },
+    {
+      "subject": "10.0.5.24",
+      "action": "password_change",
+      "cnt": 5,
+      "t_min": 1781582632.0,
+      "t_max": 1781650531.0
+    },
+    {
+      "subject": "10.0.2.116",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781583526.0,
+      "t_max": 1781625963.0
+    },
+    {
+      "subject": "10.0.3.64",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781574218.0,
+      "t_max": 1781648883.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781597069.0,
+      "t_max": 1781622169.0
+    },
+    {
+      "subject": "10.0.5.73",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781576787.0,
+      "t_max": 1781653516.0
+    },
+    {
+      "subject": "10.0.5.8",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781603360.0,
+      "t_max": 1781614683.0
+    },
+    {
+      "subject": "185.220.101.2",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781589242.0,
+      "t_max": 1781644573.0
+    },
+    {
+      "subject": "185.220.101.4",
+      "action": "password_change",
+      "cnt": 4,
+      "t_min": 1781574082.0,
+      "t_max": 1781646120.0
+    },
+    {
+      "subject": "unknown",
+      "action": "permission_grant_global",
+      "cnt": 4,
+      "t_min": 1781599414.0,
+      "t_max": 1781636885.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781586715.0,
+      "t_max": 1781640250.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781587434.0,
+      "t_max": 1781627413.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781573057.0,
+      "t_max": 1781589850.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781570986.0,
+      "t_max": 1781631424.0
+    },
+    {
+      "subject": "185.220.101.7",
+      "action": "password_change",
+      "cnt": 3,
+      "t_min": 1781569494.0,
+      "t_max": 1781633887.0
+    },
+    {
+      "subject": "unknown",
+      "action": "rollback",
+      "cnt": 3,
+      "t_min": 1781602931.0,
+      "t_max": 1781641138.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781608875.0,
+      "t_max": 1781634177.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781593557.0,
+      "t_max": 1781606593.0
+    },
+    {
+      "subject": "10.0.1.57",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781595704.0,
+      "t_max": 1781641611.0
+    },
+    {
+      "subject": "10.0.1.8",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781579122.0,
+      "t_max": 1781638474.0
+    },
+    {
+      "subject": "10.0.1.9",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781577741.0,
+      "t_max": 1781638754.0
+    },
+    {
+      "subject": "10.0.2.180",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781568980.0,
+      "t_max": 1781570882.0
+    },
+    {
+      "subject": "10.0.2.37",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781602087.0,
+      "t_max": 1781650746.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781587791.0,
+      "t_max": 1781651552.0
+    },
+    {
+      "subject": "10.0.4.89",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781615434.0,
+      "t_max": 1781633736.0
+    },
+    {
+      "subject": "10.0.5.109",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781573361.0,
+      "t_max": 1781617050.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781583573.0,
+      "t_max": 1781648539.0
+    },
+    {
+      "subject": "10.0.5.110",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781607294.0,
+      "t_max": 1781637830.0
+    },
+    {
+      "subject": "10.0.5.52",
+      "action": "api_call",
+      "cnt": 2,
+      "t_min": 1781635331.0,
+      "t_max": 1781639612.0
+    },
+    {
+      "subject": "185.220.101.2",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781637634.0,
+      "t_max": 1781649492.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781594462.0,
+      "t_max": 1781649892.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "password_change",
+      "cnt": 2,
+      "t_min": 1781610758.0,
+      "t_max": 1781621245.0
+    },
+    {
+      "subject": "185.220.101.5",
+      "action": "other",
+      "cnt": 2,
+      "t_min": 1781575897.0,
+      "t_max": 1781609013.0
+    },
+    {
+      "subject": "unknown",
+      "action": "db_restore",
+      "cnt": 2,
+      "t_min": 1781629438.0,
+      "t_max": 1781643168.0
+    },
+    {
+      "subject": "unknown",
+      "action": "key_rotate",
+      "cnt": 2,
+      "t_min": 1781602601.0,
+      "t_max": 1781604896.0
+    },
+    {
+      "subject": "10.0.1.175",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781573924.0,
+      "t_max": 1781573924.0
+    },
+    {
+      "subject": "10.0.1.196",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781635860.0,
+      "t_max": 1781635860.0
+    },
+    {
+      "subject": "10.0.2.247",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781638988.0,
+      "t_max": 1781638988.0
+    },
+    {
+      "subject": "10.0.3.28",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781601873.0,
+      "t_max": 1781601873.0
+    },
+    {
+      "subject": "10.0.3.41",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781572137.0,
+      "t_max": 1781572137.0
+    },
+    {
+      "subject": "185.220.101.1",
+      "action": "other",
+      "cnt": 1,
+      "t_min": 1781618567.0,
+      "t_max": 1781618567.0
+    },
+    {
+      "subject": "185.220.101.1",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781601217.0,
+      "t_max": 1781601217.0
+    },
+    {
+      "subject": "185.220.101.3",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781576414.0,
+      "t_max": 1781576414.0
+    },
+    {
+      "subject": "185.220.101.4",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781645318.0,
+      "t_max": 1781645318.0
+    },
+    {
+      "subject": "185.220.101.5",
+      "action": "password_change",
+      "cnt": 1,
+      "t_min": 1781598541.0,
+      "t_max": 1781598541.0
+    },
+    {
+      "subject": "185.220.101.6",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781598948.0,
+      "t_max": 1781598948.0
+    },
+    {
+      "subject": "185.220.101.7",
+      "action": "api_call",
+      "cnt": 1,
+      "t_min": 1781628209.0,
+      "t_max": 1781628209.0
+    },
+    {
+      "subject": "unknown",
+      "action": "cert_revoke",
+      "cnt": 1,
+      "t_min": 1781640412.0,
+      "t_max": 1781640412.0
+    },
+    {
+      "subject": "unknown",
+      "action": "emergency_shutdown",
+      "cnt": 1,
+      "t_min": 1781623780.0,
+      "t_max": 1781623780.0
     }
   ],
   "time_series": [

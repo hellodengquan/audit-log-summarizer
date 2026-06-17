@@ -7,6 +7,7 @@
 4. 识别批量动作（按主体类别动态计算阈值，类别从 DB 表加载）
 5. 识别高失败率主体
 6. /admin/reload 运行时热加载配置
+7. pub/sub 事件总线，categories 表变更自动热加载
 """
 
 from __future__ import annotations
@@ -14,13 +15,99 @@ from __future__ import annotations
 import json
 import math
 import threading
+import queue
 from collections import defaultdict
 from datetime import datetime, timezone
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from .storage import Storage
 from .config import get_config, AuditConfig
+
+
+# ---------------------------------------------------------------------------
+# Pub/Sub 事件总线（进程内，线程安全）
+# ---------------------------------------------------------------------------
+
+class _PubSub:
+    """轻量级发布订阅，用于 categories 表变更通知 analyzer 热加载。
+
+    单例模式，通过 get_pubsub() 获取实例。
+    """
+
+    _instance: Optional["_PubSub"] = None
+    _instance_lock = threading.Lock()
+
+    @classmethod
+    def get_instance(cls) -> "_PubSub":
+        with cls._instance_lock:
+            if cls._instance is None:
+                cls._instance = cls()
+            return cls._instance
+
+    def __init__(self) -> None:
+        self._lock = threading.RLock()
+        self._subscribers: Dict[str, List[Tuple[int, Callable[[str, Dict[str, Any]], None]]]] = defaultdict(list)
+        self._next_id = 0
+        self._event_queue: Optional["queue.Queue[Tuple[str, Dict[str, Any]]]"] = None
+        self._dispatcher_thread: Optional[threading.Thread] = None
+        self._stop_event = threading.Event()
+
+    def subscribe(self, topic: str, callback: Callable[[str, Dict[str, Any]], None]) -> int:
+        """订阅主题，返回订阅 ID（用于 unsubscribe）。"""
+        with self._lock:
+            sid = self._next_id
+            self._next_id += 1
+            self._subscribers[topic].append((sid, callback))
+            self._ensure_dispatcher()
+            return sid
+
+    def unsubscribe(self, subscriber_id: int) -> None:
+        """取消订阅。"""
+        with self._lock:
+            for topic in list(self._subscribers.keys()):
+                self._subscribers[topic] = [
+                    (sid, cb) for sid, cb in self._subscribers[topic]
+                    if sid != subscriber_id
+                ]
+
+    def publish(self, topic: str, payload: Optional[Dict[str, Any]] = None) -> None:
+        """发布事件到主题（异步分发，不阻塞发布者）。"""
+        if payload is None:
+            payload = {}
+        if self._event_queue is not None:
+            self._event_queue.put((topic, payload))
+
+    def _ensure_dispatcher(self) -> None:
+        """启动事件分发线程（仅调用一次）。"""
+        if self._event_queue is None:
+            self._event_queue = queue.Queue()
+            self._dispatcher_thread = threading.Thread(
+                target=self._dispatch_loop, daemon=True
+            )
+            self._dispatcher_thread.start()
+
+    def _dispatch_loop(self) -> None:
+        while not self._stop_event.is_set():
+            try:
+                topic, payload = self._event_queue.get(timeout=0.5)
+            except queue.Empty:
+                continue
+            with self._lock:
+                callbacks = [cb for _, cb in self._subscribers.get(topic, [])]
+            for cb in callbacks:
+                try:
+                    cb(topic, payload)
+                except Exception:
+                    pass
+
+    def stop(self) -> None:
+        self._stop_event.set()
+
+
+def get_pubsub() -> _PubSub:
+    """获取 PubSub 单例。"""
+    return _PubSub.get_instance()
 
 
 def _fmt_ts(ts: float) -> str:
@@ -169,11 +256,43 @@ class AnomalyDetector:
         self.agg = agg
         self.stats = stats
         self._categories, self._thresholds = _load_categories_from_storage(agg.storage)
+        self._pubsub_sid: Optional[int] = None
+        self._subscribe_pubsub()
+
+    def _subscribe_pubsub(self) -> None:
+        """订阅 categories_changed 事件，自动热加载。"""
+        try:
+            from .analyzer import get_pubsub
+            pubsub = get_pubsub()
+            self._pubsub_sid = pubsub.subscribe(
+                "categories_changed",
+                self._on_categories_changed,
+            )
+        except Exception:
+            self._pubsub_sid = None
+
+    def _on_categories_changed(self, topic: str, payload: Dict[str, Any]) -> None:
+        """收到 categories_changed 事件时自动 reload。"""
+        try:
+            self.reload_categories()
+        except Exception:
+            pass
 
     def reload_categories(self) -> None:
-        """重新从 DB 加载主体类别（/admin/reload 触发）。"""
+        """重新从 DB 加载主体类别（/admin/reload 触发或 pub/sub 事件触发）。"""
         self.agg.storage.invalidate_categories_cache()
         self._categories, self._thresholds = _load_categories_from_storage(self.agg.storage)
+
+    def close(self) -> None:
+        """清理 pub/sub 订阅。"""
+        if self._pubsub_sid is not None:
+            try:
+                from .analyzer import get_pubsub
+                pubsub = get_pubsub()
+                pubsub.unsubscribe(self._pubsub_sid)
+            except Exception:
+                pass
+            self._pubsub_sid = None
 
     def detect_spikes(self, z_threshold: float = 2.5, min_abs: int = 10) -> List[Dict[str, Any]]:
         all_spikes: List[Dict[str, Any]] = []
@@ -385,25 +504,47 @@ class AnomalyDetector:
 class _ReloadHandler(BaseHTTPRequestHandler):
     storage: Optional[Storage] = None
     detector: Optional[AnomalyDetector] = None
+    pubsub: Optional["_PubSub"] = None
+
+    def _check_auth(self) -> bool:
+        """校验 admin token。token 为空时不鉴权。"""
+        from .config import get_config
+        cfg = get_config()
+        expected_token = cfg.admin_token
+        if not expected_token:
+            return True
+        auth_header = self.headers.get("Authorization", "")
+        if not auth_header.startswith("Bearer "):
+            return False
+        token = auth_header[7:].strip()
+        return token == expected_token
+
+    def _send_json(self, status_code: int, data: Dict[str, Any]) -> None:
+        self.send_response(status_code)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(data).encode())
 
     def do_POST(self):
+        if not self._check_auth():
+            self._send_json(401, {"error": "unauthorized", "detail": "valid admin token required"})
+            return
         if self.path == "/admin/reload":
             self._handle_reload()
         else:
-            self.send_response(404)
-            self.end_headers()
+            self._send_json(404, {"error": "not found"})
 
     def do_GET(self):
+        if self.path in ("/admin/health", "/admin/categories"):
+            if not self._check_auth():
+                self._send_json(401, {"error": "unauthorized", "detail": "valid admin token required"})
+                return
         if self.path == "/admin/health":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write(json.dumps({"status": "ok"}).encode())
+            self._send_json(200, {"status": "ok"})
         elif self.path == "/admin/categories":
             self._handle_list_categories()
         else:
-            self.send_response(404)
-            self.end_headers()
+            self._send_json(404, {"error": "not found"})
 
     def _handle_reload(self):
         try:
@@ -438,31 +579,33 @@ class _ReloadHandler(BaseHTTPRequestHandler):
                                 bt.get("min_count_ratio", 0.01),
                                 bt.get("rate_factor", 1.0),
                             )
+                    if self.pubsub:
+                        self.pubsub.publish("categories_changed", {"source": "admin_reload"})
+
+            if body.get("refresh_mv") and self.storage:
+                if hasattr(self.storage, "refresh_materialized_view"):
+                    self.storage.refresh_materialized_view()
 
             if self.detector:
                 self.detector.reload_categories()
 
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            result = {"status": "reloaded", "spike_tiers": self.detector.agg.spike_tiers if self.detector else []}
-            self.wfile.write(json.dumps(result).encode())
+            from .parser import _invalidate_pb_schema_cache
+            _invalidate_pb_schema_cache()
+
+            self._send_json(200, {
+                "status": "reloaded",
+                "spike_tiers": self.detector.agg.spike_tiers if self.detector else [],
+                "materialized_view_refreshed": bool(body.get("refresh_mv")),
+            })
         except Exception as e:
-            self.send_response(500)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": str(e)}).encode())
+            self._send_json(500, {"error": str(e)})
 
     def _handle_list_categories(self):
         if not self.storage:
-            self.send_response(500)
-            self.end_headers()
+            self._send_json(500, {"error": "storage not available"})
             return
         cats = self.storage.get_subject_categories(use_cache=False)
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.end_headers()
-        self.wfile.write(json.dumps(cats, ensure_ascii=False).encode())
+        self._send_json(200, cats)
 
     def log_message(self, format, *args):
         pass
@@ -479,11 +622,13 @@ class AdminServer:
         self.port = port
         self._server: Optional[HTTPServer] = None
         self._thread: Optional[threading.Thread] = None
+        self._pubsub = get_pubsub()
 
     def start(self) -> int:
         handler = type("Handler", (_ReloadHandler,), {
             "storage": self.storage,
             "detector": self.detector,
+            "pubsub": self._pubsub,
         })
         self._server = HTTPServer((self.host, self.port), handler)
         actual_port = self._server.server_address[1]
@@ -495,6 +640,8 @@ class AdminServer:
         if self._server:
             self._server.shutdown()
             self._server = None
+        if self.detector:
+            self.detector.close()
 
     def update_detector(self, detector: AnomalyDetector) -> None:
         self.detector = detector

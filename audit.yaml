@@ -3,10 +3,25 @@
 # 运行时可通过 /admin/reload 热加载
 
 parser:
-  # protobuf text-format 解析时使用的 schema 描述文件路径
+  # protobuf text-format 解析时使用的 schema 描述文件（支持多版本并存）
+  # 两种配置方式：
+  # A) 单一路径（默认版本 "default"）:
+  #   protobuf_schema_path: "schemas/audit_v1.schema"
+  # B) 多版本映射（日志中需带 schema_version 字段）:
+  #   protobuf_schema_path:
+  #     v1: "schemas/audit_v1.schema"
+  #     v2: "schemas/audit_v2.schema"
+  # 每个 schema 文件可带元信息:
+  #   # version: v1
+  #   # field: canonical_name
+  #   user_id -> subject
+  #   event_type -> action
   # 支持绝对路径或相对于本配置文件的相对路径
   # 留空则仅做通用 field:value 提取，不依赖 schema
   protobuf_schema_path: ""
+
+  # 多 schema 时的默认版本（当日志中无 schema_version 字段时使用）
+  protobuf_default_version: "default"
 
   # 额外的文件扩展名到格式的映射（覆盖自动检测）
   # 示例: .audit: jsonl, .trace: kv
@@ -70,6 +85,10 @@ output:
   # CLI --page-size 可覆盖此值
   default_page_size: 0
 
+  # 分页大小上限，防止请求过大导致 OOM
+  # CLI --page-size 超过此值时将被自动截断
+  max_page_size: 1000
+
   # 默认排序字段与方向
   default_sort_by: count
   default_sort_order: desc
@@ -84,9 +103,19 @@ storage:
   # 统一视图名称
   unified_view_name: audit_unified_view
 
+  # 是否使用物化表（materialized table）替代视图
+  # 物化表支持索引加速跨月查询，但需要定时刷新
+  # 写入完成后会自动刷新，也可通过 /admin/reload 触发
+  use_materialized_view: true
+
 admin:
   # /admin/reload 热加载服务端口，0 表示不启动
   reload_port: 0
 
   # 绑定地址
   reload_host: "127.0.0.1"
+
+  # Admin API 鉴权 token，留空则不鉴权（仅开发模式）
+  # 生产环境务必设置，请求需在 header 中携带:
+  #   Authorization: Bearer <admin_token>
+  admin_token: ""

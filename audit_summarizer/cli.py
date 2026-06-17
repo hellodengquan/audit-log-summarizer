@@ -89,8 +89,10 @@ def _build_admin_parser(subparsers: argparse._SubParsersAction) -> argparse.Argu
     reload_p = admin_sub.add_parser("reload", help="向运行中服务发送热加载请求")
     reload_p.add_argument("--host", default="127.0.0.1", help="服务地址")
     reload_p.add_argument("--port", type=int, required=True, help="服务端口")
+    reload_p.add_argument("--admin-token", default=None, help="管理员鉴权 token（也可从 audit.yaml admin_token 读取）")
     reload_p.add_argument("--spike-tiers", default=None, help="新的窗口档位 JSON，如 [\"5min\",\"1h\"]")
     reload_p.add_argument("--add-category", default=None, help="添加类别 JSON，如 '{\"bot\":{\"prefixes\":[\"bot_\"],\"bulk_threshold\":{\"max_window_seconds\":300}}'")
+    reload_p.add_argument("--refresh-mv", action="store_true", help="同时刷新物化表（materialized view）")
     return p
 
 
@@ -176,6 +178,11 @@ def _cmd_analyze(args) -> int:
         sort_by = args.sort_by
         sort_order = args.sort_order
 
+        max_page_size = cfg.max_page_size
+        if page_size is not None and max_page_size > 0 and page_size > max_page_size:
+            print(f"[警告] --page-size={page_size} 超过上限 max_page_size={max_page_size}，已自动截断", file=sys.stderr)
+            page_size = max_page_size
+
         timeline_path, stats_path, analysis = write_summaries(
             storage=storage,
             output_dir=args.output_dir,
@@ -203,6 +210,8 @@ def _cmd_analyze(args) -> int:
         if args.verbose:
             tables = storage.list_month_tables()
             print(f"[5/5] 月表列表：{', '.join(tables) if tables else '(无)'}")
+            if storage.use_materialized_view:
+                print(f"[5.5/5] 物化表：{storage.unified_view_name}（已建索引加速跨月查询）")
 
         total = analysis["overview"]["total_logs"]
         meta = analysis["meta"]
@@ -216,8 +225,10 @@ def _cmd_analyze(args) -> int:
         print(f"  聚合窗口 : {meta['window_seconds']}s")
         print(f"  高峰档位 : {spike_tiers_str}")
         print(f"  动态阈值 : {'开' if dynamic_bulk else '关'}")
+        print(f"  物化表   : {'开 (' + storage.unified_view_name + ')' if storage.use_materialized_view else '关（视图模式）'}")
         cfg_ps = cfg.default_page_size
-        print(f"  配置默认分页 : {cfg_ps if cfg_ps > 0 else '不分页'}")
+        cfg_max_ps = cfg.max_page_size
+        print(f"  配置分页 : 默认 {cfg_ps if cfg_ps > 0 else '不分页'}，上限 {cfg_max_ps}")
         print(f"  排序     : {sort_by or cfg.default_sort_by} {sort_order or cfg.default_sort_order}")
         if admin_server:
             print(f"  管理接口 : http://{cfg.reload_host}:{actual_port}/admin/reload")
@@ -252,6 +263,9 @@ def _cmd_admin_reload(args) -> int:
     import urllib.request
     import urllib.error
 
+    from .config import load_config
+    cfg = load_config(None)
+
     body: Dict[str, Any] = {}
     if args.spike_tiers:
         try:
@@ -269,15 +283,34 @@ def _cmd_admin_reload(args) -> int:
             print(f"[错误] --add-category JSON 格式无效", file=sys.stderr)
             return 1
 
+    if args.refresh_mv:
+        body["refresh_mv"] = True
+
     url = f"http://{args.host}:{args.port}/admin/reload"
     data = json.dumps(body).encode() if body else b"{}"
-    req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
+    headers = {"Content-Type": "application/json"}
+
+    admin_token = args.admin_token or cfg.admin_token
+    if admin_token:
+        headers["Authorization"] = f"Bearer {admin_token}"
+
+    req = urllib.request.Request(url, data=data, headers=headers, method="POST")
 
     try:
         with urllib.request.urlopen(req, timeout=5) as resp:
             result = json.loads(resp.read().decode())
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 0
+    except urllib.error.HTTPError as e:
+        if e.code == 401:
+            print(f"[错误] 401 未授权：请提供正确的 --admin-token 或在 audit.yaml 配置 admin_token", file=sys.stderr)
+        else:
+            try:
+                err_body = json.loads(e.read().decode())
+                print(f"[错误] HTTP {e.code}: {json.dumps(err_body, ensure_ascii=False)}", file=sys.stderr)
+            except Exception:
+                print(f"[错误] HTTP {e.code}: {e.reason}", file=sys.stderr)
+        return 1
     except urllib.error.URLError as e:
         print(f"[错误] 无法连接到 {url}: {e}", file=sys.stderr)
         return 1
