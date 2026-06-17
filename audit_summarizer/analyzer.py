@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import threading
 import queue
+import time
 from collections import defaultdict
 from datetime import datetime, timezone
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -32,9 +34,15 @@ from .config import get_config, AuditConfig
 class _PubSub:
     """轻量级发布订阅，用于 categories 表变更通知 analyzer 热加载。
 
+    支持两种后端：
+    - inproc: 进程内内存队列（默认，单机场景）
+    - redis:  通过 Redis Sentinel 连接 Redis Cluster（分布式场景，自动故障转移）
+
     单例模式，通过 get_pubsub() 获取实例。
+    Redis 后端依赖可选，未安装 redis 库时自动降级到 inproc。
     """
 
+    CHANNEL_PREFIX = "audit_summarizer:"
     _instance: Optional["_PubSub"] = None
     _instance_lock = threading.Lock()
 
@@ -53,6 +61,103 @@ class _PubSub:
         self._dispatcher_thread: Optional[threading.Thread] = None
         self._stop_event = threading.Event()
 
+        from .config import get_config
+        cfg = get_config()
+        self._backend = cfg.pubsub_backend
+        self._redis_client = None
+        self._redis_pubsub = None
+        self._redis_listener_thread: Optional[threading.Thread] = None
+        self._redis_sentinels = cfg.redis_sentinels
+        self._redis_master_name = cfg.redis_master_name
+        self._redis_password = cfg.redis_password
+        self._redis_db = cfg.redis_db
+        self._redis_ready = False
+
+        if self._backend == "redis":
+            self._init_redis_backend()
+
+    def _init_redis_backend(self) -> None:
+        """初始化 Redis Sentinel 后端，失败时降级到 inproc。"""
+        try:
+            import redis
+            from redis.sentinel import Sentinel
+        except ImportError:
+            self._backend = "inproc"
+            return
+
+        if not self._redis_sentinels:
+            self._backend = "inproc"
+            return
+
+        try:
+            sentinel_nodes = []
+            for s in self._redis_sentinels:
+                if isinstance(s, dict):
+                    host = s.get("host", "127.0.0.1")
+                    port = int(s.get("port", 26379))
+                    sentinel_nodes.append((host, port))
+                elif isinstance(s, str) and ":" in s:
+                    host, port_s = s.rsplit(":", 1)
+                    sentinel_nodes.append((host, int(port_s)))
+                else:
+                    sentinel_nodes.append((str(s), 26379))
+
+            if not sentinel_nodes:
+                self._backend = "inproc"
+                return
+
+            sentinel_kwargs = {
+                "socket_timeout": 0.5,
+                "socket_connect_timeout": 0.5,
+            }
+            if self._redis_password:
+                sentinel_kwargs["password"] = self._redis_password
+
+            sentinel = Sentinel(sentinel_nodes, **sentinel_kwargs)
+
+            master_kwargs = {"socket_timeout": 1.0, "socket_connect_timeout": 1.0, "db": self._redis_db}
+            if self._redis_password:
+                master_kwargs["password"] = self._redis_password
+
+            self._redis_client = sentinel.master_for(
+                self._redis_master_name, **master_kwargs
+            )
+            self._redis_client.ping()
+            self._redis_pubsub = self._redis_client.pubsub()
+            self._redis_ready = True
+            self._redis_listener_thread = threading.Thread(
+                target=self._redis_listen_loop, daemon=True
+            )
+            self._redis_listener_thread.start()
+        except Exception:
+            self._backend = "inproc"
+            self._redis_client = None
+            self._redis_pubsub = None
+            self._redis_ready = False
+
+    def _redis_listen_loop(self) -> None:
+        """从 Redis 接收消息并转发到 inproc 订阅者。"""
+        try:
+            for message in self._redis_pubsub.listen():
+                try:
+                    if message.get("type") != "message":
+                        continue
+                    channel = message.get("channel", b"").decode() if isinstance(message.get("channel"), bytes) else str(message.get("channel", ""))
+                    topic = channel.replace(self.CHANNEL_PREFIX, "", 1) if channel.startswith(self.CHANNEL_PREFIX) else channel
+                    data = message.get("data")
+                    if isinstance(data, bytes):
+                        data = data.decode()
+                    try:
+                        payload = json.loads(data) if isinstance(data, str) else {}
+                    except json.JSONDecodeError:
+                        payload = {}
+                    if self._event_queue is not None:
+                        self._event_queue.put((topic, payload))
+                except Exception:
+                    continue
+        except Exception:
+            self._redis_ready = False
+
     def subscribe(self, topic: str, callback: Callable[[str, Dict[str, Any]], None]) -> int:
         """订阅主题，返回订阅 ID（用于 unsubscribe）。"""
         with self._lock:
@@ -60,6 +165,12 @@ class _PubSub:
             self._next_id += 1
             self._subscribers[topic].append((sid, callback))
             self._ensure_dispatcher()
+            if self._redis_ready and self._redis_pubsub is not None:
+                try:
+                    full_channel = f"{self.CHANNEL_PREFIX}{topic}"
+                    self._redis_pubsub.subscribe(full_channel)
+                except Exception:
+                    pass
             return sid
 
     def unsubscribe(self, subscriber_id: int) -> None:
@@ -72,11 +183,21 @@ class _PubSub:
                 ]
 
     def publish(self, topic: str, payload: Optional[Dict[str, Any]] = None) -> None:
-        """发布事件到主题（异步分发，不阻塞发布者）。"""
+        """发布事件到主题（异步分发，不阻塞发布者）。
+
+        Redis 后端：同时发布到 Redis（其他进程可感知）和本地队列（本进程实时处理）。
+        Redis 不可用时降级为仅本地。
+        """
         if payload is None:
             payload = {}
         if self._event_queue is not None:
             self._event_queue.put((topic, payload))
+        if self._redis_ready and self._redis_client is not None:
+            try:
+                full_channel = f"{self.CHANNEL_PREFIX}{topic}"
+                self._redis_client.publish(full_channel, json.dumps(payload))
+            except Exception:
+                pass
 
     def _ensure_dispatcher(self) -> None:
         """启动事件分发线程（仅调用一次）。"""
@@ -103,6 +224,16 @@ class _PubSub:
 
     def stop(self) -> None:
         self._stop_event.set()
+        if self._redis_pubsub is not None:
+            try:
+                self._redis_pubsub.close()
+            except Exception:
+                pass
+        if self._redis_client is not None:
+            try:
+                self._redis_client.close()
+            except Exception:
+                pass
 
 
 def get_pubsub() -> _PubSub:
@@ -498,26 +629,139 @@ class AnomalyDetector:
 
 
 # ---------------------------------------------------------------------------
-# /admin/reload HTTP 服务
+# Admin Token Secret Rotation（密钥轮换中间件）
 # ---------------------------------------------------------------------------
+
+class _SecretRotator:
+    """Admin token 自动轮换：定期从轮换文件读取新 token，支持新旧 token 共存。
+
+    使用场景：运维通过部署流水线定期更新 rotation 文件，服务无需重启即可感知新 token。
+    """
+
+    def __init__(self, rotation_file: str, interval_seconds: int = 0,
+                 allow_old_seconds: int = 3600):
+        self.rotation_file = rotation_file
+        self.interval_seconds = interval_seconds
+        self.allow_old_seconds = allow_old_seconds
+        self._lock = threading.RLock()
+        self._current_token: Optional[str] = None
+        self._token_history: List[Tuple[str, float]] = []
+        self._last_file_mtime: Optional[float] = None
+        self._thread: Optional[threading.Thread] = None
+        self._stop_event = threading.Event()
+
+    def _read_token_from_file(self) -> Optional[str]:
+        """从轮换文件读取 token，支持纯文本或 JSON 格式。"""
+        if not self.rotation_file or not os.path.exists(self.rotation_file):
+            return None
+        try:
+            with open(self.rotation_file, "r", encoding="utf-8") as fh:
+                content = fh.read().strip()
+            if not content:
+                return None
+            if content.startswith("{") or content.startswith("["):
+                data = json.loads(content)
+                if isinstance(data, dict):
+                    for key in ("token", "admin_token", "secret", "value"):
+                        if key in data and isinstance(data[key], str):
+                            return data[key].strip()
+                elif isinstance(data, list) and data and isinstance(data[0], str):
+                    return data[0].strip()
+            return content
+        except (OSError, json.JSONDecodeError):
+            return None
+
+    def _reload_if_needed(self) -> None:
+        """检测文件变更，更新 token。"""
+        try:
+            mtime = os.path.getmtime(self.rotation_file) if self.rotation_file and os.path.exists(self.rotation_file) else None
+        except OSError:
+            mtime = None
+
+        if mtime is None or mtime == self._last_file_mtime:
+            return
+
+        token = self._read_token_from_file()
+        if token and token != self._current_token:
+            now = time.time()
+            with self._lock:
+                if self._current_token:
+                    self._token_history.append((self._current_token, now))
+                    cutoff = now - self.allow_old_seconds
+                    self._token_history = [
+                        (t, ts) for t, ts in self._token_history if ts >= cutoff
+                    ]
+                self._current_token = token
+                self._last_file_mtime = mtime
+        elif mtime != self._last_file_mtime:
+            self._last_file_mtime = mtime
+
+    def get_valid_tokens(self) -> set:
+        """返回当前所有有效 token（包括当前 + 窗口内的历史 token）。"""
+        self._reload_if_needed()
+        with self._lock:
+            now = time.time()
+            cutoff = now - self.allow_old_seconds
+            self._token_history = [
+                (t, ts) for t, ts in self._token_history if ts >= cutoff
+            ]
+            tokens = set()
+            if self._current_token:
+                tokens.add(self._current_token)
+            for t, _ in self._token_history:
+                tokens.add(t)
+            return tokens
+
+    def start(self) -> None:
+        """启动后台轮询线程（仅当 interval_seconds > 0 时启动）。"""
+        if self.interval_seconds <= 0 or self._thread is not None:
+            return
+        self._reload_if_needed()
+        self._thread = threading.Thread(target=self._loop, daemon=True)
+        self._thread.start()
+
+    def _loop(self) -> None:
+        while not self._stop_event.is_set():
+            try:
+                self._reload_if_needed()
+            except Exception:
+                pass
+            self._stop_event.wait(self.interval_seconds)
+
+    def stop(self) -> None:
+        self._stop_event.set()
+
 
 class _ReloadHandler(BaseHTTPRequestHandler):
     storage: Optional[Storage] = None
     detector: Optional[AnomalyDetector] = None
     pubsub: Optional["_PubSub"] = None
+    token_rotator: Optional["_SecretRotator"] = None
 
     def _check_auth(self) -> bool:
-        """校验 admin token。token 为空时不鉴权。"""
+        """校验 admin token，支持 token rotation（多 token 同时生效）。"""
         from .config import get_config
         cfg = get_config()
-        expected_token = cfg.admin_token
-        if not expected_token:
+
+        if self.token_rotator is not None:
+            valid_tokens = self.token_rotator.get_valid_tokens()
+            expected_token = cfg.admin_token
+            if expected_token and expected_token not in valid_tokens:
+                valid_tokens.add(expected_token)
+        else:
+            valid_tokens = set()
+            expected_token = cfg.admin_token
+            if expected_token:
+                valid_tokens.add(expected_token)
+
+        if not valid_tokens:
             return True
+
         auth_header = self.headers.get("Authorization", "")
         if not auth_header.startswith("Bearer "):
             return False
         token = auth_header[7:].strip()
-        return token == expected_token
+        return token in valid_tokens
 
     def _send_json(self, status_code: int, data: Dict[str, Any]) -> None:
         self.send_response(status_code)
@@ -612,7 +856,7 @@ class _ReloadHandler(BaseHTTPRequestHandler):
 
 
 class AdminServer:
-    """/admin/reload 轻量 HTTP 服务，支持运行时热加载配置。"""
+    """/admin/reload 轻量 HTTP 服务，支持运行时热加载配置和 secret rotation。"""
 
     def __init__(self, storage: Storage, detector: Optional[AnomalyDetector] = None,
                  host: str = "127.0.0.1", port: int = 0):
@@ -623,12 +867,29 @@ class AdminServer:
         self._server: Optional[HTTPServer] = None
         self._thread: Optional[threading.Thread] = None
         self._pubsub = get_pubsub()
+        self._token_rotator: Optional[_SecretRotator] = None
+
+        from .config import get_config
+        cfg = get_config()
+        rotation_file = cfg.admin_token_rotation_file
+        if rotation_file:
+            if cfg.config_path and not os.path.isabs(rotation_file):
+                base = os.path.dirname(os.path.abspath(cfg.config_path))
+                rotation_file = os.path.join(base, rotation_file)
+            self._token_rotator = _SecretRotator(
+                rotation_file=rotation_file,
+                interval_seconds=cfg.admin_token_rotation_interval_seconds,
+                allow_old_seconds=cfg.admin_token_allow_old_seconds,
+            )
 
     def start(self) -> int:
+        if self._token_rotator:
+            self._token_rotator.start()
         handler = type("Handler", (_ReloadHandler,), {
             "storage": self.storage,
             "detector": self.detector,
             "pubsub": self._pubsub,
+            "token_rotator": self._token_rotator,
         })
         self._server = HTTPServer((self.host, self.port), handler)
         actual_port = self._server.server_address[1]
@@ -640,6 +901,9 @@ class AdminServer:
         if self._server:
             self._server.shutdown()
             self._server = None
+        if self._token_rotator:
+            self._token_rotator.stop()
+            self._token_rotator = None
         if self.detector:
             self.detector.close()
 

@@ -326,8 +326,13 @@ def write_summaries(
 
     max_page_size = cfg.max_page_size
     if max_page_size > 0 and page_size > max_page_size:
-        import sys
-        print(f"[警告] page_size={page_size} 超过上限 max_page_size={max_page_size}，已自动截断", file=sys.stderr)
+        from .alerts import alert_page_size_exceeded
+        alert_page_size_exceeded(
+            requested=page_size,
+            max_page_size=max_page_size,
+            actual=max_page_size,
+            source="summarizer",
+        )
         page_size = max_page_size
 
     os.makedirs(output_dir, exist_ok=True)

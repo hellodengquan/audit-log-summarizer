@@ -16,6 +16,7 @@ _DEFAULTS: Dict[str, Any] = {
     "parser": {
         "protobuf_schema_path": "",
         "protobuf_default_version": "default",
+        "protobuf_auto_version_match": True,
         "format_overrides": {},
     },
     "analyzer": {
@@ -55,23 +56,35 @@ _DEFAULTS: Dict[str, Any] = {
                 },
             },
         },
+        "pubsub_backend": "inproc",
+        "redis_sentinels": [],
+        "redis_master_name": "mymaster",
+        "redis_password": "",
+        "redis_db": 0,
     },
     "output": {
         "default_page_size": 0,
         "max_page_size": 1000,
         "default_sort_by": "count",
         "default_sort_order": "desc",
+        "page_size_alert_webhook": "",
+        "page_size_alert_suppress_seconds": 300,
     },
     "storage": {
         "ttl_days": None,
         "table_prefix": "logs_",
         "unified_view_name": "audit_unified_view",
         "use_materialized_view": False,
+        "mv_monthly_indexes": True,
+        "mv_query_range_months": 6,
     },
     "admin": {
         "reload_port": 0,
         "reload_host": "127.0.0.1",
         "admin_token": "",
+        "admin_token_rotation_file": "",
+        "admin_token_rotation_interval_seconds": 0,
+        "admin_token_allow_old_seconds": 3600,
     },
 }
 
@@ -273,6 +286,10 @@ class AuditConfig:
         return result
 
     @property
+    def protobuf_auto_version_match(self) -> bool:
+        return self.get("parser", "protobuf_auto_version_match", default=True)
+
+    @property
     def spike_tiers(self) -> Dict[str, int]:
         return self.get("analyzer", "spike_tiers", default=_DEFAULTS["analyzer"]["spike_tiers"])
 
@@ -342,6 +359,57 @@ class AuditConfig:
     @property
     def format_overrides(self) -> Dict[str, str]:
         return self.get("parser", "format_overrides", default={})
+
+    @property
+    def pubsub_backend(self) -> str:
+        return self.get("analyzer", "pubsub_backend", default="inproc")
+
+    @property
+    def redis_sentinels(self) -> List[Dict[str, Any]]:
+        raw = self.get("analyzer", "redis_sentinels", default=[])
+        if isinstance(raw, list):
+            return raw
+        return []
+
+    @property
+    def redis_master_name(self) -> str:
+        return self.get("analyzer", "redis_master_name", default="mymaster")
+
+    @property
+    def redis_password(self) -> str:
+        return self.get("analyzer", "redis_password", default="")
+
+    @property
+    def redis_db(self) -> int:
+        return self.get("analyzer", "redis_db", default=0)
+
+    @property
+    def page_size_alert_webhook(self) -> str:
+        return self.get("output", "page_size_alert_webhook", default="")
+
+    @property
+    def page_size_alert_suppress_seconds(self) -> int:
+        return self.get("output", "page_size_alert_suppress_seconds", default=300)
+
+    @property
+    def mv_monthly_indexes(self) -> bool:
+        return self.get("storage", "mv_monthly_indexes", default=True)
+
+    @property
+    def mv_query_range_months(self) -> int:
+        return self.get("storage", "mv_query_range_months", default=6)
+
+    @property
+    def admin_token_rotation_file(self) -> str:
+        return self.get("admin", "admin_token_rotation_file", default="")
+
+    @property
+    def admin_token_rotation_interval_seconds(self) -> int:
+        return self.get("admin", "admin_token_rotation_interval_seconds", default=0)
+
+    @property
+    def admin_token_allow_old_seconds(self) -> int:
+        return self.get("admin", "admin_token_allow_old_seconds", default=3600)
 
     def reload(self) -> None:
         if self.config_path and os.path.exists(self.config_path):

@@ -23,6 +23,10 @@ parser:
   # 多 schema 时的默认版本（当日志中无 schema_version 字段时使用）
   protobuf_default_version: "default"
 
+  # 自动按日志字段交集匹配最佳 schema（当 schema_version 缺失或不可用时）
+  # 兼容性矩阵会自动构建，选择字段交集率最高的 schema
+  protobuf_auto_version_match: true
+
   # 额外的文件扩展名到格式的映射（覆盖自动检测）
   # 示例: .audit: jsonl, .trace: kv
   format_overrides: {}
@@ -80,18 +84,42 @@ analyzer:
         min_count_ratio: 0.02
         rate_factor: 1.0
 
+  # Pub/Sub 后端：inproc（默认，内存队列，单机） 或 redis（分布式，需 Sentinel）
+  pubsub_backend: "inproc"
+
+  # Redis Sentinel 节点列表（pubsub_backend=redis 时生效）
+  # 格式：列表每项可为 {"host": "127.0.0.1", "port": 26379} 或 "127.0.0.1:26379"
+  # 未安装 redis 库或连接失败时自动降级到 inproc，不影响主流程
+  redis_sentinels: []
+
+  # Redis Sentinel 主节点名称
+  redis_master_name: "mymaster"
+
+  # Redis 密码（无密码留空）
+  redis_password: ""
+
+  # Redis DB 索引
+  redis_db: 0
+
 output:
   # 默认分页大小，0 表示不分页
   # CLI --page-size 可覆盖此值
   default_page_size: 0
 
   # 分页大小上限，防止请求过大导致 OOM
-  # CLI --page-size 超过此值时将被自动截断
+  # CLI --page-size 超过此值时将被自动截断，并触发告警
   max_page_size: 1000
 
   # 默认排序字段与方向
   default_sort_by: count
   default_sort_order: desc
+
+  # Page size 超限告警 Webhook URL（可选，POST JSON 告警到该地址）
+  # 留空则仅打 stderr 日志
+  page_size_alert_webhook: ""
+
+  # 同类告警抑制窗口（秒），避免短时间重复告警刷屏
+  page_size_alert_suppress_seconds: 300
 
 storage:
   # 数据保留天数，null 表示永不过期
@@ -108,6 +136,14 @@ storage:
   # 写入完成后会自动刷新，也可通过 /admin/reload 触发
   use_materialized_view: true
 
+  # 在物化表上建立按月派生的 month_key 联合索引
+  # 覆盖跨 N 月范围查询，显著加速大表聚合
+  mv_monthly_indexes: true
+
+  # 跨月查询默认覆盖范围（月数），用于建立 N 个月的部分覆盖索引
+  # 建议 6~12，越多覆盖越全但索引占空间越大
+  mv_query_range_months: 6
+
 admin:
   # /admin/reload 热加载服务端口，0 表示不启动
   reload_port: 0
@@ -119,3 +155,16 @@ admin:
   # 生产环境务必设置，请求需在 header 中携带:
   #   Authorization: Bearer <admin_token>
   admin_token: ""
+
+  # Admin token 轮换文件（可选）
+  # 配置后将从此文件读取 token，支持运维流水线定期更新文件
+  # 支持纯文本（一行 token）或 JSON（{"token": "..."}）
+  # 修改文件后无需重启服务，后台线程会自动感知
+  admin_token_rotation_file: ""
+
+  # 轮询轮换文件的间隔（秒），0 表示仅启动时读取一次
+  admin_token_rotation_interval_seconds: 0
+
+  # 新老 token 共存窗口（秒）
+  # 轮换发生后，旧 token 在此窗口内仍可用于鉴权，避免切流中断
+  admin_token_allow_old_seconds: 3600

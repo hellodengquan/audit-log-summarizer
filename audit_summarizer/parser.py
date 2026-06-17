@@ -462,7 +462,8 @@ def _parse_protobuf(lines: List[str], source: str, hint_year: Optional[int]) -> 
                 d["message_type"] = msg_type
 
         version = d.get("schema_version") if isinstance(d.get("schema_version"), str) else None
-        field_mappings = _get_pb_schema_mappings(version)
+        log_field_set = set(d.keys()) if d else None
+        field_mappings = _get_pb_schema_mappings(version, log_field_set)
 
         if field_mappings:
             mapped: Dict[str, Any] = {}
@@ -517,13 +518,105 @@ def _load_pb_schema(path: str) -> Dict[str, str]:
 
 
 _PB_SCHEMA_CACHE: Dict[str, Dict[str, str]] = {}
+_PB_COMPAT_MATRIX: Optional[Dict[str, Dict[str, float]]] = None
 
 
-def _get_pb_schema_mappings(version: Optional[str] = None) -> Dict[str, str]:
-    """根据版本获取 protobuf schema 字段映射。
+def _build_compat_matrix(schemas: Dict[str, str]) -> Dict[str, Dict[str, float]]:
+    """根据已加载 schema 构建版本兼容性矩阵。
+
+    兼容度 = 两版本共有字段数 / 源版本字段总数。
+    矩阵为 {v_from: {v_to: compat_ratio}}，1.0 表示完全兼容。
+    """
+    field_sets: Dict[str, set] = {}
+    for ver, path in schemas.items():
+        mappings = _PB_SCHEMA_CACHE.get(path)
+        if mappings is None:
+            mappings = _load_pb_schema(path)
+            _PB_SCHEMA_CACHE[path] = mappings
+        field_sets[ver] = set(mappings.keys())
+
+    matrix: Dict[str, Dict[str, float]] = {}
+    for v_from, fs_from in field_sets.items():
+        matrix[v_from] = {}
+        for v_to, fs_to in field_sets.items():
+            if not fs_from:
+                matrix[v_from][v_to] = 0.0
+            else:
+                matrix[v_from][v_to] = len(fs_from & fs_to) / len(fs_from)
+    return matrix
+
+
+def _get_compat_matrix() -> Dict[str, Dict[str, float]]:
+    """获取兼容性矩阵（惰性构建）。"""
+    global _PB_COMPAT_MATRIX
+    if _PB_COMPAT_MATRIX is not None:
+        return _PB_COMPAT_MATRIX
+    from .config import get_config
+    cfg = get_config()
+    schemas = cfg.protobuf_schemas
+    if len(schemas) < 2:
+        _PB_COMPAT_MATRIX = {}
+        return {}
+    _PB_COMPAT_MATRIX = _build_compat_matrix(schemas)
+    return _PB_COMPAT_MATRIX
+
+
+def _resolve_schema_version(requested: Optional[str], log_fields: Optional[set] = None) -> Optional[str]:
+    """根据请求版本和日志字段自动选择最佳 schema 版本。
+
+    选择策略：
+    1. 精确匹配：请求版本存在于已注册 schema 中
+    2. 字段匹配：日志实际字段与某版本 schema 字段交集率最高
+    3. 兼容回退：按兼容性矩阵降级到最兼容版本
+    4. 默认版本
+    """
+    from .config import get_config
+    cfg = get_config()
+    schemas = cfg.protobuf_schemas
+    if not schemas:
+        return None
+
+    if requested and requested in schemas:
+        return requested
+
+    if log_fields:
+        best_ver = None
+        best_score = 0.0
+        for ver, path in schemas.items():
+            mappings = _PB_SCHEMA_CACHE.get(path)
+            if mappings is None:
+                mappings = _load_pb_schema(path)
+                _PB_SCHEMA_CACHE[path] = mappings
+            schema_fields = set(mappings.keys())
+            if not schema_fields:
+                continue
+            score = len(log_fields & schema_fields) / len(schema_fields)
+            if score > best_score:
+                best_score = score
+                best_ver = ver
+        if best_ver and best_score > 0.3:
+            return best_ver
+
+    matrix = _get_compat_matrix()
+    if requested and requested in matrix:
+        candidates = [(v, score) for v, score in matrix[requested].items() if v != requested and score > 0]
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        if candidates:
+            return candidates[0][0]
+
+    default = cfg.protobuf_default_version
+    if default in schemas:
+        return default
+
+    return next(iter(schemas))
+
+
+def _get_pb_schema_mappings(version: Optional[str] = None, log_fields: Optional[set] = None) -> Dict[str, str]:
+    """根据版本获取 protobuf schema 字段映射，支持兼容性自动选版本。
 
     Args:
-        version: schema 版本，None 时使用默认版本
+        version: 日志中声明的 schema 版本
+        log_fields: 日志中实际出现的字段名集合，用于自动匹配
 
     Returns:
         {proto_field: canonical_name} 映射，无配置时返回空 dict
@@ -534,8 +627,11 @@ def _get_pb_schema_mappings(version: Optional[str] = None) -> Dict[str, str]:
     if not schemas:
         return {}
 
-    effective_version = version or cfg.protobuf_default_version
-    schema_path = schemas.get(effective_version)
+    resolved = _resolve_schema_version(version, log_fields)
+    if not resolved:
+        return {}
+
+    schema_path = schemas.get(resolved)
     if not schema_path or not os.path.exists(schema_path):
         return {}
 
@@ -548,8 +644,10 @@ def _get_pb_schema_mappings(version: Optional[str] = None) -> Dict[str, str]:
 
 
 def _invalidate_pb_schema_cache() -> None:
-    """清空 protobuf schema 缓存（/admin/reload 时调用）。"""
+    """清空 protobuf schema 缓存和兼容性矩阵（/admin/reload 时调用）。"""
+    global _PB_COMPAT_MATRIX
     _PB_SCHEMA_CACHE.clear()
+    _PB_COMPAT_MATRIX = None
 
 
 def _parse_text(lines: List[str], source: str, hint_year: Optional[int]) -> Iterator[Dict[str, Any]]:

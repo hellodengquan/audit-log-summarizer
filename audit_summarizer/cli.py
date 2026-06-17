@@ -180,7 +180,13 @@ def _cmd_analyze(args) -> int:
 
         max_page_size = cfg.max_page_size
         if page_size is not None and max_page_size > 0 and page_size > max_page_size:
-            print(f"[警告] --page-size={page_size} 超过上限 max_page_size={max_page_size}，已自动截断", file=sys.stderr)
+            from .alerts import alert_page_size_exceeded
+            alert_page_size_exceeded(
+                requested=page_size,
+                max_page_size=max_page_size,
+                actual=max_page_size,
+                source="cli",
+            )
             page_size = max_page_size
 
         timeline_path, stats_path, analysis = write_summaries(

@@ -55,6 +55,46 @@ _MV_INDEX_TEMPLATES = [
     "CREATE INDEX IF NOT EXISTS idx_{table}_action_ts ON {table}(action, ts);",
 ]
 
+
+def _build_monthly_indexes(mv_name: str, tables: List[str], range_months: int = 6) -> List[str]:
+    """生成按月边界和查询范围优化的索引。
+
+    - 为每个月的 ts 范围创建分区化索引（部分索引/函数索引）
+    - 为最近 N 个月创建高频查询覆盖索引
+
+    SQLite 不支持真正的 PARTIAL INDEX 带变量，这里使用：
+    - 提取月份派生列 month_key = CAST(ts / 2592000 AS INTEGER)
+    - 在 (month_key, subject, ts) 和 (month_key, action, ts) 上建联合索引
+      覆盖跨 6 月范围查询（查询时 month_key IN (...) + ts BETWEEN ... 双条件加速）
+    """
+    sqls: List[str] = []
+    sqls.append(f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_month_ts "
+                f"ON {mv_name}(CAST(ts / 2592000 AS INTEGER), ts);")
+    sqls.append(f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_month_subject_ts "
+                f"ON {mv_name}(CAST(ts / 2592000 AS INTEGER), subject, ts);")
+    sqls.append(f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_month_action_ts "
+                f"ON {mv_name}(CAST(ts / 2592000 AS INTEGER), action, ts);")
+    sqls.append(f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_month_status "
+                f"ON {mv_name}(CAST(ts / 2592000 AS INTEGER), status);")
+    sqls.append(f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_month_subject_action_ts "
+                f"ON {mv_name}(CAST(ts / 2592000 AS INTEGER), subject, action, ts);")
+    return sqls
+
+
+def _build_cross_range_indexes(mv_name: str, range_months: int = 6) -> List[str]:
+    """为跨 N 个月高频聚合场景建立特殊覆盖索引。"""
+    sqls: List[str] = []
+    seconds_per_month = 2592000
+    for offset_months in range(range_months):
+        suffix = f"m{offset_months}"
+        sqls.append(
+            f"CREATE INDEX IF NOT EXISTS idx_{mv_name}_{suffix}_subj_act_ts "
+            f"ON {mv_name}(subject, action, ts) "
+            f"WHERE ts >= (CAST(strftime('%s', 'now') AS REAL) - {(offset_months + 1) * seconds_per_month}) "
+            f"  AND ts <  (CAST(strftime('%s', 'now') AS REAL) - {offset_months * seconds_per_month});"
+        )
+    return sqls
+
 _SUBJECT_CATEGORIES_TABLE = """
 CREATE TABLE IF NOT EXISTS _subject_categories (
     category TEXT NOT NULL,
@@ -199,9 +239,19 @@ class Storage:
         - 优势：支持索引加速跨月查询，复杂聚合更快
         - 劣势：需要定期刷新，占用更多磁盘空间
 
+        索引策略：
+        - 基础 6 个索引（ts/subject/action/status/(subject,ts)/(action,ts)）
+        - 按月派生的 month_key 联合索引，加速跨 6 月范围查询
+        - 可选的按最近 N 月的部分覆盖索引
+
         注意：调用前必须已 DROP 同名表/视图，且必须在事务中调用
         """
+        from .config import get_config
+        cfg = get_config()
         mv_name = self.unified_view_name
+        range_months = max(1, min(24, int(cfg.mv_query_range_months)))
+        monthly_indexes = cfg.mv_monthly_indexes
+
         if not tables:
             self._conn.execute(f"""
                 CREATE TABLE {mv_name} (
@@ -235,6 +285,17 @@ class Storage:
                 """)
         for idx_sql in _MV_INDEX_TEMPLATES:
             self._conn.execute(idx_sql.format(table=mv_name))
+        if monthly_indexes:
+            for idx_sql in _build_monthly_indexes(mv_name, tables, range_months):
+                try:
+                    self._conn.execute(idx_sql)
+                except sqlite3.OperationalError:
+                    pass
+            for idx_sql in _build_cross_range_indexes(mv_name, range_months):
+                try:
+                    self._conn.execute(idx_sql)
+                except sqlite3.OperationalError:
+                    pass
         self._mv_last_refreshed = time.time()
         self._conn.execute(
             "INSERT OR REPLACE INTO _meta (key, value) VALUES (?, ?)",
@@ -410,9 +471,42 @@ class Storage:
         self._ensure_mv_fresh()
         return self.unified_view_name
 
-    def count(self) -> int:
+    def _month_key_clause(self, t_min: Optional[float], t_max: Optional[float]) -> str:
+        """生成 month_key 过滤子句，利用按月派生索引加速跨月查询。
+
+        当查询带时间范围且 use_materialized_view=True 时，附加该子句让 SQLite
+        使用 idx_*_month_* 联合索引，避免全表扫描。
+        """
+        if t_min is None or t_max is None:
+            return ""
+        if not self.use_materialized_view:
+            return ""
+        mk_min = int(t_min // 2592000) - 1
+        mk_max = int(t_max // 2592000) + 1
+        mk_min = max(mk_min, 0)
+        return f" AND CAST(ts / 2592000 AS INTEGER) BETWEEN {mk_min} AND {mk_max}"
+
+    def count(self, t_min: Optional[float] = None, t_max: Optional[float] = None) -> int:
         try:
-            cur = self._conn.execute(f"SELECT COUNT(*) FROM {self._uv()}")
+            uv = self._uv()
+            extra = self._month_key_clause(t_min, t_max)
+            if t_min is not None and t_max is not None:
+                cur = self._conn.execute(
+                    f"SELECT COUNT(*) FROM {uv} WHERE ts BETWEEN ? AND ?{extra}",
+                    (t_min, t_max)
+                )
+            elif t_min is not None:
+                cur = self._conn.execute(
+                    f"SELECT COUNT(*) FROM {uv} WHERE ts >= ?{extra}",
+                    (t_min,)
+                )
+            elif t_max is not None:
+                cur = self._conn.execute(
+                    f"SELECT COUNT(*) FROM {uv} WHERE ts <= ?{extra}",
+                    (t_max,)
+                )
+            else:
+                cur = self._conn.execute(f"SELECT COUNT(*) FROM {uv}")
             return cur.fetchone()[0]
         except sqlite3.OperationalError:
             return 0
@@ -438,8 +532,20 @@ class Storage:
             return
 
     # ---- 多维聚合查询 ----
-    def group_by_subject(self) -> List[Dict[str, Any]]:
+    def group_by_subject(self, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT subject,
                    COUNT(*) AS cnt,
@@ -447,17 +553,29 @@ class Storage:
                    MAX(ts) AS t_max,
                    COUNT(DISTINCT action) AS action_types,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY subject
             ORDER BY cnt DESC
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
-    def group_by_action(self) -> List[Dict[str, Any]]:
+    def group_by_action(self, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT action,
                    COUNT(*) AS cnt,
@@ -465,30 +583,54 @@ class Storage:
                    MIN(ts) AS t_min,
                    MAX(ts) AS t_max,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY action
             ORDER BY cnt DESC
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
-    def group_by_status(self) -> List[Dict[str, Any]]:
+    def group_by_status(self, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT status, COUNT(*) AS cnt
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY status
             ORDER BY cnt DESC
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
-    def group_by_time_window(self, window_seconds: int) -> List[Dict[str, Any]]:
+    def group_by_time_window(self, window_seconds: int, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT CAST(ts / {window_seconds} AS INTEGER) AS bucket,
                    COUNT(*) AS cnt,
@@ -497,42 +639,66 @@ class Storage:
                    COUNT(DISTINCT subject) AS subject_cnt,
                    COUNT(DISTINCT action) AS action_cnt,
                    SUM(CASE WHEN status='failure' OR status='fail' THEN 1 ELSE 0 END) AS fail_cnt
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY bucket
             ORDER BY bucket
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
-    def group_by_subject_action(self) -> List[Dict[str, Any]]:
+    def group_by_subject_action(self, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT subject, action, COUNT(*) AS cnt, MIN(ts) AS t_min, MAX(ts) AS t_max
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY subject, action
             ORDER BY cnt DESC
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
-    def subject_action_time_series(self, window_seconds: int) -> List[Dict[str, Any]]:
+    def subject_action_time_series(self, window_seconds: int, t_min: Optional[float] = None, t_max: Optional[float] = None) -> List[Dict[str, Any]]:
         uv = self._uv()
+        extra = self._month_key_clause(t_min, t_max)
+        where_clause = ""
+        params: Tuple = ()
+        if t_min is not None and t_max is not None:
+            where_clause = f" WHERE ts BETWEEN ? AND ?{extra}"
+            params = (t_min, t_max)
+        elif t_min is not None:
+            where_clause = f" WHERE ts >= ?{extra}"
+            params = (t_min,)
+        elif t_max is not None:
+            where_clause = f" WHERE ts <= ?{extra}"
+            params = (t_max,)
         sql = f"""
             SELECT CAST(ts / {window_seconds} AS INTEGER) AS bucket,
                    subject,
                    action,
                    COUNT(*) AS cnt,
                    MIN(ts) AS t_min
-            FROM {uv}
+            FROM {uv}{where_clause}
             GROUP BY bucket, subject, action
             ORDER BY bucket, cnt DESC
         """
         try:
-            return [dict(r) for r in self._conn.execute(sql)]
+            return [dict(r) for r in self._conn.execute(sql, params)]
         except sqlite3.OperationalError:
             return []
 
